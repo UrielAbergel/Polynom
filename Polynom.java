@@ -8,7 +8,7 @@ import java.util.function.Predicate;
  * 1. Riemann's Integral: https://en.wikipedia.org/wiki/Riemann_integral
  * 2. Finding a numerical value between two values (currently support root only f(x)=0).
  * 3. Derivative
- * 
+ * Testing GitHub Desktop
  * @author Boaz
  *
  */
