@@ -40,8 +40,9 @@ public class Polynom implements Polynom_able{
 		}
 			while (EndIndex < s.length()) {
 				if (EndIndex != 0) {
-					if (s.charAt(EndIndex) == '+' || s.charAt(EndIndex) == '-') {
-						t = s.substring(Startindex, EndIndex);
+					if (s.charAt(EndIndex) == '+' || s.charAt(EndIndex) == '-' || EndIndex == s.length()-1) {
+
+						t = s.substring(Startindex,EndIndex);
 						arr[arrIndex] = new Monom(t);
 						arrIndex++;
 						Startindex = EndIndex;
@@ -130,7 +131,7 @@ public class Polynom implements Polynom_able{
 	}
 
 	public static void main(String[] args) {
-		Polynom p = new Polynom("-3.56x^8 + 3.76x^2");
+		Polynom p = new Polynom("-3.56x^8+3.76x^2");
 		System.out.println(p.PolynomSave[0].get_power());
 	}
 	
