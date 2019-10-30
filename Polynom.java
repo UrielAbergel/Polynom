@@ -12,7 +12,7 @@ import java.util.function.Predicate;
  *
  */
 public class Polynom implements Polynom_able{
-
+	private Monom[] PolynomSave;
 	/**
 	 * Zero (empty polynom)
 	 */
@@ -39,14 +39,16 @@ public class Polynom implements Polynom_able{
 		}
 			while (EndIndex < s.length()) {
 				if (EndIndex != 0) {
-					if (EndIndex == '+' || EndIndex == '-') {
-						arr[arrIndex] = new Monom(s.substring(Startindex, EndIndex));
+					if (s.charAt(EndIndex) == '+' || s.charAt(EndIndex) == '-') {
+						t = s.substring(Startindex, EndIndex);
+						arr[arrIndex] = new Monom(t);
 						arrIndex++;
 						Startindex = EndIndex;
 					}
 				}
 				EndIndex++;
 			}
+			PolynomSave = arr;
 
 	}
 	@Override
@@ -124,6 +126,11 @@ public class Polynom implements Polynom_able{
 	public void multiply(Monom m1) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public static void main(String[] args) {
+		Polynom p = new Polynom("-3.56x^8 + 3.76x^2");
+		System.out.println(p.PolynomSave[0].get_power());
 	}
 	
 }
