@@ -47,13 +47,14 @@ public class Monom implements function{
 		String num = "";
 		String pow = "";
 		int x = 0;
-		while(x<=s.length()) {
+		while(x < s.length()) {
 			if (s.charAt(x) == 'x' || s.charAt(x) == 'X') break;
-			num = num + s.charAt(x++);
+			num = num + s.charAt(x);
+			x++;
 		}
 		double mekadem = 0;
 		if(s.charAt(0) == 'x' || s.charAt(0) == 'X') mekadem = 1;
-		else if((s.charAt(0) == '+' && s.charAt(0) == '-') && (s.charAt(1) == 'x' || s.charAt(1) == 'X')) mekadem = -1;
+		else if((s.charAt(0) == '+' || s.charAt(0) == '-') && (s.charAt(1) == 'x' || s.charAt(1) == 'X')) mekadem = -1;
 		else mekadem = Double.parseDouble(num);
 
 		x=x+2;
@@ -61,7 +62,7 @@ public class Monom implements function{
 			pow = pow + s.charAt(x);
 			x++;
 		}
-		if(pow.isEmpty()) {pow = "1";}
+		if(pow.isEmpty()) {pow = "0";}
 		int power = Integer.parseInt(pow);
 
 		this._power = power ;

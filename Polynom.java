@@ -1,6 +1,6 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Iterator;
-import java.util.function.Predicate;
 
 
 /**
@@ -8,12 +8,12 @@ import java.util.function.Predicate;
  * 1. Riemann's Integral: https://en.wikipedia.org/wiki/Riemann_integral
  * 2. Finding a numerical value between two values (currently support root only f(x)=0).
  * 3. Derivative
- * 
+ *
  * @author Boaz
  *
  */
 public class Polynom implements Polynom_able{
-	private Monom[] PolynomSave;
+	LinkedList<Monom> PolynomList;
 	/**
 	 * Zero (empty polynom)
 	 */
@@ -22,65 +22,80 @@ public class Polynom implements Polynom_able{
 	}
 	/**
 	 * init a Polynom from a String such as:
-	 *  {"x", "3+1.4X^3-34x", "(2x^2-4)*(-1.2x-7.1)", "(3-3.4x+1)*((3.1x-1.2)-(3X^2-3.1))"};
+	 *  {"x", "3+1.4X^3-34x", "(2x^2-4)(-1.2x-7.1)", "(3-3.4x+1)((3.1x-1.2)-(3X^2-3.1))"};
 	 * @param s: is a string represents a Polynom
 	 */
 
 	public Polynom(String s) {
 		String t = "";
-		Monom[] arr = new Monom[s.length()];
-		int Startindex  = 0 ;
-		int EndIndex = 0 ;
-		int arrIndex = 0;
-		int JustCheck = 0  ;
+		int Startindex  = 0 ,EndIndex = 0;
+		LinkedList<Monom> TempMonomList = new LinkedList<Monom>();
 		for (int i = 0 ; i < s.length() ; i++) {
 			if (s.charAt(i) == '(' || s.charAt(i) == ')') {
-			EndIndex = s.length()+1	;
+				EndIndex = s.length()+1	;
 			}
 		}
-			while (EndIndex < s.length()) {
-				if (EndIndex != 0) {
-					if (s.charAt(EndIndex) == '+' || s.charAt(EndIndex) == '-' || EndIndex == s.length()-1) {
+		while (EndIndex < s.length()) {
+			if (EndIndex != 0) {
+				if (s.charAt(EndIndex) == '+' || s.charAt(EndIndex) == '-' || EndIndex == s.length()-1) {
 
-						t = s.substring(Startindex,EndIndex);
-						arr[arrIndex] = new Monom(t);
-						arrIndex++;
-						Startindex = EndIndex;
-					}
+					t = s.substring(Startindex,EndIndex);
+					if(EndIndex == s.length()-1) t = t +s.charAt(s.length()-1);
+					Monom newMonom = new Monom(t);
+					TempMonomList.add(newMonom);
+					Startindex = EndIndex;
 				}
-				EndIndex++;
 			}
-			PolynomSave = arr;
-
+			EndIndex++;
+		}
+		PolynomList = TempMonomList;
 	}
 	@Override
 	public double f(double x) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		int Index = 0;
+		double sum =0;
+		while(Index<PolynomList.size()){
+			sum = sum + PolynomList.get(Index++).f(x);
+		}
+		return sum;
 	}
 
 	@Override
 	public void add(Polynom_able p1) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void add(Monom m1) {
-		// TODO Auto-generated method stub
-		
+		int pow = m1.get_power() , x=0;
+		while(x<PolynomList.size()){
+			if(pow>PolynomList.get(x).get_power()){
+				PolynomList.add(x,m1);
+				break;
+			}
+			else if(pow < PolynomList.get(x).get_power()) x++;
+			else {
+				PolynomList.get(x).add(m1);
+				break;
+			}
+		}
+		if(x>=PolynomList.size()) PolynomList.add(m1);
+
 	}
 
 	@Override
 	public void substract(Polynom_able p1) {
-		// TODO Auto-generated method stub
-		
+
+
+
 	}
 
 	@Override
 	public void multiply(Polynom_able p1) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -91,8 +106,11 @@ public class Polynom implements Polynom_able{
 
 	@Override
 	public boolean isZero() {
-		// TODO Auto-generated method stub
-		return false;
+		int index = 0;
+		while(index<PolynomList.size()){
+			if(PolynomList.get(index).get_coefficient() != 0) return false;
+		}
+		return true;
 	}
 
 	@Override
@@ -103,7 +121,7 @@ public class Polynom implements Polynom_able{
 
 	@Override
 	public Polynom_able copy() {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
@@ -115,7 +133,7 @@ public class Polynom implements Polynom_able{
 
 	@Override
 	public double area(double x0, double x1, double eps) {
-		// TODO Auto-generated method stub
+
 		return 0;
 	}
 
@@ -127,12 +145,26 @@ public class Polynom implements Polynom_able{
 	@Override
 	public void multiply(Monom m1) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public static void main(String[] args) {
-		Polynom p = new Polynom("-3.56x^8+3.76x^2");
-		System.out.println(p.PolynomSave[0].get_power());
+		Polynom p = new Polynom("-3.56x^9+3.76x^8");
+		//double s = p.f(2);
+		//System.out.println(s);
+		//System.out.println(p.PolynomSave);
+		Monom a = new Monom("2x^");
+		p.add(a);
+		ArrayList<Integer> f = new ArrayList<Integer>();
+		f.add(1);
+		f.add(2);
+		f.add(3);
+		System.out.println(f);
+		f.add(1,5);
+		System.out.println(f);
+		//	System.out.println(p.PolynomSave);
+
+
 	}
-	
+
 }
