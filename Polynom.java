@@ -63,8 +63,11 @@ public class Polynom implements Polynom_able{
 
 	@Override
 	public void add(Polynom_able p1) {
-		// TODO Auto-generated method stub
+		Iterator<Monom> iter = p1.iteretor();
+		while (iter.hasNext()) {
+			Monom m = iter.next();
 
+		}
 	}
 
 	@Override
@@ -133,14 +136,16 @@ public class Polynom implements Polynom_able{
 
 	@Override
 	public double area(double x0, double x1, double eps) {
+		double TillTheEnd = 0;
+		while(TillTheEnd<x1){
 
+		}
 		return 0;
 	}
 
 	@Override
 	public Iterator<Monom> iteretor() {
-		// TODO Auto-generated method stub
-		return null;
+		return PolynomList.iterator();
 	}
 	@Override
 	public void multiply(Monom m1) {
