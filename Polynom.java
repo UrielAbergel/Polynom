@@ -123,12 +123,11 @@ public class Polynom implements Polynom_able{
 
 	@Override
 	public Polynom_able copy(){
-//		Iterator<Monom> iter = this.iteretor();
-//		LinkedList<Monom> temp = new LinkedList<Monom>();
-//		for (int i = 0; i < PolynomList.size() ; i++) {
-//			temp.add(PolynomList.get(i));
-//		}
-		return null ;
+		Polynom poliTemp = new Polynom();
+		for (int i = 0; i < PolynomList.size() ; i++) {
+			poliTemp.PolynomList.add(PolynomList.get(i));
+		}
+		return poliTemp;
 	}
 
 	@Override
