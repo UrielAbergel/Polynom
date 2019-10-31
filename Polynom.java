@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Iterator;
 
@@ -146,7 +145,7 @@ public class Polynom implements Polynom_able{
 			if(dot>0){
 				double xPluxEps = x0+eps;
 				f(xPluxEps);
-				ans = ans + dot*(eps);
+				ans +=dot*(eps);
 			}
 		}
 		return ans;
