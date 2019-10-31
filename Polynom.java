@@ -151,7 +151,6 @@ public class Polynom implements Polynom_able{
 		}
 		return ans;
 	}
-
 	@Override
 	public Iterator<Monom> iteretor() {
 		return PolynomList.iterator();
@@ -162,14 +161,20 @@ public class Polynom implements Polynom_able{
 		while(Runner!=PolynomList.size()){
 			PolynomList.get(Runner++).multipy(m1);
 		}
-
+	}
+	public void toStr(){
+		int Runner = 0;
+		while(Runner!=PolynomList.size()){
+			String s = PolynomList.get(Runner++).toString();
+			System.out.println(s);
+		}
 	}
 
 	public static void main(String[] args) {
 		Polynom p = new Polynom("11x^9+3.76x^8");
 		Monom r = new Monom("3x^2");
 		p.multiply(r);
-		System.out.println(p.PolynomList.get(0).get_coefficient());
+		p.toStr();
 		//double s = p.f(2);
 		//System.out.println(s);
 		//System.out.println(p.PolynomSave);
