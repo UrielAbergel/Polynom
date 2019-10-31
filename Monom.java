@@ -57,11 +57,14 @@ public class Monom implements function{
 		else if((s.charAt(0) == '+' || s.charAt(0) == '-') && (s.charAt(1) == 'x' || s.charAt(1) == 'X')) mekadem = -1;
 		else mekadem = Double.parseDouble(num);
 
-		x=x+2;
-		while(x < s.length()){
-			pow = pow + s.charAt(x);
-			x++;
+		if(s.contains("^")) {
+			x = x + 2;
+			while (x < s.length()) {
+				pow = pow + s.charAt(x);
+				x++;
+			}
 		}
+		else pow = "1";
 		if(pow.isEmpty()) {pow = "0";}
 		int power = Integer.parseInt(pow);
 

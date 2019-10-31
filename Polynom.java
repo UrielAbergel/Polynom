@@ -123,9 +123,13 @@ public class Polynom implements Polynom_able{
 	}
 
 	@Override
-	public Polynom_able copy() {
-
-		return null;
+	public Polynom_able copy(){
+//		Iterator<Monom> iter = this.iteretor();
+//		LinkedList<Monom> temp = new LinkedList<Monom>();
+//		for (int i = 0; i < PolynomList.size() ; i++) {
+//			temp.add(PolynomList.get(i));
+//		}
+		return null ;
 	}
 
 	@Override
@@ -136,11 +140,16 @@ public class Polynom implements Polynom_able{
 
 	@Override
 	public double area(double x0, double x1, double eps) {
-		double TillTheEnd = 0;
-		while(TillTheEnd<x1){
-
+		double TillTheEnd = 0 , ans = 0;
+		while(TillTheEnd < x1){
+			double dot = f(x0);
+			if(dot>0){
+				double xPluxEps = x0+eps;
+				f(xPluxEps);
+				ans = ans + dot*(eps);
+			}
 		}
-		return 0;
+		return ans;
 	}
 
 	@Override
@@ -149,25 +158,23 @@ public class Polynom implements Polynom_able{
 	}
 	@Override
 	public void multiply(Monom m1) {
-		// TODO Auto-generated method stub
+		int Runner = 0;
+		while(Runner!=PolynomList.size()){
+			PolynomList.get(Runner++).multipy(m1);
+		}
 
 	}
 
 	public static void main(String[] args) {
-		Polynom p = new Polynom("-3.56x^9+3.76x^8");
+		Polynom p = new Polynom("11x^9+3.76x^8");
+		Monom r = new Monom("3x^2");
+		p.multiply(r);
+		System.out.println(p.PolynomList.get(0).get_coefficient());
 		//double s = p.f(2);
 		//System.out.println(s);
 		//System.out.println(p.PolynomSave);
-		Monom a = new Monom("2x^");
-		p.add(a);
-		ArrayList<Integer> f = new ArrayList<Integer>();
-		f.add(1);
-		f.add(2);
-		f.add(3);
-		System.out.println(f);
-		f.add(1,5);
-		System.out.println(f);
 		//	System.out.println(p.PolynomSave);
+
 
 
 	}
