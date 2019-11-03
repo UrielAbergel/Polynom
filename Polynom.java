@@ -89,7 +89,7 @@ public class Polynom implements Polynom_able{
 
 	@Override
 	public void substract(Polynom_able p1) {
-
+		//aaaaaaa
 
 
 	}
