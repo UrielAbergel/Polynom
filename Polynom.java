@@ -1,7 +1,5 @@
 import java.util.LinkedList;
 import java.util.Iterator;
-
-
 /**
  * This class represents a Polynom with add, multiply functionality, it also should support the following:
  * 1. Riemann's Integral: https://en.wikipedia.org/wiki/Riemann_integral
@@ -17,7 +15,8 @@ public class Polynom implements Polynom_able{
 	 * Zero (empty polynom)
 	 */
 	public Polynom() {
-
+		LinkedList<Monom> temp = new LinkedList<Monom>();
+		this.PolynomList = temp;
 	}
 	/**
 	 * init a Polynom from a String such as:
@@ -65,7 +64,7 @@ public class Polynom implements Polynom_able{
 		Iterator<Monom> iter = p1.iteretor();
 		while (iter.hasNext()) {
 			Monom m = iter.next();
-
+			add(m);
 		}
 	}
 
@@ -87,23 +86,98 @@ public class Polynom implements Polynom_able{
 
 	}
 
+
 	@Override
 	public void substract(Polynom_able p1) {
+		int polyIndex = 0 , tempIndex = 0 , CheckIfNot = 0 ;
+		Polynom temp = new Polynom();
+		Iterator<Monom> Pointer = p1.iteretor();
+		while(Pointer.hasNext()){
+			temp.add(Pointer.next());
+		}
+		while (tempIndex < temp.PolynomList.size())
+		{
+			while(polyIndex < PolynomList.size())
+			{
+				if (PolynomList.get(polyIndex).get_power() == temp.PolynomList.get(tempIndex).get_power())
+				{
+					CheckIfNot++;
+					PolynomList.get(polyIndex).set_coefficient(PolynomList.get(polyIndex).get_coefficient() - temp.PolynomList.get(tempIndex).get_coefficient());
+				}
+				polyIndex++;
+			}
 
+			if(CheckIfNot == 0)
+			{
+				temp.PolynomList.get(tempIndex).set_coefficient(-temp.PolynomList.get(tempIndex).get_coefficient());
+				PolynomList.add(temp.PolynomList.get(tempIndex));
+			}
+			CheckIfNot = 0 ;
+			polyIndex = 0 ;
+			tempIndex++;
+		}
 
 
 	}
 
 	@Override
 	public void multiply(Polynom_able p1) {
-		// TODO Auto-generated method stub
+		int p1Size = P_ableSize(p1);
+		Polynom temPolinom = new Polynom();
+		for (int i = 0; i < PolynomList.size() ; i++) {
+			temPolinom.PolynomList.add(this.PolynomList.get(i));
+		}
+		int pointer=0 , pointAtThisList=0;
+		Iterator<Monom> iter = p1.iteretor();
+		while(iter.hasNext()) {
+			Monom monomPoint = iter.next();
+			while (pointer != temPolinom.PolynomList.size()) {
+				temPolinom.PolynomList.get(pointer).multipy(monomPoint);
+				pointer++;
+			}
+			if (temPolinom.PolynomList.size() != this.PolynomList.size() * p1Size) {
+				while (pointAtThisList < this.PolynomList.size()) {
+					temPolinom.PolynomList.add(this.PolynomList.get(pointAtThisList));
+					pointAtThisList++;
+				}
+				pointAtThisList = 0;
+			}
+		}
+		this.PolynomList = temPolinom.PolynomList;
+	}
 
+	private int P_ableSize(Polynom_able p1) {
+		Iterator<Monom> iter = p1.iteretor();
+		int count =0;
+		while(iter.hasNext()){
+			count++;
+			iter.next();
+		}
+		return count;
 	}
 
 	@Override
 	public boolean equals(Polynom_able p1) {
-		// TODO Auto-generated method stub
-		return false;
+		Polynom temp = new Polynom();
+		Iterator<Monom> Pointer = p1.iteretor();
+		while(Pointer.hasNext()){
+			temp.add(Pointer.next());
+		}
+		int index = 0 ;
+		boolean flag = true;
+		while(index < temp.PolynomList.size())
+		{
+			if(temp.PolynomList.get(index).get_coefficient() != this.PolynomList.get(index).get_coefficient())
+			{
+				flag = false;
+			}
+			if(temp.PolynomList.get(index).get_power() != this.PolynomList.get(index).get_power())
+			{
+				flag = false;
+			}
+			index++;
+		}
+		return flag;
 	}
 
 	@Override
@@ -124,7 +198,7 @@ public class Polynom implements Polynom_able{
 	@Override
 	public Polynom_able copy(){
 		Polynom poliTemp = new Polynom();
-		for (int i = 0; i < PolynomList.size() ; i++) {
+		for (int i = 0; i < this.PolynomList.size() ; i++) {
 			poliTemp.PolynomList.add(PolynomList.get(i));
 		}
 		return poliTemp;
@@ -132,7 +206,11 @@ public class Polynom implements Polynom_able{
 
 	@Override
 	public Polynom_able derivative() {
-		// TODO Auto-generated method stub
+		int index = 0 ;
+		while(index < this.PolynomList.size()){
+			this.PolynomList.set(index , this.PolynomList.get(index).derivative()) ;
+			index++;
+		}
 		return null;
 	}
 
@@ -169,17 +247,15 @@ public class Polynom implements Polynom_able{
 	}
 
 	public static void main(String[] args) {
-		Polynom p = new Polynom("11x^9+3.76x^8");
-		Monom r = new Monom("3x^2");
+		Polynom p = new Polynom("2x^2+3x");
+		Polynom r = new Polynom("3x^2+2");
+		//Monom temp = new Monom("2x^2");
 		p.multiply(r);
 		p.toStr();
 		//double s = p.f(2);
 		//System.out.println(s);
 		//System.out.println(p.PolynomSave);
 		//	System.out.println(p.PolynomSave);
-
-
-
 	}
 
 }

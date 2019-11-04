@@ -64,7 +64,8 @@ public class Monom implements function{
 				x++;
 			}
 		}
-		else pow = "1";
+		else if((s.contains("x") || s.contains("X")) && !s.contains("^")) pow = "1";
+		else pow = "0";
 		if(pow.isEmpty()) {pow = "0";}
 		int power = Integer.parseInt(pow);
 
@@ -89,10 +90,10 @@ public class Monom implements function{
 	//****************** Private Methods and Data *****************
 
 
-	private void set_coefficient(double a){
+	public void set_coefficient(double a){
 		this._coefficient = a;
 	}
-	private void set_power(int p) {
+	public void set_power(int p) {
 		if(p<0) {throw new RuntimeException("ERR the power of Monom should not be negative, got: "+p);}
 		this._power = p;
 	}
@@ -101,8 +102,11 @@ public class Monom implements function{
 	private int _power;
 
 	public static void main(String[] args) {
-		String s = "+12.59x^4";
+		String s = "5x^4";
 		Monom a = new Monom(s);
+		Monom b = new Monom("3x^2");
+		a.multipy(b);
+
 		System.out.println(a._coefficient);
 		System.out.println(a._power);
 	}
