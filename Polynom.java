@@ -125,7 +125,8 @@ public class Polynom implements Polynom_able{
 		int p1Size = P_ableSize(p1);
 		Polynom temPolinom = new Polynom();
 		for (int i = 0; i < PolynomList.size() ; i++) {
-			temPolinom.PolynomList.add(this.PolynomList.get(i));
+			Monom m = new Monom(this.PolynomList.get(i));
+			temPolinom.PolynomList.add(m);
 		}
 		int pointer=0 , pointAtThisList=0;
 		Iterator<Monom> iter = p1.iteretor();
@@ -248,7 +249,7 @@ public class Polynom implements Polynom_able{
 
 	public static void main(String[] args) {
 		Polynom p = new Polynom("2x^2+3x");
-		Polynom r = new Polynom("3x^2+2");
+		Polynom r = new Polynom("3x^2-2");
 		//Monom temp = new Monom("2x^2");
 		p.multiply(r);
 		p.toStr();
