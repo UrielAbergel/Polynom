@@ -55,8 +55,8 @@ public class Monom implements function{
 			}
 			double mekadem = 0;
 			if (s.charAt(0) == 'x' || s.charAt(0) == 'X') mekadem = 1;
-			else if ((s.charAt(0) == '+' || s.charAt(0) == '-') && (s.charAt(1) == 'x' || s.charAt(1) == 'X'))
-				mekadem = -1;
+			else if ((s.charAt(0) == '+') && (s.charAt(1) == 'x' || s.charAt(1) == 'X')) mekadem = 1;
+			else if (( s.charAt(0) == '-') && (s.charAt(1) == 'x' || s.charAt(1) == 'X')) mekadem = -1;
 			else mekadem = Double.parseDouble(num);
 
 			if (s.contains("^")) {

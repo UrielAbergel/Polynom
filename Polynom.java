@@ -11,7 +11,6 @@ import java.util.Iterator;
  */
 public class Polynom implements Polynom_able {
 	LinkedList<Monom> PolynomList;
-
 	/**
 	 * Zero (empty polynom)
 	 */
@@ -150,13 +149,15 @@ public class Polynom implements Polynom_able {
 			}
 			if (temPolinom.PolynomList.size() != this.PolynomList.size() * p1Size) {
 				while (pointAtThisList < this.PolynomList.size()) {
-					temPolinom.PolynomList.add(this.PolynomList.get(pointAtThisList));
+					Monom m = new Monom (this.PolynomList.get(pointAtThisList));
+					temPolinom.PolynomList.add(m);
 					pointAtThisList++;
 				}
 				pointAtThisList = 0;
 			}
 		}
 		this.PolynomList = temPolinom.PolynomList;
+		conferenceOrgans();
 	}
 
 	private int P_ableSize(Polynom_able p1) {
@@ -204,10 +205,28 @@ public class Polynom implements Polynom_able {
 
 	@Override
 	public double root(double x0, double x1, double eps) {
+		Polynom temPolinom = new Polynom();
+		for (int i = 0; i < PolynomList.size() ; i++) {
+			Monom m = new Monom(this.PolynomList.get(i));
+			temPolinom.PolynomList.add(m);
+		}
+		double valueMed = (x0+x1)/2;
+		double der = temPolinom.derivative().f(valueMed);
+		double ans = 0;
+		double thisF = f(valueMed);
+		if(der==0) return 0;
+		else if(der>0) {
+			if ((Math.abs(thisF) <= eps)) ans = valueMed;
+			else if (thisF > 0) return root(x0, valueMed, eps);
+			else if (thisF < 0) return root(valueMed, x1, eps);
+		}
+		else{
+			if ((Math.abs(thisF) <= eps)) ans = valueMed;
+			else if (thisF > 0) return root(valueMed, x1, eps);
+			else if (thisF < 0) return root(x0, valueMed, eps);
+		}
 
-
-
-		return 0;
+		return ans;
 	}
 
 	@Override
@@ -222,11 +241,18 @@ public class Polynom implements Polynom_able {
 	@Override
 	public Polynom_able derivative() {
 		int index = 0 ;
+		Polynom temPolinom = new Polynom();
+		for (int i = 0; i < PolynomList.size() ; i++) {
+			Monom m = new Monom(this.PolynomList.get(i));
+			temPolinom.PolynomList.add(m);
+		}
 		while(index < this.PolynomList.size()){
-			this.PolynomList.set(index , this.PolynomList.get(index).derivative()) ;
+			temPolinom.PolynomList.set(index , this.PolynomList.get(index).derivative());
 			index++;
 		}
-		return null;
+		temPolinom.conferenceOrgans();
+		this.PolynomList = temPolinom.PolynomList;
+		return temPolinom;
 	}
 
 	@Override
@@ -259,7 +285,7 @@ public class Polynom implements Polynom_able {
 		int Runner = 0;
 		while(Runner!=PolynomList.size()){
 			String s = PolynomList.get(Runner++).toString();
-			System.out.println(s);
+			System.out.print(s + "+");
 		}
 	}
 	public void conferenceOrgans()
@@ -297,11 +323,16 @@ public class Polynom implements Polynom_able {
 	}
 
 	public static void main(String[] args) {
-		Polynom p = new Polynom("x^3+5x^2");
-		Polynom r = new Polynom("0");
+		Polynom p = new Polynom("x^4+x^3-5x^2+5");
+		//Polynom r = new Polynom("x^2+2x+8");
+		//p.multiply(r);
 		//Monom temp = new Monom("2x^2");
-		System.out.println(p.area(0,5,0.00001));
-	//	p.toStr();
+		//System.out.println(p.area(0,5,0.00001));
+		System.out.println(p.root(-2,0,0.01));
+		//p.toStr();
+		//p.derivative();
+		System.out.println();
+		p.toStr();
 		//double s = p.f(2);
 		//System.out.println(s);
 		//System.out.println(p.PolynomSave);
