@@ -35,6 +35,11 @@ public class Monom implements function{
 		if(this.get_power()==0) {return getNewZeroMonom();}
 		return new Monom(this.get_coefficient()*this.get_power(), this.get_power()-1);
 	}
+
+	/**
+	 *
+	 * function that Calculates the value in the function
+	 */
 	public double f(double x) {
 		double ans=0;
 		double p = this.get_power();
@@ -43,24 +48,30 @@ public class Monom implements function{
 	}
 	public boolean isZero() {return this.get_coefficient() == 0;}
 	// ***************** add your code below **********************
+
+	/**
+	 *
+	 * Monom(String) function that make monom from String That the user puts in
+	 *
+	 */
 	public Monom(String s) {
 		try {
 			String num = "";
 			String pow = "";
 			int x = 0;
 			while (x < s.length()) {
-				if (s.charAt(x) == 'x' || s.charAt(x) == 'X') break;
+				if (s.charAt(x) == 'x' || s.charAt(x) == 'X') break; // count until found char x or X
 				num = num + s.charAt(x);
 				x++;
 			}
 			double mekadem = 0;
-			if (s.charAt(0) == 'x' || s.charAt(0) == 'X') mekadem = 1;
+			if (s.charAt(0) == 'x' || s.charAt(0) == 'X') mekadem = 1; // if the string not have coefficient
 			else if ((s.charAt(0) == '+') && (s.charAt(1) == 'x' || s.charAt(1) == 'X')) mekadem = 1;
 			else if (( s.charAt(0) == '-') && (s.charAt(1) == 'x' || s.charAt(1) == 'X')) mekadem = -1;
 			else mekadem = Double.parseDouble(num);
 
 			if (s.contains("^")) {
-				x = x + 2;
+				x = x + 2; // check the power of the monom
 				while (x < s.length()) {
 					pow = pow + s.charAt(x);
 					x++;
@@ -75,7 +86,7 @@ public class Monom implements function{
 			this._power = power;
 			this._coefficient = mekadem;
 		}
-		catch (Exception e)
+		catch (Exception e) // do Exception if the string was incorrect
 		{
 			System.out.println("Alert , The String that you try to put in is incorrect");
 		}
