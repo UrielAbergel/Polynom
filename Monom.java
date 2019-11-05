@@ -44,33 +44,41 @@ public class Monom implements function{
 	public boolean isZero() {return this.get_coefficient() == 0;}
 	// ***************** add your code below **********************
 	public Monom(String s) {
-		String num = "";
-		String pow = "";
-		int x = 0;
-		while(x < s.length()) {
-			if (s.charAt(x) == 'x' || s.charAt(x) == 'X') break;
-			num = num + s.charAt(x);
-			x++;
-		}
-		double mekadem = 0;
-		if(s.charAt(0) == 'x' || s.charAt(0) == 'X') mekadem = 1;
-		else if((s.charAt(0) == '+' || s.charAt(0) == '-') && (s.charAt(1) == 'x' || s.charAt(1) == 'X')) mekadem = -1;
-		else mekadem = Double.parseDouble(num);
-
-		if(s.contains("^")) {
-			x = x + 2;
+		try {
+			String num = "";
+			String pow = "";
+			int x = 0;
 			while (x < s.length()) {
-				pow = pow + s.charAt(x);
+				if (s.charAt(x) == 'x' || s.charAt(x) == 'X') break;
+				num = num + s.charAt(x);
 				x++;
 			}
-		}
-		else if((s.contains("x") || s.contains("X")) && !s.contains("^")) pow = "1";
-		else pow = "0";
-		if(pow.isEmpty()) {pow = "0";}
-		int power = Integer.parseInt(pow);
+			double mekadem = 0;
+			if (s.charAt(0) == 'x' || s.charAt(0) == 'X') mekadem = 1;
+			else if ((s.charAt(0) == '+' || s.charAt(0) == '-') && (s.charAt(1) == 'x' || s.charAt(1) == 'X'))
+				mekadem = -1;
+			else mekadem = Double.parseDouble(num);
 
-		this._power = power ;
-		this._coefficient = mekadem;
+			if (s.contains("^")) {
+				x = x + 2;
+				while (x < s.length()) {
+					pow = pow + s.charAt(x);
+					x++;
+				}
+			} else if ((s.contains("x") || s.contains("X")) && !s.contains("^")) pow = "1";
+			else pow = "0";
+			if (pow.isEmpty()) {
+				pow = "0";
+			}
+			int power = Integer.parseInt(pow);
+
+			this._power = power;
+			this._coefficient = mekadem;
+		}
+		catch (Exception e)
+		{
+			System.out.println("Alert , The String that you try to put in is incorrect");
+		}
 	}
 
 	public void add(Monom m) {

@@ -9,8 +9,9 @@ import java.util.Iterator;
  * @author Boaz
  *
  */
-public class Polynom implements Polynom_able{
+public class Polynom implements Polynom_able {
 	LinkedList<Monom> PolynomList;
+
 	/**
 	 * Zero (empty polynom)
 	 */
@@ -18,36 +19,47 @@ public class Polynom implements Polynom_able{
 		LinkedList<Monom> temp = new LinkedList<Monom>();
 		this.PolynomList = temp;
 	}
+
 	/**
 	 * init a Polynom from a String such as:
-	 *  {"x", "3+1.4X^3-34x", "(2x^2-4)(-1.2x-7.1)", "(3-3.4x+1)((3.1x-1.2)-(3X^2-3.1))"};
+	 * {"x", "3+1.4X^3-34x", "(2x^2-4)(-1.2x-7.1)", "(3-3.4x+1)((3.1x-1.2)-(3X^2-3.1))"};
+	 *
 	 * @param s: is a string represents a Polynom
 	 */
 
 	public Polynom(String s) {
-		String t = "";
-		int Startindex  = 0 ,EndIndex = 0;
-		LinkedList<Monom> TempMonomList = new LinkedList<Monom>();
-		for (int i = 0 ; i < s.length() ; i++) {
-			if (s.charAt(i) == '(' || s.charAt(i) == ')') {
-				EndIndex = s.length()+1	;
-			}
-		}
-		while (EndIndex < s.length()) {
-			if (EndIndex != 0) {
-				if (s.charAt(EndIndex) == '+' || s.charAt(EndIndex) == '-' || EndIndex == s.length()-1) {
+		try {
+			String t = "";
+			int Startindex = 0, EndIndex = 0;
+			LinkedList<Monom> TempMonomList = new LinkedList<Monom>();
+			if (s.length() == 1) {
+				Monom onlyOne = new Monom(s);
+				TempMonomList.add(onlyOne);
+			} else {
+				while (EndIndex < s.length()) {
+					if (EndIndex != 0) {
+						if (s.charAt(EndIndex) == '+' || s.charAt(EndIndex) == '-' || EndIndex == s.length() - 1) {
 
-					t = s.substring(Startindex,EndIndex);
-					if(EndIndex == s.length()-1) t = t +s.charAt(s.length()-1);
-					Monom newMonom = new Monom(t);
-					TempMonomList.add(newMonom);
-					Startindex = EndIndex;
+							t = s.substring(Startindex, EndIndex);
+							if (EndIndex == s.length() - 1) t = t + s.charAt(s.length() - 1);
+							Monom newMonom = new Monom(t);
+							TempMonomList.add(newMonom);
+							Startindex = EndIndex;
+						}
+					}
+					EndIndex++;
 				}
 			}
-			EndIndex++;
+
+			PolynomList = TempMonomList;
 		}
-		PolynomList = TempMonomList;
+		catch (Exception e)
+		{
+			System.out.println("Alert , The String that you try to put in is incorrect");
+		}
 	}
+
+
 	@Override
 	public double f(double x) {
 
@@ -192,7 +204,9 @@ public class Polynom implements Polynom_able{
 
 	@Override
 	public double root(double x0, double x1, double eps) {
-		// TODO Auto-generated method stub
+
+
+
 		return 0;
 	}
 
@@ -217,13 +231,15 @@ public class Polynom implements Polynom_able{
 
 	@Override
 	public double area(double x0, double x1, double eps) {
-		double TillTheEnd = 0 , ans = 0;
+		if(x0>x1) return -1;
+		double TillTheEnd = x0 , ans = 0;
 		while(TillTheEnd < x1){
-			double dot = f(x0);
-			if(dot>0){
+			double dot = f(TillTheEnd);
+			if(dot>=0){
 				double xPluxEps = x0+eps;
 				f(xPluxEps);
-				ans +=dot*(eps);
+				ans+=dot*(eps);
+				TillTheEnd+=eps;
 			}
 		}
 		return ans;
@@ -246,13 +262,46 @@ public class Polynom implements Polynom_able{
 			System.out.println(s);
 		}
 	}
+	public void conferenceOrgans()
+	{
+		int indexI = 0 , indexJ = 0 ;
+		while (indexI < PolynomList.size())
+		{
+			indexJ = indexI +1 ;
+			while (indexJ < PolynomList.size())
+			{
+
+				if(PolynomList.get(indexI).get_power() == PolynomList.get(indexJ).get_power())
+				{
+					PolynomList.get(indexI).set_coefficient(PolynomList.get(indexI).get_coefficient()+PolynomList.get(indexJ).get_coefficient());
+					PolynomList.remove(indexJ);
+				}
+
+				indexJ++;
+			}
+			indexI++;
+		}
+		removeZero();
+	}
+
+	private void removeZero() {
+		int index = 0 ;
+		while(index < PolynomList.size())
+		{
+			if(PolynomList.get(index).get_coefficient() == 0)
+			{
+				PolynomList.remove(index);
+			}
+			index++;
+		}
+	}
 
 	public static void main(String[] args) {
-		Polynom p = new Polynom("2x^2+3x");
-		Polynom r = new Polynom("3x^2-2");
+		Polynom p = new Polynom("x^3+5x^2");
+		Polynom r = new Polynom("0");
 		//Monom temp = new Monom("2x^2");
-		p.multiply(r);
-		p.toStr();
+		System.out.println(p.area(0,5,0.00001));
+	//	p.toStr();
 		//double s = p.f(2);
 		//System.out.println(s);
 		//System.out.println(p.PolynomSave);
