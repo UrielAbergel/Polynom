@@ -151,8 +151,6 @@ public class Polynom implements Polynom_able {
 			polyIndex = 0 ;
 			tempIndex++;
 		}
-
-
 	}
 
 	/**
@@ -405,8 +403,8 @@ public class Polynom implements Polynom_able {
 
 	public static void main(String[] args) {
 		Polynom p = new Polynom("x^4+x^3-5x^2+5");
-		//Polynom r = new Polynom("x^2+2x+8");
-		//p.multiply(r);
+		Polynom r = new Polynom("x^2+2x+8");
+		p.multiply(r);
 		//Monom temp = new Monom("2x^2");
 		//System.out.println(p.area(0,5,0.00001));
 		System.out.println(p.root(-2,0,0.01));
