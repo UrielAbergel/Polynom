@@ -11,12 +11,14 @@ import java.util.Iterator;
  */
 public class Polynom implements Polynom_able {
 	LinkedList<Monom> PolynomList;
+	boolean flagForKeepLooking ;
 	/**
 	 * Zero (empty polynom)
 	 */
 	public Polynom() {
 		LinkedList<Monom> temp = new LinkedList<Monom>();
 		this.PolynomList = temp;
+		flagForKeepLooking = true;
 	}
 
 	/**
@@ -28,6 +30,10 @@ public class Polynom implements Polynom_able {
 
 
 	public Polynom(String s) {
+		if(s == "0")
+		{
+			throw new ExceptionInInitializerError("you enter zero , zero is not! Polynom or Monom") ;
+		}
 		try {
 			String t = "";
 			int Startindex = 0, EndIndex = 0;
@@ -52,11 +58,13 @@ public class Polynom implements Polynom_able {
 			}
 
 			PolynomList = TempMonomList; // pointer that the linklist of the polynom is the list that we made
+			this.conferenceOrgans();
 		}
 		catch (Exception e)
 		{
 			System.out.println("Alert , The String that you try to put in is incorrect");
 		}
+
 	}
 
 
@@ -137,14 +145,14 @@ public class Polynom implements Polynom_able {
 				if (PolynomList.get(polyIndex).get_power() == temp.PolynomList.get(tempIndex).get_power()) // check if the power of the original is similar to other power
 				{
 					CheckIfNot++;
-					PolynomList.get(polyIndex).set_coefficient(PolynomList.get(polyIndex).get_coefficient() - temp.PolynomList.get(tempIndex).get_coefficient()); // if they similar substract
+					PolynomList.get(polyIndex).toSetcoefficient(PolynomList.get(polyIndex).get_coefficient() - temp.PolynomList.get(tempIndex).get_coefficient()); // if they similar substract
 				}
 				polyIndex++;
 			}
 
 			if(CheckIfNot == 0) // if the monom dont have monom with similar power
 			{
-				temp.PolynomList.get(tempIndex).set_coefficient(-temp.PolynomList.get(tempIndex).get_coefficient());
+				temp.PolynomList.get(tempIndex).toSetcoefficient(-temp.PolynomList.get(tempIndex).get_coefficient());
 				PolynomList.add(temp.PolynomList.get(tempIndex));
 			}
 			CheckIfNot = 0 ;
@@ -254,7 +262,8 @@ public class Polynom implements Polynom_able {
 	@Override
 	public double root(double x0, double x1, double eps) {
 		if(x0>=x1) throw new NullPointerException("x0 suppose to be smaller then x1");
-		//if(f(x0)*f(x1)>0) throw new NullPointerException("The func` do not Cross the X line");
+		if(f(x0)*f(x1)>0&&flagForKeepLooking) throw new NullPointerException("The func` do not Cross the X line");
+		flagForKeepLooking=false;
 		Polynom temPolinom = new Polynom();
 		for (int i = 0; i < PolynomList.size() ; i++) {
 			Monom m = new Monom(this.PolynomList.get(i));
@@ -366,6 +375,7 @@ public class Polynom implements Polynom_able {
 	 */
 	public void conferenceOrgans()
 	{
+		boolean flag = false;
 		int indexI = 0 , indexJ = 0 ;
 		while (indexI < PolynomList.size())
 		{
@@ -375,11 +385,12 @@ public class Polynom implements Polynom_able {
 
 				if(PolynomList.get(indexI).get_power() == PolynomList.get(indexJ).get_power())
 				{
-					PolynomList.get(indexI).set_coefficient(PolynomList.get(indexI).get_coefficient()+PolynomList.get(indexJ).get_coefficient());
+					PolynomList.get(indexI).toSetcoefficient(PolynomList.get(indexI).get_coefficient()+PolynomList.get(indexJ).get_coefficient());
 					PolynomList.remove(indexJ);
+					flag = true;
 				}
-
-				indexJ++;
+				if(flag == false) indexJ++;
+				flag = false;
 			}
 			indexI++;
 		}
@@ -401,21 +412,31 @@ public class Polynom implements Polynom_able {
 		}
 	}
 
+
+
+
 	public static void main(String[] args) {
-		Polynom p = new Polynom("x^4+x^3-5x^2+5");
-		Polynom r = new Polynom("x^2+2x+8");
-		p.multiply(r);
-		//Monom temp = new Monom("2x^2");
-		//System.out.println(p.area(0,5,0.00001));
-		System.out.println(p.root(-2,0,0.01));
-		//p.toStr();
-		//p.derivative();
-		System.out.println();
-		p.toStr();
-		//double s = p.f(2);
-		//System.out.println(s);
-		//System.out.println(p.PolynomSave);
-		//	System.out.println(p.PolynomSave);
+		testForPolynom();
+	}
+
+	public static void testForPolynom(){
+		String a = "1+1+1+1";
+		String b = "x+x+x+x+x+x";
+		String c = "5+x^4+5x^6";
+		String d = "0";
+		Polynom a1 = new Polynom(a);
+		Polynom b1 = new Polynom(b);
+		Polynom c1 = new Polynom(c);
+		Polynom d1 = new Polynom(d);
+		if(a1.PolynomList.get(0).get_coefficient() == 4 ) System.out.println("Ok");
+		else System.out.println("Bad");
+		if(b1.PolynomList.get(0).get_coefficient() == 6 ) System.out.println("Ok");
+		else System.out.println("Bad");
+		if(c1.PolynomList.get(0).get_coefficient() == 5 && c1.PolynomList.get(1).get_coefficient() == 1 && c1.PolynomList.get(2).get_coefficient() ==5  ) System.out.println("Ok");
+		else System.out.println("Bad");
+		if(d1.PolynomList.get(0).get_coefficient() == 0 ) System.out.println("Ok");
+		else System.out.println("Bad");
+
 	}
 
 }

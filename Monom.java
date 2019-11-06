@@ -107,12 +107,17 @@ public class Monom implements function{
 	// you may (always) add other methods.
 
 	//****************** Private Methods and Data *****************
+	public void toSetcoefficient(double a){
+		set_coefficient(a);
+	}
+	public void toSetPower(int a){
+		set_power(a);
+	}
 
-
-	public void set_coefficient(double a){
+	private void set_coefficient(double a){
 		this._coefficient = a;
 	}
-	public void set_power(int p) {
+	private void set_power(int p) {
 		if(p<0) {throw new RuntimeException("ERR the power of Monom should not be negative, got: "+p);}
 		this._power = p;
 	}
