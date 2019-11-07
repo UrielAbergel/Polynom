@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Iterator;
 /**
@@ -30,10 +31,7 @@ public class Polynom implements Polynom_able {
 
 
 	public Polynom(String s) {
-		if(s == "0")
-		{
-			throw new ExceptionInInitializerError("you enter zero , zero is not! Polynom or Monom") ;
-		}
+
 		try {
 			String t = "";
 			int Startindex = 0, EndIndex = 0;
@@ -58,7 +56,14 @@ public class Polynom implements Polynom_able {
 			}
 
 			PolynomList = TempMonomList; // pointer that the linklist of the polynom is the list that we made
+			this.sort();
 			this.conferenceOrgans();
+			this.sort();
+			if (PolynomList == null)
+			{
+				throw new ExceptionInInitializerError("your polynom is dont have any monoms , is empty Polynom");
+			}
+
 		}
 		catch (Exception e)
 		{
@@ -412,6 +417,10 @@ public class Polynom implements Polynom_able {
 		}
 	}
 
+	public void sort(){
+		Comparator<Monom> sorting = new Monom_Comperator();
+		this.PolynomList.sort(sorting);
+	}
 
 
 
