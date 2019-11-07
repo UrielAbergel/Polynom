@@ -104,6 +104,8 @@ public class Polynom implements Polynom_able {
 			Monom m = iter.next();
 			add(m);
 		}
+		this.conferenceOrgans();
+
 	}
 
 	/**
@@ -127,6 +129,7 @@ public class Polynom implements Polynom_able {
 			}
 		}
 		if(x>=PolynomList.size()) PolynomList.add(m1);
+		this.conferenceOrgans();
 
 	}
 
@@ -164,6 +167,7 @@ public class Polynom implements Polynom_able {
 			polyIndex = 0 ;
 			tempIndex++;
 		}
+		conferenceOrgans();
 	}
 
 	/**
@@ -229,6 +233,9 @@ public class Polynom implements Polynom_able {
 		while(Pointer.hasNext()){
 			temp.add(Pointer.next()); // add to temp p1
 		}
+		temp.conferenceOrgans();
+		if(this.PolynomList.size() == 0 && temp.PolynomList.size()!=0) return false;
+		if(temp.PolynomList.size() == 0 && this.PolynomList.size()!=0) return false;
 		int index = 0 ;
 		boolean flag = true;
 		while(index < temp.PolynomList.size())
@@ -377,6 +384,7 @@ public class Polynom implements Polynom_able {
 	/**
 	 * The function arranges the organs and connects them, if need be to erase organs reset
 	 * function that take polynom and conference Organs
+	 * in the end of the method the function sort all the polynom
 	 */
 	public void conferenceOrgans()
 	{
@@ -399,7 +407,9 @@ public class Polynom implements Polynom_able {
 			}
 			indexI++;
 		}
+		sort();
 		removeZero();
+
 	}
 
 	/**
