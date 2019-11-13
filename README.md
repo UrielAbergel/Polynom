@@ -10,7 +10,8 @@ Calculate the area, and calculate the intersection points with the X-axis
 
 .
 #### Polynom Graphically displayed
-![a](https://user-images.githubusercontent.com/44754325/50425276-adb79500-087b-11e9-80cf-c1a4b29ace8b.png)
+![ndwqdnsadjlasdn](https://user-images.githubusercontent.com/54840897/68754034-ab366900-060e-11ea-9219-1395ae0d540b.jpg)
+
 
 
 ### Monom class
