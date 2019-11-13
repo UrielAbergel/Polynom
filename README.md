@@ -3,10 +3,9 @@
 ## descreption
 The project can create a monom and a polynomial. Exporting them to a picture that shows the polynomial as a function, the program allows, among other things, to do mathematical operations between polynomial and monom.
 Calculate the area, and calculate the intersection points with the X-axis
-
-   a*x1^b + a*x2^b + .... + a*xn^b
-   a -> incomplete number
-   b -> Integer  
+   
+ #### Example of proper polynomial input
+3x^4+4x^2+3x+2
 
 .
 #### Polynom Graphically displayed
