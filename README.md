@@ -12,7 +12,7 @@ Calculate the area, and calculate the intersection points with the X-axis
 
 
 
-### Monom class
+## Monom class
 Use a monom from the format of a*x^b.
 
    Note: We assumed that the input is valid
@@ -27,7 +27,7 @@ reading of the string it generates two entries in one of the holdings of the Int
 other promotes a Double. String correctly looks form "3.4x^5". 
 
 
-### Polynom class
+## Polynom class
 Use a ploynom from the format of a*x1^b + a*x2^b + .... + a*xn^b.
 
    Note: We assumed that the input is valid
