@@ -1,4 +1,4 @@
-# Polynom![aaaaaa](https://user-images.githubusercontent.com/44754325/50425241-2cf89900-087b-11e9-867e-e08dd8eb3253.jpg)
+# Polynom![aaaaaa]![polynom-logo](https://user-images.githubusercontent.com/54840897/68753489-cce32080-060d-11ea-87a8-793152128a46.png)
 
 ## descreption
 The project can create a monom and a polynomial. Exporting them to a picture that shows the polynomial as a function, the program allows, among other things, to do mathematical operations between polynomial and monom.
