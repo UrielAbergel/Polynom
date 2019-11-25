@@ -159,7 +159,7 @@ public class TestUriel {
     public static void testArea() {
         Polynom t = new Polynom("-5x^3+2x^2+4x+15");
         Polynom r = new Polynom("-3x^2+2");
-        Polynom s = new Polynom("4x^5-5x^3+2x^2+4x+15");
+        Polynom s = new Polynom("4x^5-5x^3+2x^2+4x+15+1");
         double d = s.area(-1.5, 0, 0.00001);
         System.out.println(d + "the currect is 18.984375");
         double e = r.area(-0.8, 0.8, 0.00001);
@@ -192,6 +192,7 @@ public class TestUriel {
 
     public static void main(String[] args) {
         Polynom p = new Polynom("-5x^3+2x^2+4x+15");
+
 //        testForPolynom();
 //        testForAdd();
 //        substractTest();
