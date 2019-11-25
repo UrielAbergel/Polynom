@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d72bdeeb-0269-405b-9e69-ebd874f4557f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyMath.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MyMath.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonomTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Monom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Polynom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Polynom.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -120,7 +118,7 @@
       <option name="presentableId" value="Default" />
       <updated>1574709644665</updated>
       <workItem from="1574709648508" duration="231000" />
-      <workItem from="1574710821139" duration="2985000" />
+      <workItem from="1574710821139" duration="3524000" />
     </task>
     <servers />
   </component>

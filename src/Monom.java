@@ -1,9 +1,9 @@
 import java.util.Comparator;
 
 /**
- * This class represents a simple "Monom" of shape a*x^b, where a is a real number and a is an integer (summed a none negative), 
- * see: https://en.wikipedia.org/wiki/Monomial 
- * The class implements function and support simple operations as: construction, value at x, derivative, add and multiply. 
+ * This class represents a simple "Monom" of shape a*x^b, where a is a real number and a is an integer (summed a none negative),
+ * see: https://en.wikipedia.org/wiki/Monomial
+ * The class implements function and support simple operations as: construction, value at x, derivative, add and multiply.
  * @author Boaz
  *
  */
@@ -47,7 +47,7 @@ public class Monom implements function{
 		return ans;
 	}
 	public boolean isZero() {return this.get_coefficient() == 0;}
-	// ***************** add your code below **********************
+	// ****** add your code below *********
 
 	/**
 	 *
@@ -106,7 +106,7 @@ public class Monom implements function{
 	}
 	// you may (always) add other methods.
 
-	//****************** Private Methods and Data *****************
+	//****** Private Methods and Data *******
 	public void toSetcoefficient(double a){
 		set_coefficient(a);
 	}

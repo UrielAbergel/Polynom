@@ -12,26 +12,20 @@ import java.util.Iterator;
  */
 public class Polynom implements Polynom_able {
 	LinkedList<Monom> PolynomList;
-	boolean flagForKeepLooking ;
 	/**
 	 * Zero (empty polynom)
 	 */
 	public Polynom() {
 		LinkedList<Monom> temp = new LinkedList<Monom>();
 		this.PolynomList = temp;
-		flagForKeepLooking = true;
 	}
-
 	/**
 	 * init a Polynom from a String such as:
 	 * {"x", "3+1.4X^3-34x", "(2x^2-4)(-1.2x-7.1)", "(3-3.4x+1)((3.1x-1.2)-(3X^2-3.1))"};
 	 *
 	 * @param s: is a string represents a Polynom
 	 */
-
-
 	public Polynom(String s) {
-
 		try {
 			String t = "";
 			int Startindex = 0, EndIndex = 0;
@@ -54,7 +48,6 @@ public class Polynom implements Polynom_able {
 					EndIndex++;
 				}
 			}
-
 			PolynomList = TempMonomList; // pointer that the linklist of the polynom is the list that we made
 			this.sort();
 			this.conferenceOrgans();
@@ -63,27 +56,19 @@ public class Polynom implements Polynom_able {
 			{
 				throw new ExceptionInInitializerError("your polynom is dont have any monoms , is empty Polynom");
 			}
-
 		}
 		catch (Exception e)
 		{
 			System.out.println("Alert , The String that you try to put in is incorrect");
 		}
-
 	}
-
-
-
 	/**
 	 * function that calculate the value of the polynom when we put number in x
 	 * @param x
-	 *
-	 *
 	 * @return Returns the value in the function
 	 */
 	@Override
 	public double f(double x) {
-
 		int Index = 0;
 		double sum =0;
 		while(Index<PolynomList.size()){
@@ -91,7 +76,6 @@ public class Polynom implements Polynom_able {
 		}
 		return sum;
 	}
-
 	/**
 	 * function that take polynom and add him to other polynom
 	 * @param p1
@@ -104,17 +88,15 @@ public class Polynom implements Polynom_able {
 			Monom m = iter.next();
 			add(m);
 		}
-		this.conferenceOrgans();
-
+		conferenceOrgans();
+		sort();
 	}
-
 	/**
 	 * function that take monom and add him to the polynom
 	 * @param m1 Monom
 	 * @return polynom with the monom m1
 	 */
 	@Override
-
 	public void add(Monom m1) {
 		int pow = m1.get_power() , x=0;
 		while(x<PolynomList.size()){ // found where to add him
@@ -130,9 +112,8 @@ public class Polynom implements Polynom_able {
 		}
 		if(x>=PolynomList.size()) PolynomList.add(m1);
 		this.conferenceOrgans();
-
+		sort();
 	}
-
 	/**
 	 * function that take polynom and substract him from the original Polynom
 	 * @param p1
@@ -157,7 +138,6 @@ public class Polynom implements Polynom_able {
 				}
 				polyIndex++;
 			}
-
 			if(CheckIfNot == 0) // if the monom dont have monom with similar power
 			{
 				temp.PolynomList.get(tempIndex).toSetcoefficient(-temp.PolynomList.get(tempIndex).get_coefficient());
@@ -167,9 +147,9 @@ public class Polynom implements Polynom_able {
 			polyIndex = 0 ;
 			tempIndex++;
 		}
-		conferenceOrgans();
+		this.conferenceOrgans();
+		sort();
 	}
-
 	/**
 	 * function that multiply polynom by other polynom
 	 * take every monom in p1 and multiply him with all the Polynom then conference Organs and return
@@ -204,7 +184,6 @@ public class Polynom implements Polynom_able {
 		this.PolynomList = temPolinom.PolynomList;
 		conferenceOrgans(); // Enables a function that arranges the organs
 	}
-
 	/**
 	 * function that make counter for how much monoms is in the polynom
 	 * @param p1
@@ -219,7 +198,6 @@ public class Polynom implements Polynom_able {
 		}
 		return count;
 	}
-
 	/**
 	 * function that check if polynom equals to the other on
 	 *
@@ -261,9 +239,7 @@ public class Polynom implements Polynom_able {
 		}
 		return true;
 	}
-
 	/**
-	 *
 	 * @param x0 starting point
 	 * @param x1 end point
 	 * @param eps>0 (positive) representing the epsilon range the solution should be within.
@@ -272,35 +248,17 @@ public class Polynom implements Polynom_able {
 	 * @return the value of funciton in the zero point
 	 */
 	@Override
-	public double root(double x0, double x1, double eps) {
-		if(x0>=x1) throw new NullPointerException("x0 suppose to be smaller then x1");
-		if(f(x0)*f(x1)>0&&flagForKeepLooking) throw new NullPointerException("The func` do not Cross the X line");
-		flagForKeepLooking=false;
-		Polynom temPolinom = new Polynom();
-		for (int i = 0; i < PolynomList.size() ; i++) {
-			Monom m = new Monom(this.PolynomList.get(i));
-			temPolinom.PolynomList.add(m);
-		}
+	public double root(double x0, double x1, double eps){
+		if(f(x0)*f(x1)>0) throw new RuntimeException("The func` do not Cross the X line");
 		double valueMed = (x0+x1)/2;
-		double der = temPolinom.derivative().f(valueMed); // check if derivative is minus or plus
-		double ans = 0;
-		double thisF = f(valueMed);
-		if(der==0) return 0;
-		else if(der>0) {
-			if ((Math.abs(thisF) <= eps)) ans = valueMed;
-			else if (thisF > 0) return root(x0, valueMed, eps);
-			else if (thisF < 0) return root(valueMed, x1, eps);
+		while(Math.abs(f(valueMed))>eps){
+			if(f(valueMed)*f(x0)<0) x1 = valueMed;
+			else x0 = valueMed;
+			valueMed = (x0+x1)/2;
 		}
-		else{
-			if ((Math.abs(thisF) <= eps)) ans = valueMed;
-			else if (thisF > 0) return root(valueMed, x1, eps);
-			else if (thisF < 0) return root(x0, valueMed, eps);
-		}
-		return ans;
+		return valueMed;
 	}
-
 	/**
-	 *
 	 * @return copy of the polynom
 	 */
 	@Override
@@ -311,9 +269,7 @@ public class Polynom implements Polynom_able {
 		}
 		return poliTemp;
 	}
-
 	/**
-	 *
 	 * @return the derivative of the polynom
 	 * Calculates the derivative of the function.
 	 * The calculation works by a function derived from a monom and from a limb organ
@@ -334,17 +290,16 @@ public class Polynom implements Polynom_able {
 		this.PolynomList = temPolinom.PolynomList;
 		return temPolinom;
 	}
-
 	/**
-	 *
 	 * @param x0 starting pooint
 	 * @param x1 end point
 	 * @param eps positive step value
 	 * @return the area of function of the polynom and calculate it
+	 * if x0>x1 the func return 0.
 	 */
 	@Override
 	public double area(double x0, double x1, double eps) {
-		if(x0>x1) return -1;
+		if(x0>x1) return 0;
 		double TillTheEnd = x0 , ans = 0;
 		while(TillTheEnd < x1){
 			double dot = f(TillTheEnd);
@@ -361,7 +316,6 @@ public class Polynom implements Polynom_able {
 	public Iterator<Monom> iteretor() {
 		return PolynomList.iterator();
 	}
-
 	/**
 	 * multiply m1 with all the polynom
 	 * @param m1
@@ -380,7 +334,6 @@ public class Polynom implements Polynom_able {
 			System.out.print(s + "+");
 		}
 	}
-
 	/**
 	 * The function arranges the organs and connects them, if need be to erase organs reset
 	 * function that take polynom and conference Organs
@@ -409,9 +362,7 @@ public class Polynom implements Polynom_able {
 		}
 		sort();
 		removeZero();
-
 	}
-
 	/**
 	 * function that check if the polynom have monom zero and delete it
 	 */
@@ -426,36 +377,16 @@ public class Polynom implements Polynom_able {
 			index++;
 		}
 	}
-
 	public void sort(){
 		Comparator<Monom> sorting = new Monom_Comperator();
 		this.PolynomList.sort(sorting);
 	}
-
-
-
 	public static void main(String[] args) {
-		testForPolynom();
+		Polynom r = new Polynom("5x^2+55");
+		Polynom_able p = r.copy();
+		Iterator<Monom> ite = p.iteretor();
+		while (ite.hasNext()){
+			System.out.println(ite.next().toString());
+		}
 	}
-
-	public static void testForPolynom(){
-		String a = "1+1+1+1";
-		String b = "x+x+x+x+x+x";
-		String c = "5+x^4+5x^6";
-		String d = "0";
-		Polynom a1 = new Polynom(a);
-		Polynom b1 = new Polynom(b);
-		Polynom c1 = new Polynom(c);
-		Polynom d1 = new Polynom(d);
-		if(a1.PolynomList.get(0).get_coefficient() == 4 ) System.out.println("Ok");
-		else System.out.println("Bad");
-		if(b1.PolynomList.get(0).get_coefficient() == 6 ) System.out.println("Ok");
-		else System.out.println("Bad");
-		if(c1.PolynomList.get(0).get_coefficient() == 5 && c1.PolynomList.get(1).get_coefficient() == 1 && c1.PolynomList.get(2).get_coefficient() ==5  ) System.out.println("Ok");
-		else System.out.println("Bad");
-		if(d1.PolynomList.get(0).get_coefficient() == 0 ) System.out.println("Ok");
-		else System.out.println("Bad");
-
-	}
-
 }
