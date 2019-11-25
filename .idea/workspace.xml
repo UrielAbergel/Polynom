@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a41cd2ac-0331-4a2d-b6ca-041e4272b4ef" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/TestUriel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestUriel.java" afterDir="false" />
-    </list>
+    <list default="true" id="a41cd2ac-0331-4a2d-b6ca-041e4272b4ef" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +117,7 @@
       <workItem from="1573628785306" duration="1287000" />
       <workItem from="1574687059680" duration="45000" />
       <workItem from="1574707803629" duration="271000" />
-      <workItem from="1574708084277" duration="258000" />
+      <workItem from="1574708084277" duration="921000" />
     </task>
     <servers />
   </component>
