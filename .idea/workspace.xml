@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d72bdeeb-0269-405b-9e69-ebd874f4557f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Monom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Polynom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Polynom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyMath/Polynom.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyMath/Polynom.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyMath/TestUriel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyMath/TestUriel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TestUriel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestUriel.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -62,7 +63,14 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.MonomTest">
+  <component name="RunManager" selected="Application.TestUriel">
+    <configuration name="TestUriel" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestUriel" />
+      <module name="MyMath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MonomTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
       <module name="MyMath" />
       <option name="PACKAGE_NAME" value="" />
@@ -103,6 +111,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TestUriel" />
         <item itemvalue="JUnit.MonomTest.f" />
       </list>
     </recent_temporary>
@@ -118,7 +127,7 @@
       <option name="presentableId" value="Default" />
       <updated>1574709644665</updated>
       <workItem from="1574709648508" duration="231000" />
-      <workItem from="1574710821139" duration="3524000" />
+      <workItem from="1574710821139" duration="4457000" />
     </task>
     <servers />
   </component>

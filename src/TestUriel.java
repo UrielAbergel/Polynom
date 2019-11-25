@@ -160,11 +160,11 @@ public class TestUriel {
         Polynom t = new Polynom("-5x^3+2x^2+4x+15");
         Polynom r = new Polynom("-3x^2+2");
         Polynom s = new Polynom("4x^5-5x^3+2x^2+4x+15+1");
-        double d = s.area(-1.5, 0, 0.00001);
-        System.out.println(d + "the currect is 18.984375");
-        double e = r.area(-0.8, 0.8, 0.00001);
+        double d = s.area(-1.5, 0, 0.000001);
+        System.out.println(d + "the currect is 20.484375");
+        double e = r.area(-0.8, 0.8, 0.1);
         System.out.println(e + "the currect is 2.176");
-        double q = t.area(0, 1.787, 0.00001);
+        double q = t.area(0, 1.787, 0.1);
         System.out.println(q + "the currect is 24.24909797263208");
     }
 
@@ -193,7 +193,7 @@ public class TestUriel {
     public static void main(String[] args) {
         Polynom p = new Polynom("-5x^3+2x^2+4x+15");
 
-//        testForPolynom();
+//      testForPolynom();
 //        testForAdd();
 //        substractTest();
 //        testForEquals();
@@ -201,8 +201,8 @@ public class TestUriel {
 //        testMultiply(p);
 //        testAddMonom(p);
 //        testIsZero(p);
-//        testArea();
-        testMultiplyMonom();
+       testArea();
+   //     testMultiplyMonom();
     }
 
 
