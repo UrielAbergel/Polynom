@@ -1,3 +1,5 @@
+import com.intellij.util.Function;
+
 import java.util.Comparator;
 
 /**
@@ -104,6 +106,16 @@ public class Monom implements function{
 	public String toString() {
 		return this._coefficient + "x^" + this._power;
 	}
+
+	@Override
+	public function initFromString(String s) {
+		return null;
+	}
+
+	@Override
+	public function copy() {
+		return null;
+	}
 	// you may (always) add other methods.
 
 	//****** Private Methods and Data *******
@@ -124,6 +136,15 @@ public class Monom implements function{
 	private static Monom getNewZeroMonom() {return new Monom(ZERO);}
 	private double _coefficient;
 	private int _power;
+
+	public boolean equals(Monom m){
+
+		if(this.get_power() == m.get_power() && this.get_coefficient() == m.get_coefficient()) return true;
+		return false;
+	}
+	public String returnMonomToString(){
+		return this.get_coefficient() + "x^" +this.get_power();
+	}
 
 	public static void main(String[] args) {
 		String s = "5x^4";

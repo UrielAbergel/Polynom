@@ -1,3 +1,5 @@
+import kotlin.contracts.ReturnsNotNull;
+
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Iterator;
@@ -76,6 +78,12 @@ public class Polynom implements Polynom_able {
 		}
 		return sum;
 	}
+
+	@Override
+	public function initFromString(String s) {
+		return null;
+	}
+
 	/**
 	 * function that take polynom and add him to other polynom
 	 * @param p1
@@ -204,8 +212,45 @@ public class Polynom implements Polynom_able {
 	 * @param p1
 	 * @return boolean true of false if equal or not
 	 */
+
 	@Override
-	public boolean equals(Polynom_able p1) {
+	public boolean equals(Object p1) {
+		if(p1 instanceof Polynom_able){
+			Polynom_able p2 = (Polynom_able)p1;
+			return this.equalPa(p2);
+		}
+		else if(p1 instanceof Polynom){
+			Polynom p3 = (Polynom)p1;
+			return this.epualPo(p3);
+		}
+		return false;
+	}
+
+
+
+	public boolean epualPo(Polynom p1){
+		if(this.PolynomList.size() == 0 && p1.PolynomList.size()!=0) return false;
+		if(p1.PolynomList.size() == 0 && this.PolynomList.size()!=0) return false;
+		int index = 0 ;
+		boolean flag = true;
+		while(index < p1.PolynomList.size())
+		{
+			if(p1.PolynomList.get(index).get_coefficient() != this.PolynomList.get(index).get_coefficient())
+			{
+				flag = false;
+			}
+			if(p1.PolynomList.get(index).get_power() != this.PolynomList.get(index).get_power())
+			{
+				flag = false;
+			}
+			index++;
+		}
+		return flag;
+
+	}
+
+
+	public boolean equalPa(Polynom_able p1){
 		Polynom temp = new Polynom();
 		Iterator<Monom> Pointer = p1.iteretor(); // make iterator for check the monoms in p1
 		while(Pointer.hasNext()){
@@ -380,6 +425,14 @@ public class Polynom implements Polynom_able {
 	public void sort(){
 		Comparator<Monom> sorting = new Monom_Comperator();
 		this.PolynomList.sort(sorting);
+	}
+	public String returnPolynomToString(){
+		String ans = "";
+		int x=0;
+		while((this.PolynomList.size())>x){
+			ans = ans + this.PolynomList.get(x++).returnMonomToString() + "+";
+		}
+		return ans;
 	}
 	public static void main(String[] args) {
 		Polynom r = new Polynom("5x^2+55");

@@ -194,7 +194,7 @@ public class TestUriel {
         Polynom p = new Polynom("-5x^3+2x^2+4x+15");
 
 //      testForPolynom();
-//        testForAdd();
+        testForAdd();
 //        substractTest();
 //        testForEquals();
 //        testForRoot();
