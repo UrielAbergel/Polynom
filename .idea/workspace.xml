@@ -2,10 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d72bdeeb-0269-405b-9e69-ebd874f4557f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Operation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Range.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/StdDraw.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/complex_function.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/functions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MyMath/Polynom.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyMath/Polynom.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MyMath/TestUriel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyMath/TestUriel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestUriel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestUriel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonomTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonomTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Polynom_able.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Polynom_able.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cont_function.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cont_function.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/function.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/function.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -128,6 +134,7 @@
       <updated>1574709644665</updated>
       <workItem from="1574709648508" duration="231000" />
       <workItem from="1574710821139" duration="4457000" />
+      <workItem from="1574795628769" duration="2036000" />
     </task>
     <servers />
   </component>
