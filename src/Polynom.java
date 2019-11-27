@@ -433,7 +433,7 @@ public class Polynom implements Polynom_able {
 		return ans;
 	}
 	public static void main(String[] args) {
-		Polynom r = new Polynom("5x^2+55");
+		Polynom r = new Polynom("5x^2");
 		Polynom_able p = r.copy();
 		Iterator<Monom> ite = p.iteretor();
 		while (ite.hasNext()){
