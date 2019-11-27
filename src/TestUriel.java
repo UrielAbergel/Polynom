@@ -201,7 +201,7 @@ public class TestUriel {
 //        testMultiply(p);
 //        testAddMonom(p);
 //        testIsZero(p);
-       testArea();
+      // testArea();
    //     testMultiplyMonom();
     }
 
