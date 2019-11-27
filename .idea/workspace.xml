@@ -66,7 +66,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Monom">
+  <component name="RunManager" selected="Application.Polynom">
     <configuration name="Monom" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Monom" />
       <module name="MyMath" />
@@ -138,8 +138,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Monom" />
         <item itemvalue="Application.Polynom" />
+        <item itemvalue="Application.Monom" />
         <item itemvalue="JUnit.PolynomTest.testAddMonom" />
         <item itemvalue="JUnit.PolynomTest.add" />
         <item itemvalue="Application.TestUriel" />
