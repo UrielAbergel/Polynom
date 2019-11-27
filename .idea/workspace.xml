@@ -2,12 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d72bdeeb-0269-405b-9e69-ebd874f4557f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ComplexFunction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PolynomNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PolynomTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyMath/ComplexFunction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyMath/ComplexFunction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyMath/Monom.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyMath/Monom.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyMath/MonomTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyMath/MonomTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyMath/Operation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyMath/Operation.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MyMath/Polynom.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyMath/Polynom.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Polynom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Polynom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyMath/PolynomNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyMath/PolynomNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyMath/PolynomTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyMath/PolynomTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyMath/PolynomTree.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyMath/PolynomTree.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyMath/Polynom_able.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyMath/Polynom_able.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyMath/Range.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyMath/Range.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyMath/StdDraw.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyMath/StdDraw.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyMath/TestUriel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyMath/TestUriel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyMath/complex_function.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyMath/complex_function.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyMath/cont_function.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyMath/cont_function.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyMath/function.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyMath/function.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyMath/functions.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyMath/functions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ComplexFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ComplexFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Monom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PolynomNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PolynomNode.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +55,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -71,7 +86,14 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Polynom">
+  <component name="RunManager" selected="Application.Monom">
+    <configuration name="Monom" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Monom" />
+      <module name="MyMath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Polynom" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Polynom" />
       <module name="MyMath" />
@@ -107,16 +129,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PolynomTest.f" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MyMath" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="PolynomTest" />
-      <option name="METHOD_NAME" value="f" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="PolynomTest.testAddMonom" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MyMath" />
       <option name="PACKAGE_NAME" value="" />
@@ -146,11 +158,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Monom" />
         <item itemvalue="Application.Polynom" />
         <item itemvalue="JUnit.PolynomTest.testAddMonom" />
         <item itemvalue="JUnit.PolynomTest.add" />
         <item itemvalue="Application.TestUriel" />
-        <item itemvalue="JUnit.PolynomTest.f" />
       </list>
     </recent_temporary>
   </component>
@@ -169,7 +181,7 @@
       <workItem from="1574787274459" duration="525000" />
       <workItem from="1574847633208" duration="172000" />
       <workItem from="1574847932188" duration="7533000" />
-      <workItem from="1574858191894" duration="2562000" />
+      <workItem from="1574858191894" duration="3184000" />
     </task>
     <servers />
   </component>
