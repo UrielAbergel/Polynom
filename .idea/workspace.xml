@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d72bdeeb-0269-405b-9e69-ebd874f4557f" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/Monom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monom.java" afterDir="false" />
+>>>>>>> 67105fe5cf45f9da1e110c94a898e51e2c15df4f
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -163,7 +167,11 @@
       <workItem from="1574847633208" duration="172000" />
       <workItem from="1574847932188" duration="7533000" />
       <workItem from="1574858191894" duration="4095000" />
+<<<<<<< HEAD
       <workItem from="1574860858333" duration="873000" />
+=======
+      <workItem from="1574868914019" duration="47000" />
+>>>>>>> 67105fe5cf45f9da1e110c94a898e51e2c15df4f
     </task>
     <servers />
   </component>
@@ -195,6 +203,14 @@
           <url>file://$PROJECT_DIR$/src/MonomTest.java</url>
           <line>5</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/Monom.java</url>
+          <line>148</line>
+          <properties class="Monom" method="main">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
