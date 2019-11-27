@@ -139,7 +139,7 @@ public class Monom implements function{
 
 	public boolean equals(Monom m){
 
-		if(this.get_power() == m.get_power() && this.get_coefficient() == m.get_coefficient()) return true;
+		if(this.get_power() == m.get_power() && this.get_coefficient() == m.get_coefficient()) return true ;
 		return false;
 	}
 	public String returnMonomToString(){
