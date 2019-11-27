@@ -147,6 +147,9 @@ public class Monom implements function{
 	}
 
 	public static void main(String[] args) {
+
+
+
 		String s = "5x^4";
 		Monom a = new Monom(s);
 		Monom b = new Monom("3x^2");
