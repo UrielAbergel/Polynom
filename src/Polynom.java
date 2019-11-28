@@ -369,6 +369,7 @@ public class Polynom implements Polynom_able {
 		while(Runner!=PolynomList.size()){
 			PolynomList.get(Runner++).multipy(m1);
 		}
+		conferenceOrgans();
 	}
 	public void toStr(){
 		int Runner = 0;
@@ -405,6 +406,7 @@ public class Polynom implements Polynom_able {
 		}
 		sort();
 		removeZero();
+		sort();
 	}
 	/**
 	 * function that check if the polynom have monom zero and delete it

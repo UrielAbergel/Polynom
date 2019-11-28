@@ -52,14 +52,71 @@ class PolynomTest {
 
     @Test
     void substract() {
+        Polynom test1 = new Polynom("5x^2+3x^2+2");
+        Polynom test2 = new Polynom("x-8x");
+        Polynom test3 = new Polynom("5x^6-8x^2");
+        Polynom test4 = new Polynom("0");
+        Polynom test5 = new Polynom("8");
+        test1.substract(test2);
+        test1.substract(test3);
+        test1.substract(test4);
+        test1.substract(test5);
+        assertEquals("-5.0x^6+16.0x^2+7.0x^1+-6.0x^0+",test1.returnPolynomToString());
     }
 
     @Test
     void multiply() {
+        Polynom test1 = new Polynom("5x^2+3x^2+2");
+        Polynom test2 = new Polynom("x-8x");
+        Polynom test3 = new Polynom("5x^6-8x^2");
+        test1.multiply(new Monom("0"));
+        test2.multiply(new Monom("x"));
+        test3.multiply(new Monom("3x^2"));
+        assertEquals("0.0x^0+",test1.returnPolynomToString());
+        assertEquals("-7.0x^2+",test2.returnPolynomToString());
+        assertEquals("15.0x^8+-24.0x^4+",test3.returnPolynomToString());
+        Polynom p = new Polynom("-5x^3+2x^2+4x+15");
+        Polynom a = new Polynom("-x");
+        Polynom b = new Polynom("x^2");
+        Polynom c = new Polynom("-3x^3");
+        Polynom r = new Polynom("-5x^3+2x^2+4x+15");
+        Polynom t = new Polynom("-5x^3+2x^2+4x+15");
+        int counter = 0;
+        p.multiply(a);
+        assertEquals(p.PolynomList.get(0).get_power() == 4 , p.PolynomList.get(0).get_coefficient() == 5);
+        p = r;
+        p.multiply(b);
+        assertEquals(p.PolynomList.get(0).get_power() == 5, p.PolynomList.get(0).get_coefficient() == -5);
+        p = t;
+        p.multiply(c);
+        assertEquals(p.PolynomList.get(0).get_power() == 6 ,p.PolynomList.get(0).get_coefficient() == 15);
+        assertEquals(p.PolynomList.get(1).get_power() == 5 ,p.PolynomList.get(1).get_coefficient() == -6);
+
+
     }
 
     @Test
     void testEquals() {
+        Polynom test1 = new Polynom("5x^2+3x^2+2");
+        Polynom test2 = new Polynom("x-8x");
+        Polynom test3 = new Polynom("5x^6-8x^2");
+        Polynom test11 = new Polynom("5x^2+3x^2+2");
+        Polynom test22 = new Polynom("x-8x");
+        Polynom test33 = new Polynom("5x^6-8x^2");
+        assertEquals(test1,test11);
+        assertEquals(test2,test22);
+        assertEquals(test3,test33);
+        Polynom_able test4 = new Polynom("5x^2+3x^2+2");
+        Polynom_able test5 = new Polynom("5x^2+3x^2+2");
+        Polynom_able test6 = new Polynom("5x^2+3x^2+2");
+        Polynom_able test44 = new Polynom("5x^2+3x^2+2");
+        Polynom_able test55 = new Polynom("5x^2+3x^2+2");
+        Polynom_able test66 = new Polynom("5x^2+3x^2+2");
+        test4.add(new Monom("5x"));
+        assertNotEquals(test4,test44);
+        assertEquals(test5,test55);
+        assertEquals(test6,test66);
+
     }
 
     @Test
