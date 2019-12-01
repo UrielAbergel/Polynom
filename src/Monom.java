@@ -138,9 +138,12 @@ public class Monom implements function{
 	private int _power;
 
 	public boolean equals(Monom m){
-
-		if(this.get_power() == m.get_power() && this.get_coefficient() == m.get_coefficient()) return true ;
-		return false;
+		boolean flag1 = false;
+		boolean flag2 = false;
+		if((m.get_power()==this.get_power())) flag1 = true;
+		double dis = this.get_coefficient() - m.get_coefficient();
+		if((Math.abs(dis)<EPSILON)) flag2 = true;
+		return (flag2&& flag1);
 	}
 	public String returnMonomToString(){
 		return this.get_coefficient() + "x^" +this.get_power();

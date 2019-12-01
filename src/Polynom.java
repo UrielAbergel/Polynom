@@ -248,7 +248,7 @@ public class Polynom implements Polynom_able {
 	}
 
 
-	public boolean equalPa(Polynom_able p1){
+	public boolean equalPa(Polynom_able p1) {
 		Polynom temp = new Polynom();
 		Iterator<Monom> Pointer = p1.iteretor(); // make iterator for check the monoms in p1
 		while(Pointer.hasNext()){
@@ -259,9 +259,10 @@ public class Polynom implements Polynom_able {
 		if(temp.PolynomList.size() == 0 && this.PolynomList.size()!=0) return false;
 		int index = 0 ;
 		boolean flag = true;
+		double EPSILON = 0.0000001;
 		while(index < temp.PolynomList.size())
 		{
-			if(temp.PolynomList.get(index).get_coefficient() != this.PolynomList.get(index).get_coefficient())
+			if(Math.abs(temp.PolynomList.get(index).get_coefficient() - this.PolynomList.get(index).get_coefficient())>EPSILON)
 			{
 				flag = false;
 			}
@@ -306,9 +307,11 @@ public class Polynom implements Polynom_able {
 	 */
 	@Override
 	public Polynom_able copy(){
-		Polynom poliTemp = new Polynom();
-		for (int i = 0; i < this.PolynomList.size() ; i++) {
-			poliTemp.PolynomList.add(PolynomList.get(i));
+		Polynom_able poliTemp = new Polynom();
+		Iterator<Monom> iter = this.iteretor();
+		while(iter.hasNext()){
+			Monom t = iter.next();
+			poliTemp.add(new Monom(t));
 		}
 		return poliTemp;
 	}
