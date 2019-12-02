@@ -178,8 +178,17 @@ class PolynomTest {
         double e = r.area(-0.8, 0.8, 0.1);
         assertEquals(e,2.176,0.1);
         double q = t.area(0, 1.787, 0.1);
-        System.out.println(q);
-        assertEquals(q,24.24909797263208,0.1);
+        assertEquals(q,24.98,0.1);
 
+    }
+
+    @Test
+    void isZero(){
+        Polynom p = new Polynom("0");
+        Polynom r = new Polynom("0");
+        Polynom s = new Polynom("0");
+        assertEquals(p.isZero(),true);
+        r.substract(r);
+        assertEquals(r.isZero(),true);
     }
 }
