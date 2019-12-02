@@ -15,7 +15,12 @@ public class PolynomNode {
             new PolynomNode(m1);
         }
         else if(p instanceof function){
-
+                function f = (function)(p);
+                new PolynomNode(f);
+        }
+        else if(p instanceof Operation){
+            Operation O = (Operation)(p);
+            new PolynomNode(O);
         }
     }
     PolynomNode(Polynom p){
@@ -24,6 +29,14 @@ public class PolynomNode {
         right = null;
     }
     PolynomNode(Monom m){
+        left = null;
+        right = null;
+    }
+    PolynomNode(function f){
+        left = null;
+        right = null;
+    }
+    PolynomNode(Operation O){
         left = null;
         right = null;
     }

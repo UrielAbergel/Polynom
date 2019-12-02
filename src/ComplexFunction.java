@@ -6,7 +6,6 @@ public class ComplexFunction implements complex_function {
     @Override
     public void plus(function f1) {
 
-        System.out.println(f1.f(3));
     }
 
     @Override
