@@ -1,11 +1,12 @@
 package Ex1;
 
 public class PolynomNode {
-    Monom m;
-    Polynom p;
+    Monom mon;
+    Polynom poly;
     PolynomNode left, right, father;
+    boolean Excist;
     Operation OP;
-    function f;
+    function func;
 
     PolynomNode(Object p) {
         if(p instanceof Polynom){
@@ -26,19 +27,25 @@ public class PolynomNode {
         }
     }
     PolynomNode(Polynom p){
-        this.p.PolynomList = p.PolynomList;
+        this.poly.PolynomList = p.PolynomList;
+        OP = Operation.None;
         left = null;
         right = null;
     }
     PolynomNode(Monom m){
+        OP = Operation.None;
+        this.mon = m;
         left = null;
         right = null;
     }
     PolynomNode(function f){
+        OP = Operation.None;
+        this.func = f;
         left = null;
         right = null;
     }
     PolynomNode(Operation O){
+        OP = O;
         left = null;
         right = null;
     }

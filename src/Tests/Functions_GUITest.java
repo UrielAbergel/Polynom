@@ -78,7 +78,7 @@ class Functions_GUITest {
 		for(int i=1;i<s3.length;i++) {
 			cf3.mul(new Polynom(s3[i]));
 		}
-		
+
 		ComplexFunction cf = new ComplexFunction("plus", p1,p2);
 		ComplexFunction cf4 = new ComplexFunction("div", new Polynom("x +1"),cf3);
 		cf4.plus(new Monom("2"));
@@ -99,7 +99,7 @@ class Functions_GUITest {
 		}
 		ans.add(max);
 		ans.add(min);
-		
+
 		return ans;
 	}
 }
