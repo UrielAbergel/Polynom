@@ -34,7 +34,9 @@ public class Monom implements function{
 	 * @return
 	 */
 	public Monom derivative() {
-		if(this.get_power()==0) {return getNewZeroMonom();}
+		if(this.get_power()==0) {
+			return getNewZeroMonom();
+		}
 		return new Monom(this.get_coefficient()*this.get_power(), this.get_power()-1);
 	}
 
@@ -122,6 +124,7 @@ public class Monom implements function{
 	public void toSetcoefficient(double a){
 		set_coefficient(a);
 	}
+
 	public void toSetPower(int a){
 		set_power(a);
 	}
@@ -143,7 +146,7 @@ public class Monom implements function{
 		if((m.get_power()==this.get_power())) flag1 = true;
 		double dis = this.get_coefficient() - m.get_coefficient();
 		if((Math.abs(dis)<EPSILON)) flag2 = true;
-		return (flag2&& flag1);
+		return (flag2 && flag1);
 	}
 	public String returnMonomToString(){
 		return this.get_coefficient() + "x^" +this.get_power();
@@ -154,7 +157,6 @@ public class Monom implements function{
 		Monom a = new Monom(s);
 		Monom b = new Monom("3x^2");
 		a.multipy(b);
-
 		System.out.println(a._coefficient);
 		System.out.println(a._power);
 	}

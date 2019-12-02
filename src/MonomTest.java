@@ -80,4 +80,50 @@ class MonomTest {
         assertEquals(5,counter);
 
     }
+    @Test
+    void Monom(){
+        Monom m1 = new Monom("5x");
+        Monom m2 = new Monom("0x^3");
+        Monom m3 = new Monom("-4.5");
+        Monom m4 = new Monom("0");
+        assertEquals(5.0, m1.get_coefficient());
+        assertEquals(1,m1.get_power());
+        assertEquals(0.0,m2.get_coefficient());
+        assertEquals(3,m2.get_power());
+        assertEquals(-4.5,m3.get_coefficient());
+        assertEquals(0,m3.get_power());
+        assertEquals(0.0,m4.get_coefficient());
+        assertEquals(0,m4.get_power());
+
+    }
+    @Test
+    void Monom2(){
+        Monom m1 = new Monom(5.2,4);
+        assertEquals(5.2,m1.get_coefficient());
+        assertEquals(4,m1.get_power());
+        Monom m2 = new Monom(0,0);
+        assertEquals(0.0,m2.get_coefficient());
+        assertEquals(0,m2.get_power());
+    }
+
+    @Test
+    void MonomOt(){
+        Monom m = new Monom(5,5);
+        Monom m1 = new Monom (m);
+        assertEquals(5.0,m1.get_coefficient());
+        assertEquals(5,m1.get_power());
+    }
+
+    @Test
+    void equals(){
+        Monom m1 = new Monom("5.0x^3");
+        Monom m2 = new Monom ("3x^3");
+        Monom m3 = new Monom("2.0x^3");
+        m3.add(m2);
+        Boolean ans1 = m1.equals(m3);
+        Boolean ans2 = m1.equals(m2);
+        assertEquals(true,ans1);
+        assertEquals(false,ans2);
+    }
+
 }
