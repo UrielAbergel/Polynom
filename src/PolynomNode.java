@@ -10,9 +10,20 @@ public class PolynomNode {
             Polynom p1 = (Polynom)(p);
             new PolynomNode(p1);
         }
+        else if(p instanceof Monom){
+            Monom m1 = (Monom)(p);
+            new PolynomNode(m1);
+        }
+        else if(p instanceof function){
+
+        }
     }
     PolynomNode(Polynom p){
         this.p.PolynomList = p.PolynomList;
+        left = null;
+        right = null;
+    }
+    PolynomNode(Monom m){
         left = null;
         right = null;
     }
