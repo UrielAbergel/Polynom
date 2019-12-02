@@ -6,6 +6,7 @@ public class ComplexFunction implements complex_function {
     @Override
     public void plus(function f1) {
 
+        System.out.println(f1.f(3));
     }
 
     @Override
@@ -61,5 +62,12 @@ public class ComplexFunction implements complex_function {
     @Override
     public function copy() {
         return null;
+    }
+
+    public static void main(String[] args) {
+        Polynom p = new Polynom("3x^2");
+        function t = p;
+        ComplexFunction r = new ComplexFunction();
+        r.plus(p);
     }
 }

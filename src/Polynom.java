@@ -227,13 +227,14 @@ public class Polynom implements Polynom_able {
 
 
 	public boolean epualPo(Polynom p1){
+		double EPSILON = 0.0000001;
 		if(this.PolynomList.size() == 0 && p1.PolynomList.size()!=0) return false;
 		if(p1.PolynomList.size() == 0 && this.PolynomList.size()!=0) return false;
 		int index = 0 ;
 		boolean flag = true;
 		while(index < p1.PolynomList.size())
 		{
-			if(p1.PolynomList.get(index).get_coefficient() != this.PolynomList.get(index).get_coefficient())
+			if(Math.abs(p1.PolynomList.get(index).get_coefficient() - this.PolynomList.get(index).get_coefficient())>EPSILON)
 			{
 				flag = false;
 			}

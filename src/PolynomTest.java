@@ -119,7 +119,6 @@ class PolynomTest {
         assertNotEquals(test4,test44);
         assertEquals(test5,test55);
         assertEquals(test6,test66);
-
     }
 
     @Test
