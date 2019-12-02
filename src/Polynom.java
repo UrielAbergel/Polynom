@@ -356,6 +356,7 @@ public class Polynom implements Polynom_able {
 				ans+=dot*(eps);
 				TillTheEnd+=eps;
 			}
+			else TillTheEnd+=eps;
 		}
 		return ans;
 	}
