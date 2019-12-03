@@ -95,18 +95,20 @@ public class ComplexFunction implements complex_function {
 //
 //        return null;
 //    }
-      @Override
+    @Override
     public function initFromString(String s) {
         ComplexFunction p = new ComplexFunction();
         p.pt = new PolynomTree();
         p.pt.root = new PolynomNode(Operation.None);
         RecursiveInitFromString(p.pt.root,s);
+        p.pt.root = current;
         return p;
     }
 
     public void RecursiveInitFromString(PolynomNode Pnode, String s){
-        if(!CheackSograim(s)) return;
-        else if(!s.contains(",")){
+        if(flag == 0) { current =Pnode;}
+        flag++;
+        if(!s.contains(",")){
             Pnode.func = new Polynom(s);
             return;
         }
@@ -114,18 +116,22 @@ public class ComplexFunction implements complex_function {
         for (int i = 0; i < s.length(); i++) {
             if(s.charAt(i)== '(' ) {
                 temp =  s.substring(0,i);
+                if(!CheackSograim(temp)) return;
                 Operation op = ReturnOpString(temp);
                 Pnode.setOP(op);
                 int psik = findPsik(s);
-                Pnode.left = new PolynomNode(Operation.None);
-                Pnode.right = new PolynomNode(Operation.None);
-                RecursiveInitFromString(Pnode.left,s.substring(i+1,psik));
-                RecursiveInitFromString(Pnode.right,s.substring(psik+1,s.length()-1));
+                if(psik != 0) {
+                    Pnode.left = new PolynomNode(Operation.None);
+                    Pnode.right = new PolynomNode(Operation.None);
+                    RecursiveInitFromString(Pnode.left, s.substring(i + 1, psik));
+                    RecursiveInitFromString(Pnode.right, s.substring(psik + 1, s.length() - 1));
+                }
             }
         }
     }
 
     private static int findPsik(String s) {
+        if(!CheackSograim(s)) return 0;
         Stack stack = new Stack();
         boolean flag = false;
         int ans = 0;
@@ -185,7 +191,7 @@ public class ComplexFunction implements complex_function {
             else if(s.charAt(i) == ')' && !stack.isEmpty())  stack.pop();
             else if(s.charAt(i) == ')' && stack.isEmpty()) return false;
         }
-        if(s.isEmpty()) return false;
+        if(!stack.isEmpty()) return false;
         return true;
     }
 
@@ -195,5 +201,7 @@ public class ComplexFunction implements complex_function {
         String q = "div(div(mul(8,8),4x^4),6x)";
         r = (ComplexFunction) r.initFromString(q);
         r.pt.printInOrder();
+        r.pt.printpreOrder();
+
     }
 }

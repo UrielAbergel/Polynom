@@ -15,6 +15,17 @@ public class PolynomTree {
             printInOrder(node.right);
         }
     }
+    public void printpreOrder() {
+        printpreOrder(root);
+        System.out.println();
+    }
+    void printpreOrder(PolynomNode node) {//PreOrder
+        if (node != null) {
+            System.out.print(node.OP+", ");
+            printpreOrder(node.left);
+            printpreOrder(node.right);
+        }
+    }
 
 
 }
