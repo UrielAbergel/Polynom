@@ -162,8 +162,8 @@ public class ComplexFunction implements complex_function {
     public static void main(String[] args) {
         ComplexFunction r = new ComplexFunction();
         String q = "div(mul(8,8),4x^4)";
-        r.initFromString(q);
-        System.out.println(r.pt.root.OP.toString());
+        r = (ComplexFunction) r.initFromString(q);
+        r.pt.printInOrder();
 
 
 
