@@ -49,4 +49,11 @@ public class PolynomNode {
         left = null;
         right = null;
     }
+    PolynomNode(PolynomNode left,PolynomNode right){
+        this.left = left;
+        this.right = right;
+    }
+    public void setOP(Operation op){
+        this.OP = op;
+    }
 }

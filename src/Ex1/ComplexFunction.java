@@ -1,10 +1,12 @@
 package Ex1;
 
 import java.util.Currency;
+import  java.util.Stack;
 
 public class ComplexFunction implements complex_function {
     PolynomTree pt;
     PolynomNode current;
+    int flag = 0 ;
 
     public void setInTree(function f1 , Operation op){
         PolynomNode p = new PolynomNode(op);
@@ -72,7 +74,84 @@ public class ComplexFunction implements complex_function {
 
     @Override
     public function initFromString(String s) {
-        return null;
+
+        ComplexFunction p = new ComplexFunction();
+        p.pt = new PolynomTree();
+        p.pt.root = new PolynomNode(Operation.None);
+        RecursiveInitFromString(p.pt.root,s);
+        return p;
+    }
+
+    public void RecursiveInitFromString(PolynomNode Pnode, String s){
+
+        if(!s.contains(",")){
+            Pnode.func = new Polynom(s);
+            return;
+        }
+        String temp = "";
+        for (int i = 0; i < s.length(); i++) {
+            if(s.charAt(i)== '(' ) {
+                temp =  s.substring(0,i);
+                Operation op = ReturnOpString(temp);
+                Pnode.setOP(op);
+                int psik = findPsik(s);
+                Pnode.left = new PolynomNode(Operation.None);
+                Pnode.right = new PolynomNode(Operation.None);
+                RecursiveInitFromString(Pnode.left,s.substring(i+1,psik));
+                RecursiveInitFromString(Pnode.right,s.substring(psik+1,s.length()-1));
+            }
+
+        }
+
+
+    }
+
+    private static int findPsik(String s) {
+        Stack stack = new Stack();
+        boolean flag = false;
+        int ans = 0;
+        for (int i = 0; i < s.length() - 1; i++) {
+            if (s.charAt(i) == '(') {
+               if(flag){
+                   stack.push('(');
+               }
+               flag=true;
+            }
+            if (s.charAt(i) == ')') stack.pop();
+            if (s.charAt(i) == ',') {
+                if (stack.isEmpty()) ans = i;
+            }
+        }
+        return ans;
+    }
+
+   public static Operation ReturnOpString(String s) {
+       switch(s) {
+           case "mul":
+               return Operation.Times;
+
+           case "div":
+               return Operation.Divid;
+
+           case "plus":
+               return Operation.Plus;
+
+           case "max":
+               return Operation.Max;
+
+           case "min":
+               return Operation.Min;
+
+           case "error":
+               return Operation.Error;
+
+           case "comp":
+               return  Operation.Comp;
+
+           default:
+               return Operation.None;
+
+       }
     }
 
     @Override
@@ -81,9 +160,12 @@ public class ComplexFunction implements complex_function {
     }
 
     public static void main(String[] args) {
-        Polynom p = new Polynom("3x^2");
-        function t = p;
         ComplexFunction r = new ComplexFunction();
-        r.plus(p);
+        String q = "div(mul(8,8),4x^4)";
+        r.initFromString(q);
+        System.out.println(r.pt.root.OP.toString());
+
+
+
     }
 }
