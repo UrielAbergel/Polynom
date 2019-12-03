@@ -2,7 +2,7 @@ package Ex1;
 
 public class PolynomTree {
 
-    PolynomNode root,left,right;
+    PolynomNode root;
 
     public void printInOrder() {
         printInOrder(root);

@@ -1,12 +1,12 @@
 package Ex1;
 
 public class PolynomNode {
+
     Monom mon;
     Polynom poly;
-    PolynomNode left, right, father;
-    boolean Excist;
     Operation OP;
     function func;
+    PolynomNode left, right;
 
     PolynomNode(Object p) {
         if(p instanceof Polynom){
@@ -49,9 +49,9 @@ public class PolynomNode {
         left = null;
         right = null;
     }
-    PolynomNode(PolynomNode left,PolynomNode right){
-        this.left = left;
-        this.right = right;
+    PolynomNode(function left, function right){
+        this.left.func = left;
+        this.right.func = right;
     }
     public void setOP(Operation op){
         this.OP = op;

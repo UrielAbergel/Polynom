@@ -72,9 +72,31 @@ public class ComplexFunction implements complex_function {
         return 0;
     }
 
-    @Override
+//    public function initFromString(String s) {
+//        if(!s.contains(",")){
+//            this.pt.root.func = new Polynom(s);
+//        }
+//        this.pt = new PolynomTree();
+//        this.pt.root = new PolynomNode(Operation.None);
+//        String temp = "";
+//        for (int i = 0; i < s.length(); i++) {
+//            if(s.charAt(i)== '(' ) {
+//                temp =  s.substring(0,i);
+//                Operation op = ReturnOpString(temp);
+//                this.pt.root.setOP(op);
+//                int psik = findPsik(s);
+//                this.pt.root.left = new PolynomNode(Operation.None);
+//                this.pt.root.right = new PolynomNode(Operation.None);
+//                String l = s.substring(i+1,psik);
+//                String r = s.substring(psik+1,s.length()-1);
+//                this.pt.root = new PolynomNode(initFromString(l),initFromString(r));
+//            }
+//        }
+//
+//        return null;
+//    }
+      @Override
     public function initFromString(String s) {
-
         ComplexFunction p = new ComplexFunction();
         p.pt = new PolynomTree();
         p.pt.root = new PolynomNode(Operation.None);
@@ -83,8 +105,8 @@ public class ComplexFunction implements complex_function {
     }
 
     public void RecursiveInitFromString(PolynomNode Pnode, String s){
-
-        if(!s.contains(",")){
+        if(!CheackSograim(s)) return;
+        else if(!s.contains(",")){
             Pnode.func = new Polynom(s);
             return;
         }
@@ -100,10 +122,7 @@ public class ComplexFunction implements complex_function {
                 RecursiveInitFromString(Pnode.left,s.substring(i+1,psik));
                 RecursiveInitFromString(Pnode.right,s.substring(psik+1,s.length()-1));
             }
-
         }
-
-
     }
 
     private static int findPsik(String s) {
@@ -159,13 +178,22 @@ public class ComplexFunction implements complex_function {
         return null;
     }
 
+    public static Boolean CheackSograim(String s){
+        Stack stack = new Stack();
+        for (int i = 0; i < s.length() ; i++) {
+            if(s.charAt(i) == '(') stack.push('(');
+            else if(s.charAt(i) == ')' && !stack.isEmpty())  stack.pop();
+            else if(s.charAt(i) == ')' && stack.isEmpty()) return false;
+        }
+        if(s.isEmpty()) return false;
+        return true;
+    }
+
+
     public static void main(String[] args) {
         ComplexFunction r = new ComplexFunction();
-        String q = "div(mul(8,8),4x^4)";
+        String q = "div(div(mul(8,8),4x^4),6x)";
         r = (ComplexFunction) r.initFromString(q);
         r.pt.printInOrder();
-
-
-
     }
 }
