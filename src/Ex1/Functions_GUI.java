@@ -1,15 +1,16 @@
 package Ex1;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.*;
 
 public class Functions_GUI implements functions {
     LinkedList<function> Flist;
     @Override
     public void initFromFile(String file) throws IOException {
+        File importedFile = new File ("C:\\Users\\Yair Semama\\Desktop\\function_file.txt");
+        Scanner scan = new Scanner(file);
+
 
     }
 
@@ -27,7 +28,12 @@ public class Functions_GUI implements functions {
     public void drawFunctions(String json_file) {
 
     }
+    public void drawFunctions(){
 
+    }
+    public function get(int i){
+        return Flist.get(i);
+    }
     @Override
     public int size() {
         return Flist.size();

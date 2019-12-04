@@ -7,6 +7,37 @@ public class ComplexFunction implements complex_function {
     PolynomTree pt;
     PolynomNode current;
     int flag = 0 ;
+    ComplexFunction(){
+
+    }
+
+    ComplexFunction (String operation , Polynom p1, Polynom p2){
+        Operation op = ReturnOpString(operation);
+        this.pt.root.OP = op;
+        this.pt.root.left.poly = p1;
+        this.pt.root.right.poly = p2;
+    }
+    ComplexFunction(Polynom p1){
+        this.pt.root.poly = p1;
+    }
+    ComplexFunction( String operation , Polynom p , ComplexFunction cf){
+        Operation op = ReturnOpString(operation);
+        this.pt.root.OP = op;
+        this.pt.root.left.poly = p;
+        this.pt.root.right.func = cf;
+    }
+    ComplexFunction( String operation , ComplexFunction cf , Polynom p){
+        Operation op = ReturnOpString(operation);
+        this.pt.root.OP = op;
+        this.pt.root.right.poly = p;
+        this.pt.root.left.func = cf;
+    }
+    ComplexFunction( String operation , ComplexFunction cf1 , ComplexFunction cf2){
+        Operation op = ReturnOpString(operation);
+        this.pt.root.OP = op;
+        this.pt.root.right.func = cf1;
+        this.pt.root.left.func = cf2;
+    }
 
     public void setInTree(function f1 , Operation op){
         PolynomNode p = new PolynomNode(op);
@@ -64,7 +95,7 @@ public class ComplexFunction implements complex_function {
 
     @Override
     public Operation getOp() {
-        return null;
+        return this.pt.root.OP;
     }
 
     @Override

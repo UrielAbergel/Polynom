@@ -5,6 +5,7 @@ package Ex1; /**
 import java.io.IOException;
 import java.util.Collection;
 
+
 public interface functions extends Collection<function>{
 	/**
 	 * Init a new collection of functions from a file
@@ -12,11 +13,7 @@ public interface functions extends Collection<function>{
 	 * @throws IOException if the file does not exists of unreadable (wrong format)
 	 */
 	public void initFromFile(String file) throws IOException;
-/**
- * 
- * @param file - the file name
- * @throws IOException if the file is not writable
- */
+
 	public void saveToFile(String file) throws IOException;
 /**
  * Draws all the functions in the collection in a GUI window using the
