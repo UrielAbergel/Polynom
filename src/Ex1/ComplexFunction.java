@@ -100,8 +100,51 @@ public class ComplexFunction implements complex_function {
 
     @Override
     public double f(double x) {
-        return 0;
+        double ans = 0;
+        ans = recursiveF(x, this.pt.root);
+        return ans;
     }
+    private int sumf=0;
+    private double recursiveF(double x, PolynomNode p){
+        if(p == null) return 0;
+        if(p.OP != Operation.None ){
+            switch(p.OP) {
+                case Times:
+                    sumf += recursiveF(x,p.left)*recursiveF(x,p.right);
+                    break;
+                case Divid:
+                    sumf += recursiveF(x,p.left)/recursiveF(x,p.right);
+                    break;
+                case Plus:
+                    sumf += recursiveF(x,p.left)+recursiveF(x,p.right);
+                    break;
+                case Max:
+                    sumf += Math.max(sumf += recursiveF(x,p.left),recursiveF(x,p.right));
+                    break;
+                case Min:
+                    sumf += Math.min(sumf += recursiveF(x,p.left),recursiveF(x,p.right));
+                    break;
+                case Error:
+                    throw new NullPointerException("Error");
+                case Comp:
+                    sumf += recursiveF(p.right.poly.f(x),p.left);
+                    break;
+                default:
+                    throw new NullPointerException("Illegal Operation");
+            }
+        }
+        else{
+            if(p.func!=null) {
+                p.afterF = p.func.f(x);
+                return p.afterF;
+            }
+            else if(p.poly!=null){
+                p.afterF = p.poly.f(x);
+            }
+        }
+        return sumf;
+    }
+
     @Override
     public function initFromString(String s) {
         ComplexFunction p = new ComplexFunction();
@@ -144,10 +187,10 @@ public class ComplexFunction implements complex_function {
         int ans = 0;
         for (int i = 0; i < s.length() - 1; i++) {
             if (s.charAt(i) == '(') {
-               if(flag){
-                   stack.push('(');
-               }
-               flag=true;
+                if(flag){
+                    stack.push('(');
+                }
+                flag=true;
             }
             if (s.charAt(i) == ')') stack.pop();
             if (s.charAt(i) == ',') {
@@ -157,33 +200,33 @@ public class ComplexFunction implements complex_function {
         return ans;
     }
 
-   public static Operation ReturnOpString(String s) {
-       switch(s) {
-           case "mul":
-               return Operation.Times;
+    public static Operation ReturnOpString(String s) {
+        switch(s) {
+            case "mul":
+                return Operation.Times;
 
-           case "div":
-               return Operation.Divid;
+            case "div":
+                return Operation.Divid;
 
-           case "plus":
-               return Operation.Plus;
+            case "plus":
+                return Operation.Plus;
 
-           case "max":
-               return Operation.Max;
+            case "max":
+                return Operation.Max;
 
-           case "min":
-               return Operation.Min;
+            case "min":
+                return Operation.Min;
 
-           case "error":
-               return Operation.Error;
+            case "error":
+                return Operation.Error;
 
-           case "comp":
-               return  Operation.Comp;
+            case "comp":
+                return  Operation.Comp;
 
-           default:
-               return Operation.None;
+            default:
+                return Operation.None;
 
-       }
+        }
     }
 
     @Override
@@ -205,9 +248,11 @@ public class ComplexFunction implements complex_function {
 
     public static void main(String[] args) {
         ComplexFunction r = new ComplexFunction();
-        String q = "div(div(mul(8,8),4x^4),6x)";
+        String q = "plus(div(mul(8,8),4x^4),div(10,5))";
         r = (ComplexFunction) r.initFromString(q);
         r.pt.printInOrder();
+        double x = r.f(1);
+        System.out.println(x);
         //r.pt.printpreOrder();
 
     }

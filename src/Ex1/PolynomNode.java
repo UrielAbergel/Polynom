@@ -6,7 +6,8 @@ public class PolynomNode {
     Polynom poly;
     Operation OP;
     function func;
-    PolynomNode left, right;
+    PolynomNode left = null , right =null;
+    double afterF=0;
 
     PolynomNode(Object p) {
         if(p instanceof Polynom){
