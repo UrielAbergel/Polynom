@@ -71,30 +71,6 @@ public class ComplexFunction implements complex_function {
     public double f(double x) {
         return 0;
     }
-
-//    public function initFromString(String s) {
-//        if(!s.contains(",")){
-//            this.pt.root.func = new Polynom(s);
-//        }
-//        this.pt = new PolynomTree();
-//        this.pt.root = new PolynomNode(Operation.None);
-//        String temp = "";
-//        for (int i = 0; i < s.length(); i++) {
-//            if(s.charAt(i)== '(' ) {
-//                temp =  s.substring(0,i);
-//                Operation op = ReturnOpString(temp);
-//                this.pt.root.setOP(op);
-//                int psik = findPsik(s);
-//                this.pt.root.left = new PolynomNode(Operation.None);
-//                this.pt.root.right = new PolynomNode(Operation.None);
-//                String l = s.substring(i+1,psik);
-//                String r = s.substring(psik+1,s.length()-1);
-//                this.pt.root = new PolynomNode(initFromString(l),initFromString(r));
-//            }
-//        }
-//
-//        return null;
-//    }
     @Override
     public function initFromString(String s) {
         ComplexFunction p = new ComplexFunction();
@@ -201,7 +177,7 @@ public class ComplexFunction implements complex_function {
         String q = "div(div(mul(8,8),4x^4),6x)";
         r = (ComplexFunction) r.initFromString(q);
         r.pt.printInOrder();
-        r.pt.printpreOrder();
+        //r.pt.printpreOrder();
 
     }
 }
