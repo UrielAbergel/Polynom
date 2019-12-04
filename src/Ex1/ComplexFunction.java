@@ -102,12 +102,12 @@ public class ComplexFunction implements complex_function {
     public double f(double x) {
         return 0;
     }
+
     @Override
     public function initFromString(String s) {
         ComplexFunction p = new ComplexFunction();
         p.pt = new PolynomTree();
         p.pt.root = new PolynomNode(Operation.None);
-        RecursiveInitFromString(p.pt.root,s);
         p.pt.root = current;
         return p;
     }

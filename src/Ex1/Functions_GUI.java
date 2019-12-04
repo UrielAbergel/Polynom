@@ -1,18 +1,26 @@
 package Ex1;
-
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.util.Scanner;
 import java.util.*;
+import  Ex1.ComplexFunction;
 
 public class Functions_GUI implements functions {
     LinkedList<function> Flist;
+
     @Override
     public void initFromFile(String file) throws IOException {
-        File importedFile = new File ("C:\\Users\\Yair Semama\\Desktop\\function_file.txt");
-        Scanner scan = new Scanner(file);
-
-
+        File importedFile = new File(file);
+        BufferedReader bofi = new BufferedReader(new FileReader(file));
+        String Ans = "";
+        while ((Ans = bofi.readLine()) != null)
+            if (ComplexFunction.CheackSograim(Ans)) {
+                ComplexFunction t = new ComplexFunction();
+                t = (ComplexFunction) t.initFromString(Ans);
+                Flist.add(t);
+                Ans = "";
+            }
     }
+
 
     @Override
     public void saveToFile(String file) throws IOException {
@@ -28,12 +36,15 @@ public class Functions_GUI implements functions {
     public void drawFunctions(String json_file) {
 
     }
-    public void drawFunctions(){
+
+    public void drawFunctions() {
 
     }
-    public function get(int i){
+
+    public function get(int i) {
         return Flist.get(i);
     }
+
     @Override
     public int size() {
         return Flist.size();
@@ -96,6 +107,13 @@ public class Functions_GUI implements functions {
 
     @Override
     public void clear() {
-            Flist.clear();
+        Flist.clear();
+    }
+
+    public static void main(String[] args) throws IOException {
+        Functions_GUI  p = new Functions_GUI();
+        p.initFromFile("FileToRead.txt");
+        p.Flist.get(0).toString();
     }
 }
+
