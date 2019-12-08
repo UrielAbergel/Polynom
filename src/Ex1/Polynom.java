@@ -378,12 +378,20 @@ public class Polynom implements Polynom_able {
 		}
 		conferenceOrgans();
 	}
-	public void toStr(){
-		int Runner = 0;
-		while(Runner!=PolynomList.size()){
-			String s = PolynomList.get(Runner++).toString();
-			System.out.print(s + "+");
+	public String toString () {
+		if(PolynomList.size()==0) {return "0.0x^0";}
+		int counter = 0;
+		String ans = "";
+
+		while (counter < PolynomList.size()) {
+			if (counter !=0 && this.PolynomList.get(counter).get_coefficient() > 0)
+				ans += "+";
+			ans += this.PolynomList.get(counter).toString();
+
+			counter++;
 		}
+
+		return ans;
 	}
 	/**
 	 * The function arranges the organs and connects them, if need be to erase organs reset

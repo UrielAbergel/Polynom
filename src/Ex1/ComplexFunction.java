@@ -7,6 +7,7 @@ public class ComplexFunction implements complex_function {
     PolynomTree pt;
     PolynomNode current;
     int flag = 0 ;
+
     ComplexFunction(){
 
     }
@@ -100,34 +101,32 @@ public class ComplexFunction implements complex_function {
 
     @Override
     public double f(double x) {
-        double ans = 0;
-        ans = recursiveF(x, this.pt.root);
-        return ans;
+        return recursiveF(x, this.pt.root);
     }
-    private int sumf=0;
+    private double sumf=0;
     private double recursiveF(double x, PolynomNode p){
-        if(p == null) return 0;
+        if(p.OP == Operation.None && p.func == null && p.poly == null && p.mon == null) return 0;
         if(p.OP != Operation.None ){
             switch(p.OP) {
                 case Times:
-                    sumf += recursiveF(x,p.left)*recursiveF(x,p.right);
+                    sumf = recursiveF(x,p.left)*recursiveF(x,p.right);
                     break;
                 case Divid:
-                    sumf += recursiveF(x,p.left)/recursiveF(x,p.right);
+                    sumf = recursiveF(x,p.left)/recursiveF(x,p.right);
                     break;
                 case Plus:
-                    sumf += recursiveF(x,p.left)+recursiveF(x,p.right);
+                    sumf = recursiveF(x,p.left)+recursiveF(x,p.right);
                     break;
                 case Max:
-                    sumf += Math.max(sumf += recursiveF(x,p.left),recursiveF(x,p.right));
+                    sumf = Math.max(sumf += recursiveF(x,p.left),recursiveF(x,p.right));
                     break;
                 case Min:
-                    sumf += Math.min(sumf += recursiveF(x,p.left),recursiveF(x,p.right));
+                    sumf = Math.min(sumf += recursiveF(x,p.left),recursiveF(x,p.right));
                     break;
                 case Error:
                     throw new NullPointerException("Error");
                 case Comp:
-                    sumf += recursiveF(p.right.poly.f(x),p.left);
+                    sumf = recursiveF(p.right.func.f(x),p.left);
                     break;
                 default:
                     throw new NullPointerException("Illegal Operation");
@@ -140,6 +139,7 @@ public class ComplexFunction implements complex_function {
             }
             else if(p.poly!=null){
                 p.afterF = p.poly.f(x);
+                return p.afterF;
             }
         }
         return sumf;
@@ -151,10 +151,17 @@ public class ComplexFunction implements complex_function {
         p.pt = new PolynomTree();
         p.pt.root = new PolynomNode(Operation.None);
         RecursiveInitFromString(p.pt.root,s);
+        parent(p.pt.root);
         p.pt.root = current;
         return p;
     }
-
+    private static void parent(PolynomNode answer) {
+        if(answer==null) return;
+        if(answer.left!=null) answer.left.parent = answer;
+        if(answer.right!=null) answer.right.parent = answer;
+        parent(answer.left);
+        parent(answer.right);
+    }
     public void RecursiveInitFromString(PolynomNode Pnode, String s){
         if(flag == 0) { current =Pnode;}
         flag++;
@@ -245,15 +252,39 @@ public class ComplexFunction implements complex_function {
         return true;
     }
 
+    public String toStringOP(Operation op){
+    switch (op){
+        case Plus:
+            return "plus(";
+        case Divid:
+            return "div(";
+        case Times:
+            return  "mul(";
+        case Comp:
+            return  "comp(";
+        case Max:
+            return "max(";
+        case Min:
+            return  "min(";
+        case None:
+            return "";
+        case Error:
+            return "";
+    }
+
+        return null;
+    }
+
+
 
     public static void main(String[] args) {
         ComplexFunction r = new ComplexFunction();
-        String q = "plus(div(mul(8,8),4x^4),div(10,5))";
+        String q = "mul(div(mul(8,8),4x^2),div(10,5))";
         r = (ComplexFunction) r.initFromString(q);
         r.pt.printInOrder();
         double x = r.f(1);
         System.out.println(x);
-        //r.pt.printpreOrder();
+
 
     }
 }

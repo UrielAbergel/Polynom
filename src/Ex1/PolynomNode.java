@@ -6,7 +6,7 @@ public class PolynomNode {
     Polynom poly;
     Operation OP;
     function func;
-    PolynomNode left = null , right =null;
+    PolynomNode left = null , right =null , parent = null;
     double afterF=0;
 
     PolynomNode(Object p) {
@@ -56,5 +56,29 @@ public class PolynomNode {
     }
     public void setOP(Operation op){
         this.OP = op;
+    }
+
+
+    public String toStringOP(Operation op){
+        switch (op){
+            case Plus:
+                return "plus(";
+            case Divid:
+                return "div(";
+            case Times:
+                return  "mul(";
+            case Comp:
+                return  "comp(";
+            case Max:
+                return "max(";
+            case Min:
+                return  "min(";
+            case None:
+                return "";
+            case Error:
+                return "";
+        }
+
+        return null;
     }
 }

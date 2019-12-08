@@ -7,6 +7,11 @@ import  Ex1.ComplexFunction;
 public class Functions_GUI implements functions {
     LinkedList<function> Flist;
 
+    public Functions_GUI(){
+        LinkedList<function> temp = new LinkedList<function>();
+        Flist = temp;
+    }
+
     @Override
     public void initFromFile(String file) throws IOException {
         File importedFile = new File(file);
@@ -16,14 +21,35 @@ public class Functions_GUI implements functions {
             if (ComplexFunction.CheackSograim(Ans)) {
                 ComplexFunction t = new ComplexFunction();
                 t = (ComplexFunction) t.initFromString(Ans);
+                if(Flist == null)
+                {
+                    LinkedList<function> p = new LinkedList<function>();
+                    Flist = p ;
+                }
                 Flist.add(t);
                 Ans = "";
+
             }
     }
 
 
     @Override
     public void saveToFile(String file) throws IOException {
+        FileWriter writeOnes = new FileWriter(file);
+        if(Flist == null){
+            System.out.println("No read file to read");
+            return;
+        }
+        for (int i = 0; i <this.Flist.size() ; i++) {
+            String s = "";
+            ComplexFunction p = (ComplexFunction) Flist.get(i);
+            s = p.pt.toString();
+            writeOnes.write(s);
+            s = "";
+            writeOnes.write("\n") ;
+
+        }
+        writeOnes.close();
 
     }
 
@@ -110,10 +136,19 @@ public class Functions_GUI implements functions {
         Flist.clear();
     }
 
+
+
     public static void main(String[] args) throws IOException {
         Functions_GUI  p = new Functions_GUI();
-        p.initFromFile("FileToRead.txt");
-        p.Flist.get(0).toString();
+        p.initFromFile("function_file.txt");
+        System.out.println("pppp");
+        String s = "]";
+        p.saveToFile("TheSAVE");
+//        ComplexFunction r = (ComplexFunction) p.Flist.get(0);
+//        String s = "";
+//        s = r.toStringNodeTree(r.pt.root);
+//        System.out.println(s);
+
     }
 }
 
