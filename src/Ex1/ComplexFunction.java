@@ -294,12 +294,18 @@ public class ComplexFunction implements complex_function {
         ComplexFunction r = new ComplexFunction();
         String q = "mul(div(mul(8,8),4x^2),div(10,5))";
         r = (ComplexFunction) r.initFromString(q);
-     //   r.pt.printInOrder();
+        r.pt.printInOrder();
        // double x = r.f(1);
       //  System.out.println(x);
+<<<<<<< HEAD
         System.out.println("t");
         ComplexFunction s = (ComplexFunction)r.copy();
         //ComplexFunction s = new ComplexFunction(r.copy());
         s.pt.printInOrder();
+=======
+//        System.out.println("t");
+//        ComplexFunction s = new ComplexFunction(r.copy());
+       // s.pt.printInOrder();
+>>>>>>> f977f35e1ef989ed33bab84290d482e920630ae7
     }
 }

@@ -35,7 +35,7 @@ public class PolynomTree {
         this.fixSaveToFile();
     }
 
-    void printpreOrder(PolynomNode node) {//PreOrder
+    private void printpreOrder(PolynomNode node) {//PreOrder
 
         if (node != null) {
 

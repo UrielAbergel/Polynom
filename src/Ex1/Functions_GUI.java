@@ -1,11 +1,17 @@
 package Ex1;
+import java.awt.*;
 import java.io.*;
 import java.util.Scanner;
 import java.util.*;
 import  Ex1.ComplexFunction;
 
+
+
 public class Functions_GUI implements functions {
     LinkedList<function> Flist;
+
+    public static Color[] Colors = {Color.blue, Color.cyan, Color.MAGENTA, Color.ORANGE,
+            Color.red, Color.GREEN, Color.PINK};
 
     public Functions_GUI(){
         LinkedList<function> temp = new LinkedList<function>();
@@ -53,8 +59,48 @@ public class Functions_GUI implements functions {
 
     }
 
+
+//    public static void drawFunctions(ArrayList<function> ff, int width, int height, Range rx, Range ry, int res) {
+//        int n = res;
+//        StdDraw.setCanvasSize(width, height);
+//        int size = ff.size();
+//        double[] x = new double[n+1];
+//        double[][] yy = new double[size][n+1];
+//        double x_step = (rx.get_max()-rx.get_min())/n;
+//        double x0 = rx.get_min();
+//        for (int i=0; i<=n; i++) {
+//            x[i] = x0;
+//            for(int a=0;a<size;a++) {
+//                yy[a][i] = ff.get(a).f(x[i]);
+//            }
+//            x0+=x_step;
+//        }
+//        StdDraw.setXscale(rx.get_min(), rx.get_max());
+//        StdDraw.setYscale(ry.get_min(), ry.get_max());
+//
+//
+//        // plot the approximation to the function
+//        for(int a=0;a<size;a++) {
+//            int c = a%Colors.length;
+//            StdDraw.setPenColor(Colors[c]);
+//
+//            System.out.println(a+") "+Colors[a]+"  f(x)= "+ff.get(a));
+//            for (int i = 0; i < n; i++) {
+//                StdDraw.line(x[i], yy[a][i], x[i+1], yy[a][i+1]);
+//            }
+//        }
+//    }
+
     @Override
     public void drawFunctions(int width, int height, Range rx, Range ry, int resolution) {
+        StdDraw.setCanvasSize(width,height);
+        StdDraw.setPenColor(Color.RED);
+        StdDraw.setXscale(10,9);
+        StdDraw.setYscale();
+        StdDraw.setPenRadius(10);
+        for (int i = 0; i < 100; i++) {
+            StdDraw.line(i,10,i+10,i+20);
+        }
 
     }
 
@@ -143,7 +189,13 @@ public class Functions_GUI implements functions {
         p.initFromFile("function_file.txt");
         System.out.println("pppp");
         String s = "]";
-        p.saveToFile("TheSAVE");
+        Range r = new Range(10,10);
+        Range t = new Range(10,10);
+        p.drawFunctions(500,500,r,t,5);
+      //  p.saveToFile("TheSAVE");
+      //  drawFunctions(p.Flist);
+//        ComplexFunction p = new ComplexFunction();
+
 //        ComplexFunction r = (ComplexFunction) p.Flist.get(0);
 //        String s = "";
 //        s = r.toStringNodeTree(r.pt.root);
