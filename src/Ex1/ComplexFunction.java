@@ -255,18 +255,6 @@ public class ComplexFunction implements complex_function {
         f = f.initFromString(s);
         return f;
     }
-//    public void recursiveCopy(PolynomNode p){
-//        if(p == null) return;
-//        if (p.OP == null && p.func == null && p.poly == null){
-//            return;
-//        }
-//        if(p.OP!=null) this.pt.root = new PolynomNode(p.OP);
-//        else if(p.poly!=null) this.pt.root = new PolynomNode(p.poly);
-//        else if(p.func!=null) this.pt.root = new PolynomNode(p.func);
-//        recursiveCopy(p.right);
-//        recursiveCopy(p.left);
-//    }
-
     public static Boolean CheackSograim(String s){
         Stack stack = new Stack();
         for (int i = 0; i < s.length() ; i++) {
@@ -310,7 +298,8 @@ public class ComplexFunction implements complex_function {
        // double x = r.f(1);
       //  System.out.println(x);
         System.out.println("t");
-        ComplexFunction s = new ComplexFunction(r.copy());
+        ComplexFunction s = (ComplexFunction)r.copy();
+        //ComplexFunction s = new ComplexFunction(r.copy());
         s.pt.printInOrder();
     }
 }

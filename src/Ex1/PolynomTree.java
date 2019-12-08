@@ -48,11 +48,9 @@ public class PolynomTree {
             {
                 SaveToFileReader += node.toStringOP(node.OP);
             }
-
             printpreOrder(node.left);
             printpreOrder(node.right);
             SaveToFileReader += ",";
-
         }
     }
 
@@ -79,5 +77,6 @@ public class PolynomTree {
 
 
     public static void main(String[] args) {
+
     }
 }
