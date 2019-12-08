@@ -27,30 +27,29 @@ public class PolynomNode {
             new PolynomNode(O);
         }
     }
-    PolynomNode(Polynom p){
-        this.poly.PolynomList = p.PolynomList;
+    public PolynomNode(Polynom p){
+        this.poly = p;
         OP = Operation.None;
         left = null;
         right = null;
     }
-    PolynomNode(Monom m){
+    public PolynomNode(Monom m){
         OP = Operation.None;
         this.mon = m;
         left = null;
         right = null;
     }
-    PolynomNode(function f){
+    public PolynomNode(function f){
         OP = Operation.None;
-        this.func = f;
         left = null;
         right = null;
     }
-    PolynomNode(Operation O){
+    public PolynomNode(Operation O){
         OP = O;
         left = null;
         right = null;
     }
-    PolynomNode(function left, function right){
+    public PolynomNode(function left, function right){
         this.left.func = left;
         this.right.func = right;
     }

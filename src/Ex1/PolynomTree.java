@@ -7,13 +7,21 @@ public class PolynomTree {
     String SaveToFileReader = "";
     PolynomNode root;
     int flag = 0;
+    public PolynomTree(){
+        this.root = null;
+    }
+    public PolynomTree(function f){
+        ComplexFunction s = new ComplexFunction();
+        s = (ComplexFunction) f;
+        this.root = s.pt.root;
+    }
 
     public void printInOrder() {
         printInOrder(root);
         System.out.println();
     }
 
-    void printInOrder(PolynomNode node) {//PreOrder
+    private void printInOrder(PolynomNode node) {//PreOrder
         if (node != null) {
             printInOrder(node.left);
             System.out.print(node.OP + ", ");
@@ -21,9 +29,9 @@ public class PolynomTree {
         }
     }
 
-    public void printpreOrder() {
+    private void printpreOrder() {
+        SaveToFileReader ="";
         printpreOrder(root);
-        System.out.println();
         this.fixSaveToFile();
     }
 

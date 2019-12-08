@@ -8,37 +8,51 @@ public class ComplexFunction implements complex_function {
     PolynomNode current;
     int flag = 0 ;
 
-    ComplexFunction(){
-
+    public ComplexFunction(){
+        this.pt= new PolynomTree();
     }
-
-    ComplexFunction (String operation , Polynom p1, Polynom p2){
+    public ComplexFunction(ComplexFunction cf){
+        this.initFromString(cf.pt.SaveToFileReader);
+    }
+    public ComplexFunction(String operation, Polynom p1, Polynom p2){
         Operation op = ReturnOpString(operation);
+        this.pt = new PolynomTree();
+        this.pt.root = new PolynomNode("0");
         this.pt.root.OP = op;
-        this.pt.root.left.poly = p1;
-        this.pt.root.right.poly = p2;
+        this.pt.root.left = new PolynomNode(p1);
+        this.pt.root.right = new PolynomNode(p2);
     }
-    ComplexFunction(Polynom p1){
-        this.pt.root.poly = p1;
+    public ComplexFunction(Polynom p1){
+        this.pt = new PolynomTree();
+        this.pt.root = new PolynomNode(p1);
     }
-    ComplexFunction( String operation , Polynom p , ComplexFunction cf){
+    public ComplexFunction( String operation , Polynom p , ComplexFunction cf){
         Operation op = ReturnOpString(operation);
+        this.pt = new PolynomTree();
+        this.pt.root = new PolynomNode("0");
         this.pt.root.OP = op;
-        this.pt.root.left.poly = p;
-        this.pt.root.right.func = cf;
+        this.pt.root.left = new PolynomNode(p);
+        this.pt.root.right = new PolynomNode(cf);
     }
-    ComplexFunction( String operation , ComplexFunction cf , Polynom p){
+    public ComplexFunction( String operation , ComplexFunction cf , Polynom p){
         Operation op = ReturnOpString(operation);
         this.pt.root.OP = op;
         this.pt.root.right.poly = p;
         this.pt.root.left.func = cf;
     }
-    ComplexFunction( String operation , ComplexFunction cf1 , ComplexFunction cf2){
+    public ComplexFunction( String operation , ComplexFunction cf1 , ComplexFunction cf2){
         Operation op = ReturnOpString(operation);
         this.pt.root.OP = op;
         this.pt.root.right.func = cf1;
         this.pt.root.left.func = cf2;
     }
+
+    public ComplexFunction(function f) {
+        ComplexFunction cf = new ComplexFunction();
+        cf = (ComplexFunction)f;
+        this.pt = cf.pt;
+    }
+
 
     public void setInTree(function f1 , Operation op){
         PolynomNode p = new PolynomNode(op);
@@ -134,12 +148,10 @@ public class ComplexFunction implements complex_function {
         }
         else{
             if(p.func!=null) {
-                p.afterF = p.func.f(x);
-                return p.afterF;
+                return p.func.f(x);
             }
             else if(p.poly!=null){
-                p.afterF = p.poly.f(x);
-                return p.afterF;
+                return p.poly.f(x);
             }
         }
         return sumf;
@@ -238,8 +250,22 @@ public class ComplexFunction implements complex_function {
 
     @Override
     public function copy() {
-        return null;
+        function f = new ComplexFunction();
+        String s = this.pt.SaveToFileReader;
+        f = f.initFromString(s);
+        return f;
     }
+//    public void recursiveCopy(PolynomNode p){
+//        if(p == null) return;
+//        if (p.OP == null && p.func == null && p.poly == null){
+//            return;
+//        }
+//        if(p.OP!=null) this.pt.root = new PolynomNode(p.OP);
+//        else if(p.poly!=null) this.pt.root = new PolynomNode(p.poly);
+//        else if(p.func!=null) this.pt.root = new PolynomNode(p.func);
+//        recursiveCopy(p.right);
+//        recursiveCopy(p.left);
+//    }
 
     public static Boolean CheackSograim(String s){
         Stack stack = new Stack();
@@ -271,7 +297,6 @@ public class ComplexFunction implements complex_function {
         case Error:
             return "";
     }
-
         return null;
     }
 
@@ -281,10 +306,11 @@ public class ComplexFunction implements complex_function {
         ComplexFunction r = new ComplexFunction();
         String q = "mul(div(mul(8,8),4x^2),div(10,5))";
         r = (ComplexFunction) r.initFromString(q);
-        r.pt.printInOrder();
-        double x = r.f(1);
-        System.out.println(x);
-
-
+     //   r.pt.printInOrder();
+       // double x = r.f(1);
+      //  System.out.println(x);
+        System.out.println("t");
+        ComplexFunction s = new ComplexFunction(r.copy());
+        s.pt.printInOrder();
     }
 }
