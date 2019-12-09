@@ -263,7 +263,11 @@ public class ComplexFunction implements complex_function {
     }
 
 
-
+//need to do ============================================================
+    @Override
+    public boolean equals(Object cf){
+        return  true;
+    }
     @Override
     public function copy() {
         function f = new ComplexFunction(this);
@@ -274,23 +278,10 @@ public class ComplexFunction implements complex_function {
         this.OP = op;
     }
 
+//==================================================need to do ======================================
 
 
 
-//=============================================================
-
-    public void printInOrder() {
-        printInOrder(this);
-        System.out.println();
-    }
-
-    private void printInOrder(ComplexFunction cf) {//PreOrder
-        if (cf != null) {
-            printInOrder((ComplexFunction)cf.left);
-            System.out.print(cf.OP + ", ");
-            printInOrder((ComplexFunction)cf.right);
-        }
-    }
 
 
     public static void main(String[] args) {
