@@ -241,8 +241,11 @@ public class ComplexFunction implements complex_function {
         }
         return ans;
     }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> f7a3fee4dc3a4a344ed07ea14779b611ece7e9f4
     public static Boolean CheackSograim(String s){
         Stack stack = new Stack();
         for (int i = 0; i < s.length() ; i++) {
@@ -296,6 +299,7 @@ public class ComplexFunction implements complex_function {
     public static void main(String[] args) {
         ComplexFunction r = new ComplexFunction();
         String q = "mul(div(mul(8,8),4x^2),div(10,5))";
+<<<<<<< HEAD
 
 
        function f  = r.initFromString(q);
@@ -312,5 +316,21 @@ public class ComplexFunction implements complex_function {
 //        System.out.println("t");
 //        ComplexFunction s = new ComplexFunction(r.copy());
         // s.pt.printInOrder();
+=======
+        r = (ComplexFunction) r.initFromString(q);
+        r.pt.printInOrder();
+       // double x = r.f(1);
+      //  System.out.println(x);
+<<<<<<< HEAD
+        System.out.println("t");
+        ComplexFunction s = (ComplexFunction)r.copy();
+        //ComplexFunction s = new ComplexFunction(r.copy());
+        s.pt.printInOrder();
+=======
+//        System.out.println("t");
+//        ComplexFunction s = new ComplexFunction(r.copy());
+       // s.pt.printInOrder();
+>>>>>>> f977f35e1ef989ed33bab84290d482e920630ae7
+>>>>>>> f7a3fee4dc3a4a344ed07ea14779b611ece7e9f4
     }
 }
