@@ -71,46 +71,45 @@ public class Functions_GUI implements functions {
         StdDraw.setYscale(ry.get_min(), ry.get_max());
         StdDraw.setPenColor(Color.BLACK);
         StdDraw.setPenRadius(0.005);
-        double aaa = (rx.get_max()-rx.get_min())/res;
+
+        //=====================================================
         StdDraw.line(rx.get_min(),0,rx.get_max(),0);
         StdDraw.line(0,ry.get_min(),0,ry.get_max());
-        double knise = rx.get_min();
-        double plep = -10;
-        StdDraw.setPenRadius(0.003);
-        for (int i = 0; i <ff.size() ; i++) {
-            function f = ff.get(i);
-            StdDraw.setPenColor(Colors[i%7]);
-            for (double j = -res; j < res ; j++) {
-                StdDraw.line(plep,f.f(plep),plep+0.1,f.f(plep+0.1));
-                plep = plep+0.1;
+        StdDraw.setPenColor(Color.black);
+        StdDraw.text(-rx.get_max()+5,ry.get_max()-1,"Uriel and Yair Graph");
+
+        for (int i = (int) rx.get_min(); i <= (int)rx.get_max(); i++) {
+            StdDraw.setPenColor(Color.BLACK);
+            StdDraw.setPenRadius(0.005);
+            //StdDraw.line(i,-0.1,i,0.1);
+            String s = "" + i;
+            StdDraw.text(i,0.3,s);
+            StdDraw.setPenColor(Color.DARK_GRAY);
+            StdDraw.setPenRadius(0.0008);
+            StdDraw.line(rx.get_min(),i,rx.get_max(),i);
+        }
+        for (int i = (int)ry.get_min(); i <= ry.get_max(); i++) {
+            StdDraw.setPenColor(Color.BLACK);
+            StdDraw.setPenRadius(0.005);
+            //StdDraw.line(-0.1,i,0.1,i);
+            String s = "" + i;
+            StdDraw.text(0.3,i,s);
+            StdDraw.setPenColor(Color.DARK_GRAY);
+            StdDraw.setPenRadius(0.0008);
+            StdDraw.line(i,ry.get_min(),i,ry.get_max());
+        }
+
+        double ResSUL = (rx.get_max()-rx.get_min())/res;
+        double saveMIN= rx.get_min() ;
+        for (int i= 0; i < ff.size(); i++) {
+            ResSUL = (rx.get_max()-rx.get_min())/res;
+            for (int j = 0; j < res; j++) {
+                StdDraw.setPenColor(Colors[i]);
+                StdDraw.setPenRadius(0.003);
+                StdDraw.line(saveMIN,ff.get(i).f(saveMIN),saveMIN+ResSUL,ff.get(i).f(saveMIN+ResSUL));
+                saveMIN=saveMIN+ResSUL;
             }
         }
-//        int n = res;
-//        StdDraw.setCanvasSize(width, height);
-//        int size = ff.size();
-//        double[] x = new double[n+1];
-//        double[][] yy = new double[size][n+1];
-//        double x_step = (rx.get_max()-rx.get_min())/n;
-//        double x0 = rx.get_min();
-//        StdDraw.setXscale(rx.get_min(), rx.get_max());
-//        StdDraw.setYscale(ry.get_min(), ry.get_max());
-//        for (int i=0; i<=n; i++) {
-//            x[i] = x0;
-//            for(int a=0;a<size;a++) {
-//                yy[a][i] = ff.get(a).f(x[i]);
-//            }
-//            x0+=x_step;
-//        }
-//        // plot the approximation to the function
-//        for(int a=0;a<size;a++) {
-//            int c = a%Colors.length;
-//            StdDraw.setPenColor(Colors[c]);
-//
-//            System.out.println(a+") "+Colors[a]+"  f(x)= "+ff.get(a));
-//            for (int i = 0; i < n; i++) {
-//                StdDraw.line(x[i], yy[a][i], x[i+1], yy[a][i+1]);
-//            }
-//        }
     }
 
     @Override
@@ -121,7 +120,8 @@ public class Functions_GUI implements functions {
         StdDraw.setYscale();
         StdDraw.setPenRadius(10);
         for (int i = 0; i < 100; i++) {
-            StdDraw.line(i,10,i+10,i+20);
+            StdDraw.line(i,10,i+20,i+20);
+
         }
 
     }
@@ -208,11 +208,11 @@ public class Functions_GUI implements functions {
 
     public static void main(String[] args) throws IOException {
         Functions_GUI  p = new Functions_GUI();
-        p.initFromFile("C:\\Users\\Yair Semama\\Desktop\\function_file.txt");
+        p.initFromFile("function_file.txt");
         p.saveToFile("TheSAVE");
-        Range r1 = new Range(-50,50);
-        Range r2 = new Range(-50,50);
-        drawFunctions(p.Flist,500,500,r1,r2,100);
+        Range r1 = new Range(-20,20);
+        Range r2 = new Range(-20,20);
+        drawFunctions(p.Flist,300  ,300,r1,r2,50);
         //  drawFunctions(p.Flist);
 //        ComplexFunction p = new ComplexFunction();
 
