@@ -41,8 +41,8 @@ public class Functions_GUI implements functions {
     }
 
     private String fixThisFileText(String ans) {
-       ans = ans.replaceAll(" ", "");
-       return ans;
+        ans = ans.replaceAll(" ", "");
+        return ans;
     }
 
 
@@ -208,10 +208,10 @@ public class Functions_GUI implements functions {
 
     public static void main(String[] args) throws IOException {
         Functions_GUI  p = new Functions_GUI();
-         p.initFromFile("C:\\Users\\Yair Semama\\Desktop\\function_file.txt");
-         p.saveToFile("TheSAVE");
-         Range r1 = new Range(-50,50);
-         Range r2 = new Range(-50,50);
+        p.initFromFile("C:\\Users\\Yair Semama\\Desktop\\function_file.txt");
+        p.saveToFile("TheSAVE");
+        Range r1 = new Range(-50,50);
+        Range r2 = new Range(-50,50);
         drawFunctions(p.Flist,500,500,r1,r2,100);
         //  drawFunctions(p.Flist);
 //        ComplexFunction p = new ComplexFunction();
@@ -223,4 +223,3 @@ public class Functions_GUI implements functions {
 
     }
 }
-

@@ -283,6 +283,7 @@ public class Polynom implements Polynom_able {
 		int index = 0;
 		while(index<PolynomList.size()){
 			if(PolynomList.get(index).get_coefficient() != 0) return false;
+			index++;
 		}
 		return true;
 	}
