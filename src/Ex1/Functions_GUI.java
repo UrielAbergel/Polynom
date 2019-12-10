@@ -87,9 +87,7 @@ public class Functions_GUI implements functions {
             //StdDraw.line(i,-0.1,i,0.1);
             String s = "" + i;
             StdDraw.text(i,0.3,s);
-            StdDraw.setPenColor(Color.DARK_GRAY);
-            StdDraw.setPenRadius(0.0008);
-            StdDraw.line(rx.get_min(),i,rx.get_max(),i);
+
         }
         for (int i = (int)ry.get_min(); i <= ry.get_max(); i++) {
             StdDraw.setPenColor(Color.BLACK);
@@ -97,6 +95,16 @@ public class Functions_GUI implements functions {
             //StdDraw.line(-0.1,i,0.1,i);
             String s = "" + i;
             StdDraw.text(0.3,i,s);
+
+        }
+
+        for (int i = (int)rx.get_min()-10; i <= rx.get_max()+10; i++) {
+            StdDraw.setPenColor(Color.DARK_GRAY);
+            StdDraw.setPenRadius(0.0008);
+            StdDraw.line(rx.get_min(),i,rx.get_max(),i);
+        }
+
+        for (int i = (int)ry.get_min()-10; i <= ry.get_max()+10; i++) {
             StdDraw.setPenColor(Color.DARK_GRAY);
             StdDraw.setPenRadius(0.0008);
             StdDraw.line(i,ry.get_min(),i,ry.get_max());
@@ -134,16 +142,23 @@ public class Functions_GUI implements functions {
             //StdDraw.line(i,-0.1,i,0.1);
             String s = "" + i;
             StdDraw.text(i,0.3,s);
-            StdDraw.setPenColor(Color.DARK_GRAY);
-            StdDraw.setPenRadius(0.0008);
-            StdDraw.line(rx.get_min(),i,rx.get_max(),i);
         }
+
         for (int i = (int)ry.get_min(); i <= ry.get_max(); i++) {
             StdDraw.setPenColor(Color.BLACK);
             StdDraw.setPenRadius(0.005);
             //StdDraw.line(-0.1,i,0.1,i);
             String s = "" + i;
             StdDraw.text(0.3,i,s);
+        }
+
+        for (int i = (int)rx.get_min()-10; i <= rx.get_max()+10; i++) {
+            StdDraw.setPenColor(Color.DARK_GRAY);
+            StdDraw.setPenRadius(0.0008);
+            StdDraw.line(rx.get_min(),i,rx.get_max(),i);
+        }
+
+        for (int i = (int)ry.get_min()-10; i <= ry.get_max()+10; i++) {
             StdDraw.setPenColor(Color.DARK_GRAY);
             StdDraw.setPenRadius(0.0008);
             StdDraw.line(i,ry.get_min(),i,ry.get_max());
@@ -209,6 +224,18 @@ public class Functions_GUI implements functions {
             //StdDraw.line(-0.1,i,0.1,i);
             String s = "" + i;
             StdDraw.text(0.3,i,s);
+            StdDraw.setPenColor(Color.DARK_GRAY);
+            StdDraw.setPenRadius(0.0008);
+            StdDraw.line(i,-15,i,15);
+        }
+
+        for (int i = -25; i <= 35; i++) {
+            StdDraw.setPenColor(Color.DARK_GRAY);
+            StdDraw.setPenRadius(0.0008);
+            StdDraw.line(-15,i,15,i);
+        }
+
+        for (int i = -25; i <= 35; i++) {
             StdDraw.setPenColor(Color.DARK_GRAY);
             StdDraw.setPenRadius(0.0008);
             StdDraw.line(i,-15,i,15);
