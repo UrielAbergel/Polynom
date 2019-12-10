@@ -1,4 +1,4 @@
-package Tests;
+package Ex1Testing;
 import Ex1.Monom;
 import Ex1.Polynom;
 import org.junit.jupiter.api.Assertions;

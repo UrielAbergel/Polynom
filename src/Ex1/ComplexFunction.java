@@ -159,8 +159,8 @@ public class ComplexFunction implements complex_function {
                 case Error:
                     throw new NullPointerException("Error");
                 case Comp:
-                    double comply = right.f(x);
-                    sumf = left.f(comply);
+                    double comply = left.f(x);
+                    sumf = right.f(comply);
                     break;
                 default:
                     break;
