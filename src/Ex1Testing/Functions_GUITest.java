@@ -2,6 +2,7 @@ package Ex1Testing;
 
 import java.util.Iterator;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,6 +11,7 @@ import Ex1.Functions_GUI;
 import Ex1.Monom;
 import Ex1.Operation;
 import Ex1.Polynom;
+import Ex1.Range;
 import Ex1.function;
 import Ex1.functions;
 /**
@@ -49,35 +51,35 @@ class Functions_GUITest {
 		data.drawFunctions(JSON_param_file);
 	}
 	private functions _data=null;
-//	@BeforeAll
-//	static void setUpBeforeClass() throws Exception {
-//	}
+	@BeforeAll
+	static void setUpBeforeClass() throws Exception {
+	}
 
 	@BeforeEach
 	void setUp() throws Exception {
 		_data = FunctionsFactory();
 	}
 
-	//@Test
+	@Test
 	void testFunctions_GUI() {
 		//	fail("Not yet implemented");
 	}
 
-	//@Test
+	@Test
 	void testInitFromFile() {
 		//	fail("Not yet implemented");
 	}
 
-	//@Test
+	@Test
 	void testSaveToFile() {
 
 
 	}
 
-	//@Test
+	@Test
 	void testDrawFunctions() {
-		//_data.drawFunctions();
-		//	fail("Not yet implemented");
+//		_data.drawFunctions();
+//			fail("Not yet implemented");
 	}
 
 	@Test

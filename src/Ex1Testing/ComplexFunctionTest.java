@@ -16,7 +16,8 @@ public class ComplexFunctionTest {
         f2 = f1.initFromString("10x");
         String s = "mul(5x^2+3x+10,div(div(10x,10),plus(10,8)))";
         ComplexFunction cf = new ComplexFunction("plus",f1,f2);
-        function f = cf.initFromString(s);
+        function f = cf.initFromString(s
+        );
         cf.plus(f);
         String test = "Plus(Plus(15.0x^1,10.0x^1),Times(5.0x^2+3.0x^1+10.0x^0,Divid(Divid(10.0x^1,10.0x^0),Plus(10.0x^0,8.0x^0))))";
         assertEquals(test,cf.toString());
