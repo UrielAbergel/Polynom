@@ -5,8 +5,8 @@ import  java.util.Stack;
 
 public class ComplexFunction implements complex_function {
 
-    function left  = null ,right = null, head = null;
-    Operation OP  = Operation.None;
+    public function left  = null ,right = null, head = null;
+    public Operation OP  = Operation.None;
     public static final double EPSILON = 0.0000001;
 
 
@@ -58,6 +58,11 @@ public class ComplexFunction implements complex_function {
         this.left= cf1;
         this.right = cf2;
     }
+    public ComplexFunction(Operation op, function left, function right){
+        this.OP = op;
+        this.left = left;
+        this.right = right;
+    }
 
     public ComplexFunction(function f) {
         ComplexFunction a = (ComplexFunction)f;
@@ -75,14 +80,11 @@ public class ComplexFunction implements complex_function {
         }
         else
         {
-            ComplexFunction cf = new ComplexFunction();
-            cf.left = this;
-            cf.right = f1;
-            cf.OP = op;
-            this.head = cf;
+            ComplexFunction f2 = new ComplexFunction(this.OP,this.left,this.right);
+            this.left = f2;
+            this.right = f1;
+            this.OP = op;
         }
-
-
     }
     @Override
     public void plus(function f1) {
@@ -101,12 +103,12 @@ public class ComplexFunction implements complex_function {
 
     @Override
     public void max(function f1) {
-
+        setInTree(f1,Operation.Max);
     }
 
     @Override
     public void min(function f1) {
-        setInTree(f1,Operation.Max);
+        setInTree(f1,Operation.Min);
     }
 
     @Override
@@ -136,7 +138,7 @@ public class ComplexFunction implements complex_function {
     private  double sumf = 0;
     @Override
     public double f(double x) {
-        if (this == null) return 0;
+        if (this.OP == Operation.None && this.left == null && this.right == null) return 0;
         if (OP != Operation.None) {
             switch (OP) {
                 case Times:
@@ -172,6 +174,7 @@ public class ComplexFunction implements complex_function {
     }
     @Override
     public function initFromString(String s) {
+        s = fixThisFileText(s);
         ComplexFunction tempComplex = new ComplexFunction();
         int Psik =findPsik(s);
         if(Psik == 0)
@@ -277,13 +280,13 @@ public class ComplexFunction implements complex_function {
     @Override
     public boolean equals(Object cf){
         if(cf instanceof ComplexFunction || cf instanceof function){
-            for (int i = 0 ; i < 100 ; i++) {
+            for (int i = 0 ; i < 500 ; i++) {
                 try {
                     double f1 = this.f(i);
-                    double f2 = ((ComplexFunction) cf).f(i);
+                    double f2 = ((function) cf).f(i);
                     if(Math.abs(f1-f2)>EPSILON) return false;
                 } catch (Exception e) {
-                    System.out.println("You cannot divide by 0");
+                    System.out.println("You cannot divide by 0" + i);
                 }
             }
         }
@@ -296,11 +299,10 @@ public class ComplexFunction implements complex_function {
         function f = temp.initFromString(s);
         return f;
     }
-
-
-
-
-
+    private String fixThisFileText(String ans) {
+        ans = ans.replaceAll(" ", "");
+        return ans;
+    }
 
     public static void main(String[] args) {
         ComplexFunction r = new ComplexFunction();

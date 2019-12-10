@@ -8,6 +8,7 @@ import Ex1.Polynom;
 import Ex1.Monom;
 import Ex1.Polynom_able;
 import static org.junit.jupiter.api.Assertions.*;
+import Ex1.*;
 
 class PolynomTest {
 
