@@ -108,18 +108,17 @@ public class Monom implements function{
 	public String toString() {
 		return this._coefficient + "x^" + this._power;
 	}
-
 	@Override
 	public function initFromString(String s) {
-		return null;
+		return new Monom(s);
 	}
 
 	@Override
 	public function copy() {
-		return null;
+		Monom m = new Monom(this._coefficient,this._power);
+		return m;
 	}
 	// you may (always) add other methods.
-
 	//****** Private Methods and Data *******
 	public void toSetcoefficient(double a){
 		set_coefficient(a);

@@ -7,6 +7,7 @@ import  Ex1.ComplexFunction;
 
 
 
+
 public class Functions_GUI implements functions {
     ArrayList<function> Flist;
 
@@ -14,7 +15,11 @@ public class Functions_GUI implements functions {
             Color.red, Color.GREEN, Color.PINK};
 
     public Functions_GUI(){
+<<<<<<< HEAD
         ArrayList<function> temp = new ArrayList<>();
+=======
+        ArrayList<function> temp = new ArrayList<function>();
+>>>>>>> 8b88591ea1b25789bbef499f1935b9315404e471
         Flist = temp;
     }
 
@@ -64,6 +69,7 @@ public class Functions_GUI implements functions {
         writeOnes.close();
 
     }
+<<<<<<< HEAD
 
 
     public static void drawFunctions(ArrayList<function> ff, int width, int height, Range rx, Range ry, int res) {
@@ -95,6 +101,54 @@ public class Functions_GUI implements functions {
                 StdDraw.line(x[i], yy[a][i], x[i+1], yy[a][i+1]);
             }
         }
+=======
+    public static void drawFunctions(ArrayList<function> ff, int width, int height, Range rx, Range ry, int res) {
+        StdDraw.setCanvasSize(width,height);
+        StdDraw.setXscale(rx.get_min(), rx.get_max());
+        StdDraw.setYscale(ry.get_min(), ry.get_max());
+        StdDraw.setPenColor(Color.BLACK);
+        StdDraw.setPenRadius(0.005);
+        double aaa = (rx.get_max()-rx.get_min())/res;
+        StdDraw.line(rx.get_min(),0,rx.get_max(),0);
+        StdDraw.line(0,ry.get_min(),0,ry.get_max());
+        double knise = rx.get_min();
+        double plep = -10;
+        StdDraw.setPenRadius(0.003);
+        for (int i = 0; i <ff.size() ; i++) {
+            function f = ff.get(i);
+            StdDraw.setPenColor(Colors[i%7]);
+            for (double j = -res; j < res ; j++) {
+                StdDraw.line(plep,f.f(plep),plep+0.1,f.f(plep+0.1));
+                plep = plep+0.1;
+            }
+        }
+//        int n = res;
+//        StdDraw.setCanvasSize(width, height);
+//        int size = ff.size();
+//        double[] x = new double[n+1];
+//        double[][] yy = new double[size][n+1];
+//        double x_step = (rx.get_max()-rx.get_min())/n;
+//        double x0 = rx.get_min();
+//        StdDraw.setXscale(rx.get_min(), rx.get_max());
+//        StdDraw.setYscale(ry.get_min(), ry.get_max());
+//        for (int i=0; i<=n; i++) {
+//            x[i] = x0;
+//            for(int a=0;a<size;a++) {
+//                yy[a][i] = ff.get(a).f(x[i]);
+//            }
+//            x0+=x_step;
+//        }
+//        // plot the approximation to the function
+//        for(int a=0;a<size;a++) {
+//            int c = a%Colors.length;
+//            StdDraw.setPenColor(Colors[c]);
+//
+//            System.out.println(a+") "+Colors[a]+"  f(x)= "+ff.get(a));
+//            for (int i = 0; i < n; i++) {
+//                StdDraw.line(x[i], yy[a][i], x[i+1], yy[a][i+1]);
+//            }
+//        }
+>>>>>>> 8b88591ea1b25789bbef499f1935b9315404e471
     }
 
     @Override
@@ -192,6 +246,7 @@ public class Functions_GUI implements functions {
 
     public static void main(String[] args) throws IOException {
         Functions_GUI  p = new Functions_GUI();
+<<<<<<< HEAD
       p.initFromFile("rr.txt");
 
       p.saveToFile("TheSAVE");
@@ -199,6 +254,13 @@ public class Functions_GUI implements functions {
         Range r = new Range(-111,111);
         StdDraw.setScale(-500,5000);
         drawFunctions(p.Flist,2000,2000,f,r,400);
+=======
+         p.initFromFile("C:\\Users\\Yair Semama\\Desktop\\function_file.txt");
+         p.saveToFile("TheSAVE");
+         Range r1 = new Range(-50,50);
+         Range r2 = new Range(-50,50);
+        drawFunctions(p.Flist,500,500,r1,r2,100);
+>>>>>>> 8b88591ea1b25789bbef499f1935b9315404e471
         //  drawFunctions(p.Flist);
 //        ComplexFunction p = new ComplexFunction();
 

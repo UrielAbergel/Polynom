@@ -7,6 +7,7 @@ public class ComplexFunction implements complex_function {
 
     function left  = null ,right = null, head = null;
     Operation OP  = Operation.None;
+    public static final double EPSILON = 0.0000001;
 
 
     public ComplexFunction(){
@@ -15,8 +16,8 @@ public class ComplexFunction implements complex_function {
     }
 
     public ComplexFunction(ComplexFunction cf){
-        this.OP=cf.OP;
-        this.left=cf.left;
+        this.OP = cf.OP;
+        this.left = cf.left;
         this.right = cf.right;
         this.head = cf.head;
     }
@@ -59,7 +60,11 @@ public class ComplexFunction implements complex_function {
     }
 
     public ComplexFunction(function f) {
-        this.left = f ;
+        ComplexFunction a = (ComplexFunction)f;
+        this.OP = a.OP;
+        this.head = a.head;
+        this.left = a.left;
+        this.right = a.right;
     }
 
     public void setInTree(function f1,Operation op){
@@ -123,6 +128,11 @@ public class ComplexFunction implements complex_function {
     public Operation getOp() {
         return this.OP;
     }
+
+    public void setOP(Operation op){
+        this.OP = op;
+    }
+
     private  double sumf = 0;
     @Override
     public double f(double x) {
@@ -151,15 +161,15 @@ public class ComplexFunction implements complex_function {
                     sumf = left.f(comply);
                     break;
                 default:
-                    this.left.f(x);
                     break;
             }
+        }
+        else{
+            sumf = this.f(x);
         }
         return sumf;
 
     }
-
-
     @Override
     public function initFromString(String s) {
         ComplexFunction tempComplex = new ComplexFunction();
@@ -196,28 +206,34 @@ public class ComplexFunction implements complex_function {
         switch(s) {
             case "mul":
                 return Operation.Times;
-
+            case "Times":
+                return Operation.Times;
             case "div":
                 return Operation.Divid;
-
+            case "Divid":
+                return Operation.Divid;
             case "plus":
                 return Operation.Plus;
-
+            case "Plus":
+                return Operation.Plus;
             case "max":
                 return Operation.Max;
-
+            case "Max":
+                return Operation.Max;
             case "min":
                 return Operation.Min;
-
+            case "Min":
+                return Operation.Min;
             case "error":
                 return Operation.Error;
-
+            case "Error":
+                return Operation.Error;
             case "comp":
-                return  Operation.Comp;
-
+                return Operation.Comp;
+            case "Comp":
+                return Operation.Comp;
             default:
                 return Operation.None;
-
         }
     }
 
@@ -253,32 +269,34 @@ public class ComplexFunction implements complex_function {
         if(!stack.isEmpty()) return false;
         return true;
     }
-
-
-
-
     @Override
     public String toString(){
         return this.OP + "(" + this.left + "," + this.right +")";
     }
 
-
-    //need to do ============================================================
     @Override
     public boolean equals(Object cf){
-        return  true;
+        if(cf instanceof ComplexFunction || cf instanceof function){
+            for (int i = 0 ; i < 100 ; i++) {
+                try {
+                    double f1 = this.f(i);
+                    double f2 = ((ComplexFunction) cf).f(i);
+                    if(Math.abs(f1-f2)>EPSILON) return false;
+                } catch (Exception e) {
+                    System.out.println("You cannot divide by 0");
+                }
+            }
+        }
+        return true;
     }
     @Override
     public function copy() {
-        function f = new ComplexFunction(this);
+        String s = this.toString();
+        ComplexFunction temp = new ComplexFunction();
+        function f = temp.initFromString(s);
         return f;
     }
 
-    public void setOP(Operation op){
-        this.OP = op;
-    }
-
-//==================================================need to do ======================================
 
 
 
@@ -287,11 +305,16 @@ public class ComplexFunction implements complex_function {
     public static void main(String[] args) {
         ComplexFunction r = new ComplexFunction();
         String q = "mul(div(mul(8,8),4x^2),div(10,5))";
+        String q1 = "mul(div(mul(8,8),4x^2),div(10,2))";
+        ComplexFunction f  =(ComplexFunction) r.initFromString(q);
+        ComplexFunction f1  =(ComplexFunction) r.initFromString(q1);
+        System.out.println(f.equals(f1));
+        System.out.println(f.f(1));
+        function a = (f.copy());
+        System.out.println(q.toString());
+        System.out.println(a.toString());
 
-
-        function f  = r.initFromString(q);
-        System.out.println(f.toString());
-        System.out.println("ggg");
+        //System.out.println("ggg");
         // r.printInOrder();
         // double x = r.f(1);
         //  System.out.println(x);
