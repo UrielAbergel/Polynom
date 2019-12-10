@@ -1,4 +1,4 @@
-package Tests;
+package Ex1Testing;
 import Ex1.*;
 import Ex1.ComplexFunction;
 import Ex1.function;
@@ -159,6 +159,89 @@ public class ComplexFunctionTest {
 
     @Test
     public void f() {
+        String test1 = "10x^2+10x+1000";
+        String test2 = "mul(10x^2+10x+8,1000)";
+        String test3 = "mul(div(10x^2+4,plus(100,4x^6-10)),mul(5,5))";
+        String test4 = "min(10x,mul(5,5))";
+        String test5 = "mul(max(x^2+20x+1,x^3+100),10)";
+        String test6 = "comp(x,comp(3x^5,mul(10,5x)))";
+        ComplexFunction cf = new ComplexFunction();
+        function testF1 = cf.initFromString(test1);
+        function testF2 = cf.initFromString(test2);
+        function testF3 = cf.initFromString(test3);
+        function testF4 = cf.initFromString(test4);
+        function testF5 = cf.initFromString(test5);
+        function testF6 = cf.initFromString(test6);
+        double exp = 1020;
+        double try1 = testF1.f(1);
+        boolean flag;
+        if(exp == try1) flag =true;
+        else flag = false;
+        assertEquals(true,flag);
+        try1 = testF1.f(-1);
+        exp = 1000;
+        if(exp == try1) flag =true;
+        else flag = false;
+        assertEquals(true,flag);
+
+        try1 = testF2.f(5);
+        exp = 308000;
+        if(exp == try1) flag =true;
+        else flag = false;
+        assertEquals(true,flag);
+        try1 = testF2.f(-10);
+        exp = 908000;
+        if(exp == try1) flag =true;
+        else flag = false;
+        assertEquals(true,flag);
+
+        try1 = testF3.f(3);
+        exp = 0.7817697937;
+        if(Math.abs(exp - try1)<0.001) flag =true;
+        else flag = false;
+        assertEquals(true,flag);
+        try1 = testF3.f(0);
+        exp = 1.11111111;
+        if(Math.abs(exp - try1)<0.001) flag =true;
+        else flag = false;
+        assertEquals(true,flag);
+
+        try1 = testF4.f(1);
+        exp = 10;
+        if(Math.abs(exp - try1)<0.001) flag =true;
+        else flag = false;
+        assertEquals(true,flag);
+        try1 = testF4.f(5);
+        exp = 25;
+        if(Math.abs(exp - try1)<0.001) flag =true;
+        else flag = false;
+        assertEquals(true,flag);
+
+        try1 = testF5.f(3);
+        exp = 700;
+        if(Math.abs(exp - try1)<0.001) flag =true;
+        else flag = false;
+        assertNotEquals(true,flag);
+
+        try1 = testF5.f(1);
+        exp = 1010;
+        if(Math.abs(exp - try1)<0.001) flag =true;
+        else flag = false;
+        assertEquals(true,flag);
+
+        try1 = testF6.f(5);
+        exp = 2500;
+        if(Math.abs(exp - try1)<0.001) flag =true;
+        else flag = false;
+        assertNotEquals(true,flag);
+        try1 = testF6.f(1);
+        exp = 150;
+        if(Math.abs(exp - try1)<0.001) flag =true;
+        else flag = false;
+        assertEquals(true,flag);
+
+
+
     }
 
     @Test
