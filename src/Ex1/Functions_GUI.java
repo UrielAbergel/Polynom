@@ -4,6 +4,11 @@ import java.io.*;
 import java.util.Scanner;
 import java.util.*;
 import  Ex1.ComplexFunction;
+import com.google.gson.Gson;
+
+import java.io.File;
+
+
 
 
 
@@ -71,8 +76,6 @@ public class Functions_GUI implements functions {
         StdDraw.setYscale(ry.get_min(), ry.get_max());
         StdDraw.setPenColor(Color.BLACK);
         StdDraw.setPenRadius(0.005);
-
-        //=====================================================
         StdDraw.line(rx.get_min(),0,rx.get_max(),0);
         StdDraw.line(0,ry.get_min(),0,ry.get_max());
         StdDraw.setPenColor(Color.black);
@@ -103,8 +106,9 @@ public class Functions_GUI implements functions {
         double saveMIN= rx.get_min() ;
         for (int i= 0; i < ff.size(); i++) {
             ResSUL = (rx.get_max()-rx.get_min())/res;
+            saveMIN = rx.get_min();
             for (int j = 0; j < res; j++) {
-                StdDraw.setPenColor(Colors[i]);
+                StdDraw.setPenColor(Colors[i%7]);
                 StdDraw.setPenRadius(0.003);
                 StdDraw.line(saveMIN,ff.get(i).f(saveMIN),saveMIN+ResSUL,ff.get(i).f(saveMIN+ResSUL));
                 saveMIN=saveMIN+ResSUL;
@@ -115,24 +119,113 @@ public class Functions_GUI implements functions {
     @Override
     public void drawFunctions(int width, int height, Range rx, Range ry, int resolution) {
         StdDraw.setCanvasSize(width,height);
-        StdDraw.setPenColor(Color.RED);
-        StdDraw.setXscale(10,9);
-        StdDraw.setYscale();
-        StdDraw.setPenRadius(10);
-        for (int i = 0; i < 100; i++) {
-            StdDraw.line(i,10,i+20,i+20);
+        StdDraw.setXscale(rx.get_min(), rx.get_max());
+        StdDraw.setYscale(ry.get_min(), ry.get_max());
+        StdDraw.setPenColor(Color.BLACK);
+        StdDraw.setPenRadius(0.005);
+        StdDraw.line(rx.get_min(),0,rx.get_max(),0);
+        StdDraw.line(0,ry.get_min(),0,ry.get_max());
+        StdDraw.setPenColor(Color.black);
+        StdDraw.text(-rx.get_max()+5,ry.get_max()-1,"Uriel and Yair Graph");
+
+        for (int i = (int) rx.get_min(); i <= (int)rx.get_max(); i++) {
+            StdDraw.setPenColor(Color.BLACK);
+            StdDraw.setPenRadius(0.005);
+            //StdDraw.line(i,-0.1,i,0.1);
+            String s = "" + i;
+            StdDraw.text(i,0.3,s);
+            StdDraw.setPenColor(Color.DARK_GRAY);
+            StdDraw.setPenRadius(0.0008);
+            StdDraw.line(rx.get_min(),i,rx.get_max(),i);
+        }
+        for (int i = (int)ry.get_min(); i <= ry.get_max(); i++) {
+            StdDraw.setPenColor(Color.BLACK);
+            StdDraw.setPenRadius(0.005);
+            //StdDraw.line(-0.1,i,0.1,i);
+            String s = "" + i;
+            StdDraw.text(0.3,i,s);
+            StdDraw.setPenColor(Color.DARK_GRAY);
+            StdDraw.setPenRadius(0.0008);
+            StdDraw.line(i,ry.get_min(),i,ry.get_max());
+        }
+
+        double ResSUL = (rx.get_max()-rx.get_min())/resolution;
+        double saveMIN= rx.get_min() ;
+        for (int i= 0; i < this.Flist.size(); i++) {
+            ResSUL = (rx.get_max()-rx.get_min())/resolution;
+            saveMIN = rx.get_min();
+            for (int j = 0; j < resolution; j++) {
+                StdDraw.setPenColor(Colors[i%7]);
+                StdDraw.setPenRadius(0.003);
+                StdDraw.line(saveMIN,this.Flist.get(i).f(saveMIN),saveMIN+ResSUL,this.Flist.get(i).f(saveMIN+ResSUL));
+                saveMIN=saveMIN+ResSUL;
+            }
+        }
 
         }
 
-    }
+
 
     @Override
     public void drawFunctions(String json_file) {
+        Gson json = new Gson();
+        try{
+            FileReader filereader = new FileReader(json_file);
+            JsonParametrs parm = json.fromJson(filereader,JsonParametrs.class);
+            Range rx = new Range(parm.Range_X[0],parm.Range_X[1]);
+            Range ry = new Range(parm.Range_Y[0],parm.Range_Y[1]);
+            drawFunctions(parm.Width,parm.Height,rx,ry,parm.Resolution);
 
+        }
+        catch(Exception e){
+            System.out.println("The Json file is not correct");
+        }
     }
 
     public void drawFunctions() {
+        StdDraw.setCanvasSize(900,900);
+        StdDraw.setXscale(-15, 15);
+        StdDraw.setYscale(-15, 15);
+        StdDraw.setPenColor(Color.BLACK);
+        StdDraw.setPenRadius(0.005);
+        StdDraw.line(-15,0,15,0);
+        StdDraw.line(0,-15,0,15);
+        StdDraw.setPenColor(Color.black);
+        StdDraw.text(-10,14,"Uriel and Yair Graph");
 
+        for (int i =-15; i <=15; i++) {
+            StdDraw.setPenColor(Color.BLACK);
+            StdDraw.setPenRadius(0.005);
+            //StdDraw.line(i,-0.1,i,0.1);
+            String s = "" + i;
+            StdDraw.text(i,0.3,s);
+            StdDraw.setPenColor(Color.DARK_GRAY);
+            StdDraw.setPenRadius(0.0008);
+            StdDraw.line(-15,i,15,i);
+        }
+        for (int i = -15; i <= 15; i++) {
+            StdDraw.setPenColor(Color.BLACK);
+            StdDraw.setPenRadius(0.005);
+            //StdDraw.line(-0.1,i,0.1,i);
+            String s = "" + i;
+            StdDraw.text(0.3,i,s);
+            StdDraw.setPenColor(Color.DARK_GRAY);
+            StdDraw.setPenRadius(0.0008);
+            StdDraw.line(i,-15,i,15);
+        }
+
+        double ResSUL = 0.15;
+        double saveMIN= -15 ;
+        for (int i= 0; i < this.Flist.size(); i++) {
+            ResSUL = 0.15;
+            saveMIN = -15;
+            for (int j = 0; j < 200; j++) {
+                StdDraw.setPenColor(Colors[i%7]);
+                StdDraw.setPenRadius(0.003);
+                StdDraw.line(saveMIN,this.Flist.get(i).f(saveMIN),saveMIN+ResSUL,this.Flist.get(i).f(saveMIN+ResSUL));
+                saveMIN=saveMIN+ResSUL;
+            }
+        }
     }
 
     public function get(int i) {
@@ -212,7 +305,7 @@ public class Functions_GUI implements functions {
         p.saveToFile("TheSAVE");
         Range r1 = new Range(-20,20);
         Range r2 = new Range(-20,20);
-        drawFunctions(p.Flist,300  ,300,r1,r2,50);
+        p.drawFunctions("GUI_params.txt");
         //  drawFunctions(p.Flist);
 //        ComplexFunction p = new ComplexFunction();
 
