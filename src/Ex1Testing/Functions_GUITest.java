@@ -1,11 +1,12 @@
 package Ex1Testing;
 
+import java.io.IOException;
 import java.util.Iterator;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+import Ex1.Functions_GUI;
 import Ex1.ComplexFunction;
 import Ex1.Functions_GUI;
 import Ex1.Monom;
@@ -33,10 +34,10 @@ import Ex1.functions;
 class Functions_GUITest {
 	public static void main(String[] a) {
 		functions data = FunctionsFactory();
-		//	int w=1000, h=600, res=200;
-		//	Range rx = new Range(-10,10);
-		//	Range ry = new Range(-5,15);
-//		data.drawFunctions(w,h,rx,ry,res);
+		int w=1000, h=600, res=200;
+		Range rx = new Range(-10,10);
+		Range ry = new Range(-5,15);
+		data.drawFunctions(w,h,rx,ry,res);
 		String file = "function_file.txt";
 		String file2 = "function_file2.txt";
 		try {
@@ -46,13 +47,17 @@ class Functions_GUITest {
 			data.saveToFile(file2);
 		}
 		catch(Exception e) {e.printStackTrace();}
-
 		String JSON_param_file = "GUI_params.txt";
 		data.drawFunctions(JSON_param_file);
 	}
 	private functions _data=null;
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
+		int width = 900;
+		int height = 900;
+		int res = 200;
+		Range rx = new Range(-15,15);
+		Range ry = new Range(-15,15);
 	}
 
 	@BeforeEach
@@ -62,24 +67,38 @@ class Functions_GUITest {
 
 	@Test
 	void testFunctions_GUI() {
-		//	fail("Not yet implemented");
+
+		//fail("Not yet implemented");
 	}
 
 	@Test
 	void testInitFromFile() {
-		//	fail("Not yet implemented");
+		String path = "function_file.txt";
+		Functions_GUI f_GUI = new Functions_GUI();
+		try {
+			f_GUI.initFromFile(path);
+		} catch (Exception e) {
+			System.out.println("Your path is leading to nowhere");
+		}
+		ComplexFunction cf = new ComplexFunction();
+		function f1 = cf.initFromString("");
+		function f2 = cf.initFromString("");
+		function f3 = cf.initFromString("");
+		function f4 = cf.initFromString("");
+		function f5 = cf.initFromString("");
+		function f6 = cf.initFromString("");
+		function f7 = cf.initFromString("");
 	}
 
 	@Test
 	void testSaveToFile() {
-
 
 	}
 
 	@Test
 	void testDrawFunctions() {
 //		_data.drawFunctions();
-//			fail("Not yet implemented");
+//		fail("Not yet implemented");
 	}
 
 	@Test
