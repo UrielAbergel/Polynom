@@ -223,14 +223,21 @@ public class ComplexFunction implements complex_function {
      */
     @Override
     public function initFromString(String s) {
+
         s = fixThisFileText(s);
         ComplexFunction tempComplex = new ComplexFunction();
         int Psik =findPsik(s);
+        function f = new ComplexFunction();
         if(Psik == 0)
         {
-            function f = new Polynom(s);
+             f = new Polynom(s);
+        }try{
+             f = tempComplex.initFromStringRec(s);
+        }catch (Exception e){
+            System.out.println("Your String is not write correctly. \n Inserting null");
+            return null;
         }
-        function f = tempComplex.initFromStringRec(s);
+
         return f;
     }
 
