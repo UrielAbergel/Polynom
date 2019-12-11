@@ -1,7 +1,6 @@
 package Ex1;
 
-import java.util.Currency;
-import  java.util.Stack;
+import java.util.Stack;
 
 public class ComplexFunction implements complex_function {
 
@@ -73,10 +72,14 @@ public class ComplexFunction implements complex_function {
     }
 
     public void setInTree(function f1,Operation op){
-        if(this.OP == Operation.None)
+        if(this.OP == Operation.None && this.left == null)
         {
             OP = op;
-            left = f1 ;
+            left = f1;
+        }
+        else if(this.OP == Operation.None && this.right == null){
+            this.OP = op;
+            this.right = f1;
         }
         else
         {
@@ -315,7 +318,6 @@ public class ComplexFunction implements complex_function {
         function a = (f.copy());
         System.out.println(q.toString());
         System.out.println(a.toString());
-
         //System.out.println("ggg");
         // r.printInOrder();
         // double x = r.f(1);

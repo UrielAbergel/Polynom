@@ -27,7 +27,12 @@ public class Polynom implements Polynom_able {
 	 *
 	 * @param s: is a string represents a Polynom
 	 */
+	private String fixThisFileText(String ans) {
+		ans = ans.replaceAll(" ", "");
+		return ans;
+	}
 	public Polynom(String s) {
+		s = fixThisFileText(s);
 		try {
 			String t = "";
 			int Startindex = 0, EndIndex = 0;

@@ -1,20 +1,14 @@
 package Ex1;
+
+import com.google.gson.Gson;
 import java.awt.*;
 import java.io.*;
-import java.util.Scanner;
-import java.util.*;
-import  Ex1.ComplexFunction;
-import com.google.gson.Gson;
-
-import java.io.File;
-
-
-
-
-
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
 public class Functions_GUI implements functions {
-    ArrayList<function> Flist;
+    public ArrayList<function> Flist;
 
     public static Color[] Colors = {Color.blue, Color.cyan, Color.MAGENTA, Color.ORANGE,
             Color.red, Color.GREEN, Color.PINK};
@@ -327,7 +321,7 @@ public class Functions_GUI implements functions {
 
 
     public static void main(String[] args) throws IOException {
-        Functions_GUI  p = new Functions_GUI();
+        Functions_GUI p = new Functions_GUI();
         p.initFromFile("function_file.txt");
         p.saveToFile("TheSAVE");
         Range r1 = new Range(-20,20);
