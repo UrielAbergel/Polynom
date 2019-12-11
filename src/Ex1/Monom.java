@@ -139,6 +139,11 @@ public class Monom implements function{
 	private double _coefficient;
 	private int _power;
 
+	/**
+	 *
+	 * @param m
+	 * @return true if this ans m is equals
+	 */
 	public boolean equals(Monom m){
 		boolean flag1 = false;
 		boolean flag2 = false;
