@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+/**
+ * @authors Yair Semama and Uriel Abargel
+ */
 public class Functions_GUI implements functions {
     public ArrayList<function> Flist;
 
@@ -18,6 +21,11 @@ public class Functions_GUI implements functions {
         Flist = temp;
     }
 
+    /**
+     * Create Functions from file
+     * @param file - the file name
+     * @throws IOException
+     */
     @Override
     public void initFromFile(String file) throws IOException {
         File importedFile = new File(file);
@@ -38,13 +46,16 @@ public class Functions_GUI implements functions {
 
             }
     }
-
     private String fixThisFileText(String ans) {
         ans = ans.replaceAll(" ", "");
         return ans;
     }
 
-
+    /**
+     * save to new file the function lise
+     * @param file
+     * @throws IOException
+     */
     @Override
     public void saveToFile(String file) throws IOException {
         FileWriter writeOnes = new FileWriter(file);
@@ -64,6 +75,16 @@ public class Functions_GUI implements functions {
         writeOnes.close();
 
     }
+
+    /**
+     * draw function with StdDraw
+     * @param ff
+     * @param width
+     * @param height
+     * @param rx
+     * @param ry
+     * @param res
+     */
     public static void drawFunctions(ArrayList<function> ff, int width, int height, Range rx, Range ry, int res) {
         StdDraw.setCanvasSize(width,height);
         StdDraw.setXscale(rx.get_min(), rx.get_max());
@@ -118,6 +139,14 @@ public class Functions_GUI implements functions {
         }
     }
 
+    /**
+     * draw function with StdDraw
+     * @param width - the width of the window - in pixels
+     * @param height - the height of the window - in pixels
+     * @param rx - the range of the horizontal axis
+     * @param ry - the range of the vertical axis
+     * @param resolution - the number of samples with in rx: the X_step = rx/resulution
+     */
     @Override
     public void drawFunctions(int width, int height, Range rx, Range ry, int resolution) {
         StdDraw.setCanvasSize(width,height);
@@ -173,8 +202,10 @@ public class Functions_GUI implements functions {
 
         }
 
-
-
+    /**
+     * draw function with StdDraw, using parameters from Json file
+     * @param json_file - the file with all the parameters for the GUI window.
+     */
     @Override
     public void drawFunctions(String json_file) {
         Gson json = new Gson();
@@ -191,6 +222,10 @@ public class Functions_GUI implements functions {
         }
     }
 
+    /**
+     * draw function with StdDraw.
+     * using defult parameters
+     */
     public void drawFunctions() {
         StdDraw.setCanvasSize(900,900);
         StdDraw.setXscale(-15, 15);
@@ -316,25 +351,5 @@ public class Functions_GUI implements functions {
     @Override
     public void clear() {
         Flist.clear();
-    }
-
-
-
-    public static void main(String[] args) throws IOException {
-        Functions_GUI p = new Functions_GUI();
-        p.initFromFile("function_file.txt");
-
-        p.saveToFile("TheSAVE");
-        Range r1 = new Range(-20,20);
-        Range r2 = new Range(-20,20);
-        p.drawFunctions("GUI_params.txt");
-        //  drawFunctions(p.Flist);
-//        ComplexFunction p = new ComplexFunction();
-
-//        ComplexFunction r = (ComplexFunction) p.Flist.get(0);
-//        String s = "";
-//        s = r.toStringNodeTree(r.pt.root);
-//        System.out.println(s);
-
     }
 }

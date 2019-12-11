@@ -9,7 +9,7 @@ import java.util.Iterator;
  * 2. Finding a numerical value between two values (currently support root only f(x)=0).
  * 3. Derivative
  *
- * @author Boaz
+ * @author Yair Semama And Uriel Abargel
  *
  */
 public class Polynom implements Polynom_able {
@@ -456,13 +456,5 @@ public class Polynom implements Polynom_able {
 			ans = ans + this.PolynomList.get(x++).returnMonomToString() + "+";
 		}
 		return ans;
-	}
-	public static void main(String[] args) {
-		Polynom r = new Polynom("5x^2+55");
-		Polynom_able p = r.copy();
-		Iterator<Monom> ite = p.iteretor();
-		while (ite.hasNext()){
-			System.out.println(ite.next().toString());
-		}
 	}
 }

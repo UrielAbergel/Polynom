@@ -2,6 +2,9 @@ package Ex1;
 
 import java.util.Stack;
 
+/**
+ *  @authors Yair Semama And Uriel Abargel
+ */
 public class ComplexFunction implements complex_function {
 
     public function left  = null ,right = null, head = null;
@@ -214,8 +217,8 @@ public class ComplexFunction implements complex_function {
     }
 
     /**
-     *
-     * @param s
+     * Create a function from string
+     * @param
      * @return
      */
     @Override
@@ -348,33 +351,5 @@ public class ComplexFunction implements complex_function {
     private String fixThisFileText(String ans) {
         ans = ans.replaceAll(" ", "");
         return ans;
-    }
-
-    public static void main(String[] args) {
-        ComplexFunction r = new ComplexFunction();
-        String q = "mul(div(mul(8,8),4x^2),div(10,5))";
-        String q1 = "mul(div(mul(8,8),4x^2),div(10,2))";
-        ComplexFunction f  =(ComplexFunction) r.initFromString(q);
-        ComplexFunction f1  =(ComplexFunction) r.initFromString(q1);
-        System.out.println(f.equals(f1));
-        System.out.println(f.f(1));
-        function a = (f.copy());
-        System.out.println(q.toString());
-        System.out.println(a.toString());
-        function b = (f.copy());
-        a.equals(b);
-        System.out.println(a.equals(b));
-        //System.out.println("ggg");
-        // r.printInOrder();
-        // double x = r.f(1);
-        //  System.out.println(x);
-        // System.out.println("t");
-
-        //ComplexFunction s = (ComplexFunction)r.copy();
-        //   ComplexFunction s = new ComplexFunction(r.copy());
-
-//        System.out.println("t");
-//        ComplexFunction s = new ComplexFunction(r.copy());
-        // s.pt.printInOrder();
     }
 }

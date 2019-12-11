@@ -155,17 +155,4 @@ public class Monom implements function{
 	public String returnMonomToString(){
 		return this.get_coefficient() + "x^" +this.get_power();
 	}
-
-	public static void main(String[] args) {
-//		String s = "5x^4";
-//		Monom a = new Monom(s);
-//		Monom b = new Monom("3x^2");
-//		a.multipy(b);
-//		System.out.println(a._coefficient);
-//		System.out.println(a._power);
-        String s = "54332";
-        String c = s.substring(0,2);
-        System.out.println(c);
-	}
-
 }
