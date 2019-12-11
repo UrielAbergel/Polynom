@@ -91,13 +91,16 @@ public class Functions_GUITest {
             System.out.println("Your path is leading to nowhere");
         }
         ComplexFunction cf = new ComplexFunction();
-        function f1 = cf.initFromString("Plus(-1.0x^4+3.1x^0,0.1x^5-1.2999999999999998x^1+5.0x^0)");
-        function f2 = cf.initFromString("Plus(Divid(1.0x^1+1.0x^0,Times(Times(1.0x^1-2.0x^0,0.0x^0),1.0x^1-4.0x^0)),2.0x^0)");
-        function f3 = cf.initFromString("Divid(Plus(-1.0x^4+3.1x^0,0.1x^5-1.2999999999999998x^1+5.0x^0),-1.0x^4+3.1x^0)");
+        function f1 = cf.initFromString("plus(-1.0x^4 +2.4x^2 +3.1,+0.1x^5 -1.2999999999999998x +5.0)");
+        function f2 = cf.initFromString("plus(div(+1.0x +1.0,mul(mul(+1.0x +3.0,+1.0x -2.0),+1.0x -4.0)),2.0)");
+        function f3 = cf.initFromString("div(plus(-1.0x^4 +2.4x^2 +3.1,+0.1x^5 -1.2999999999999998x +5.0),-1.0x^4 +2.4x^2 +3.1)");
         function f4 = cf.initFromString("-1.0x^4+2.4x^2+3.1x^0");
         function f5 = cf.initFromString("0.1x^5-1.2999999999999998x^1+5.0x^0");
-        function f6 = cf.initFromString("Max(Max(Max(Max(Plus(-1.0x^4+3.1x^0,0.1x^5-1.2999999999999998x^1+5.0x^0),Plus(Divid(1.0x^1+1.0x^0,Times(Times(1.0x^1-2.0x^0,0.0x^0),1.0x^1-4.0x^0)),2.0x^0)),Divid(Plus(-1.0x^4+3.1x^0,0.1x^5-1.2999999999999998x^1+5.0x^0),-1.0x^4+3.1x^0)),-1.0x^4+2.4x^2+3.1x^0),0.1x^5-1.2999999999999998x^1+5.0x^0)");
-        function f7 = cf.initFromString("Min(Min(Min(Min(Plus(-1.0x^4+3.1x^0,0.1x^5-1.2999999999999998x^1+5.0x^0),Plus(Divid(1.0x^1+1.0x^0,Times(Times(1.0x^1-2.0x^0,0.0x^0),1.0x^1-4.0x^0)),2.0x^0)),Divid(Plus(-1.0x^4+3.1x^0,0.1x^5-1.2999999999999998x^1+5.0x^0),-1.0x^4+3.1x^0)),-1.0x^4+2.4x^2+3.1x^0),0.1x^5-1.2999999999999998x^1+5.0x^0)");
+        function f6 = cf.initFromString("max(max(max(max(plus(-1.0x^4 +2.4x^2 +3.1,+0.1x^5 -1.2999999999999998x +5.0),plus(div(+1.0x +1.0,mul(mul(+1.0x +3.0,+1.0x -2.0),+1.0x -4.0)),2.0)),div(plus(-1.0x^4 +2.4x^2 +3.1,+0.1x^5 -1.2999999999999998x +5.0),-1.0x^4 +2.4x^2 +3.1)),-1.0x^4 +2.4x^2 +3.1),+0.1x^5 -1.2999999999999998x +5.0)");
+        function f7 = cf.initFromString("min(min(min(min(plus(-1.0x^4 +2.4x^2 +3.1,+0.1x^5 -1.2999999999999998x +5.0),plus(div(+1.0x +1.0,mul(mul(+1.0x +3.0,+1.0x -2.0),+1.0x -4.0)),2.0)),div(plus(-1.0x^4 +2.4x^2 +3.1,+0.1x^5 -1.2999999999999998x +5.0),-1.0x^4 +2.4x^2 +3.1)),-1.0x^4 +2.4x^2 +3.1),+0.1x^5 -1.2999999999999998x +5.0)");
+        for (int i = 0; i < f_GUI.Flist.size(); i++) {
+            assertEquals(f_GUI.get(i).toString(),f_GUI.get(i).toString());
+        }
         assertEquals(f1.toString(),f_GUI.get(0).toString());
         assertEquals(f2.toString(),f_GUI.get(1).toString());
         assertEquals(f3.toString(),f_GUI.get(2).toString());
@@ -127,13 +130,9 @@ public class Functions_GUITest {
         } catch (IOException e) {
             System.out.println("Fail to InitFromString");
         }
-        assertEquals(f_GUI2.get(0).toString(),f_GUI.get(0).toString());
-        assertEquals(f_GUI2.get(1).toString(),f_GUI.get(1).toString());
-        assertEquals(f_GUI2.get(2).toString(),f_GUI.get(2).toString());
-        assertEquals(f_GUI2.get(3).toString(),f_GUI.get(3).toString());
-        assertEquals(f_GUI2.get(4).toString(),f_GUI.get(4).toString());
-        assertEquals(f_GUI2.get(5).toString(),f_GUI.get(5).toString());
-        assertEquals(f_GUI2.get(6).toString(),f_GUI.get(6).toString());
+        for (int i = 0; i < f_GUI.Flist.size(); i++) {
+            assertEquals(f_GUI2.get(i).toString(),f_GUI.get(i).toString());
+        }
     }
     @Test
     public void drawFunctionstest() {
@@ -155,23 +154,6 @@ public class Functions_GUITest {
             System.out.println("Fail to print the functions");
         }
     }
-
-    @Test
-    void testDrawFunctions() {
-        _data = new Functions_GUI();
-        try {
-            _data.initFromFile("function_file.txt");
-        }catch (Exception e){
-            System.out.println("The path is not exists");
-        }
-        try {
-            _data.drawFunctions();
-        } catch (Exception e) {
-            fail("Not yet implemented");
-        }
-    }
-
-
     @Test
     void testDrawFunctionsIntIntRangeRangeInt() {
         _data = new Functions_GUI();
