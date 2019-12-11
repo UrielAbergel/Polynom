@@ -20,7 +20,6 @@ public class Functions_GUI implements functions {
         ArrayList<function> temp = new ArrayList<function>();
         Flist = temp;
     }
-
     /**
      * Create Functions from file
      * @param file - the file name
@@ -43,14 +42,12 @@ public class Functions_GUI implements functions {
                 }
                 Flist.add(f);
                 Ans = "";
-
             }
     }
     private String fixThisFileText(String ans) {
         ans = ans.replaceAll(" ", "");
         return ans;
     }
-
     /**
      * save to new file the function lise
      * @param file
@@ -73,9 +70,7 @@ public class Functions_GUI implements functions {
 
         }
         writeOnes.close();
-
     }
-
     /**
      * draw function with StdDraw
      * @param ff
@@ -158,7 +153,6 @@ public class Functions_GUI implements functions {
         StdDraw.line(0,ry.get_min(),0,ry.get_max());
         StdDraw.setPenColor(Color.black);
         StdDraw.text(-rx.get_max()+5,ry.get_max()-1,"Uriel and Yair Graph");
-
         for (int i = (int) rx.get_min(); i <= (int)rx.get_max(); i++) {
             StdDraw.setPenColor(Color.BLACK);
             StdDraw.setPenRadius(0.005);
@@ -166,7 +160,6 @@ public class Functions_GUI implements functions {
             String s = "" + i;
             StdDraw.text(i,0.3,s);
         }
-
         for (int i = (int)ry.get_min(); i <= ry.get_max(); i++) {
             StdDraw.setPenColor(Color.BLACK);
             StdDraw.setPenRadius(0.005);
@@ -174,19 +167,16 @@ public class Functions_GUI implements functions {
             String s = "" + i;
             StdDraw.text(0.3,i,s);
         }
-
         for (int i = (int)rx.get_min()-10; i <= rx.get_max()+10; i++) {
             StdDraw.setPenColor(Color.DARK_GRAY);
             StdDraw.setPenRadius(0.0008);
             StdDraw.line(rx.get_min(),i,rx.get_max(),i);
         }
-
         for (int i = (int)ry.get_min()-10; i <= ry.get_max()+10; i++) {
             StdDraw.setPenColor(Color.DARK_GRAY);
             StdDraw.setPenRadius(0.0008);
             StdDraw.line(i,ry.get_min(),i,ry.get_max());
         }
-
         double ResSUL = (rx.get_max()-rx.get_min())/resolution;
         double saveMIN= rx.get_min() ;
         for (int i= 0; i < this.Flist.size(); i++) {
@@ -200,8 +190,7 @@ public class Functions_GUI implements functions {
             }
         }
 
-        }
-
+    }
     /**
      * draw function with StdDraw, using parameters from Json file
      * @param json_file - the file with all the parameters for the GUI window.
@@ -215,10 +204,10 @@ public class Functions_GUI implements functions {
             Range rx = new Range(parm.Range_X[0],parm.Range_X[1]);
             Range ry = new Range(parm.Range_Y[0],parm.Range_Y[1]);
             drawFunctions(parm.Width,parm.Height,rx,ry,parm.Resolution);
-
         }
         catch(Exception e){
-            System.out.println("The Json file is not correct");
+            System.out.println("The Json file is not correct, drawing diff");
+            this.drawFunctions();
         }
     }
 
