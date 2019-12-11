@@ -7,8 +7,9 @@ Calculate the area, and calculate the intersection points with the X-axis
  #### Example of proper polynomial input: "3x^4+4x^2+3x+2"
 
 .
-#### Polynom Graphically displayed
-![ndwqdnsadjlasdn](https://user-images.githubusercontent.com/54840897/68754034-ab366900-060e-11ea-9219-1395ae0d540b.jpg)
+#### The graphical user interface : 
+![גרףףףףףףףףףף](https://user-images.githubusercontent.com/54840897/70615327-d9f72d80-1c14-11ea-9a06-05620697931b.PNG)
+
 
 
 
@@ -53,4 +54,22 @@ The class polynom supports some functions as:
 - is equal 
 - is zero
 
+## Complex Function class
+A function complex is a class that deals with functions that are more complex than a simple polynomial.
+
+#### Complex Function algorithm:
+The algorithm builds a tree, as a binary tree, where each operator is located and connects two functions, or two complex functions.
+In any operation such as calculation, it recursively traverses the tree, the calculation or transition is performed in the form of a pre-order
+
+The class polynom supports some functions as:
+- constructor:A constructor has many ways to build when it is possible to put two functions.
+   Or two function complex, there is an option of putting operator and two functions 
+- Plus:Performs a Plus operation on two functions
+- Times:Performs a multiplication operation on two functions
+- Divid:Performs a Divid operation on two functions
+- Max:check which two function have a bigger max point
+- Min : check which two function have a minum min point
+- Comp:Performs function-by-function assembly F (G (x))
+- f(x) -Calculates the value of the complex function at a point
+- is equal 
 
