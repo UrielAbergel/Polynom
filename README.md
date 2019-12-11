@@ -3,7 +3,7 @@
 ## descreption
 The project creates a data structure that can contain complex functions, and also provides a GUI for the user to calculate complex functional problems, such as cutting axes, extremes points, and multiplicity of functions.
    
- #### Example of proper Complex Function input: "Plus(Divid(1.0x^1+1.0x^0,Times(Times(1.0x^1-2.0x^0,0.0x^0),1.0x^1-4.0x^0)),2.0x^0)"
+ #### Example of proper Complex Function input:"Plus(Divid(1.0x+1.0x,Times(1.0x-2.0,1.0x^1-4.0)),2)"
 
 .
 #### The graphical user interface : 
