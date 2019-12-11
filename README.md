@@ -1,10 +1,9 @@
 # ![polynom-logo](https://user-images.githubusercontent.com/54840897/68753489-cce32080-060d-11ea-87a8-793152128a46.png)
 
 ## descreption
-The project can create a monom and a polynomial. Exporting them to a picture that shows the polynomial as a function, the program allows, among other things, to do mathematical operations between polynomial and monom.
-Calculate the area, and calculate the intersection points with the X-axis
+The project creates a data structure that can contain complex functions, and also provides a GUI for the user to calculate complex functional problems, such as cutting axes, extremes points, and multiplicity of functions.
    
- #### Example of proper polynomial input: "3x^4+4x^2+3x+2"
+ #### Example of proper Complex Function input: "Plus(Divid(1.0x^1+1.0x^0,Times(Times(1.0x^1-2.0x^0,0.0x^0),1.0x^1-4.0x^0)),2.0x^0)"
 
 .
 #### The graphical user interface : 
