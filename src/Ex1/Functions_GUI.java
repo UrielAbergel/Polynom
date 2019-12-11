@@ -323,6 +323,7 @@ public class Functions_GUI implements functions {
     public static void main(String[] args) throws IOException {
         Functions_GUI p = new Functions_GUI();
         p.initFromFile("function_file.txt");
+
         p.saveToFile("TheSAVE");
         Range r1 = new Range(-20,20);
         Range r2 = new Range(-20,20);
