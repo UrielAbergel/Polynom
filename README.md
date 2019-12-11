@@ -72,3 +72,13 @@ The class polynom supports some functions as:
 - f(x) -Calculates the value of the complex function at a point
 - is equal 
 
+## GUI class
+
+The GUI class builds a user image that simulates the function by X axis and Y axis
+
+An image can be produced by three functions
+1) A function that receives parameters from JSON
+2) Static function that receives user parameters
+3) Function that builds without parameters
+
+The user-generated image can be seen in the example above
