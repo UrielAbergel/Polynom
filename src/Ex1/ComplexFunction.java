@@ -70,7 +70,13 @@ public class ComplexFunction implements complex_function {
         this.left = a.left;
         this.right = a.right;
     }
-    //----------------^^Constarcotrs^^----------
+    //----------------^^ Constarcotrs ^^----------
+
+    /**
+     * set f1 and op in the Complex function
+     * @param f1
+     * @param op
+     */
     public void setInTree(function f1,Operation op){
         String ST = f1.toString();
         function f3 = f1.initFromString(ST);
@@ -91,31 +97,53 @@ public class ComplexFunction implements complex_function {
             this.OP = op;
         }
     }
+
+    /**
+     * return this plus f1.
+     * @param f1
+     */
     @Override
     public void plus(function f1) {
         setInTree(f1,Operation.Plus);
     }
-
+    /**
+     * return this mul f1.
+     * @param f1
+     */
     @Override
     public void mul(function f1) {
         setInTree(f1,Operation.Times);
     }
-
+    /**
+     * return this div f1.
+     * @param f1
+     */
     @Override
     public void div(function f1) {
         setInTree(f1,Operation.Divid);
     }
-
+    /**
+     * return the max between this and f1.
+     * @param f1
+     */
     @Override
     public void max(function f1) {
         setInTree(f1,Operation.Max);
     }
-
+    /**
+     * return the min between this and f1.
+     * @param f1
+     */
     @Override
     public void min(function f1) {
         setInTree(f1,Operation.Min);
     }
-
+    /**
+     * return f1 comp this.
+     * this = g(x), f1=f(x)
+     * like f(g(x))
+     * @param f1
+     */
     @Override
     public void comp(function f1) {
         setInTree(f1,Operation.Comp);
@@ -141,6 +169,13 @@ public class ComplexFunction implements complex_function {
     }
 
     private  double sumf = 0;
+
+    /**
+     *
+     * @param x
+     * @return the f value.
+     * Example this = 5x. with x = 5 f function will return 25.
+     */
     @Override
     public double f(double x) {
         if (this.OP == Operation.None && this.left == null && this.right == null) return 0;
@@ -177,6 +212,12 @@ public class ComplexFunction implements complex_function {
         return sumf;
 
     }
+
+    /**
+     *
+     * @param s
+     * @return
+     */
     @Override
     public function initFromString(String s) {
         s = fixThisFileText(s);
