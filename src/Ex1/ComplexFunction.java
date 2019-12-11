@@ -8,7 +8,7 @@ public class ComplexFunction implements complex_function {
     public Operation OP  = Operation.None;
     public static final double EPSILON = 0.0000001;
 
-
+    //------------------ Constarcotrs------------
     public ComplexFunction(){
         head=left=right=null;
         OP = Operation.None;
@@ -70,22 +70,24 @@ public class ComplexFunction implements complex_function {
         this.left = a.left;
         this.right = a.right;
     }
-
+    //----------------^^Constarcotrs^^----------
     public void setInTree(function f1,Operation op){
+        String ST = f1.toString();
+        function f3 = f1.initFromString(ST);
         if(this.OP == Operation.None && this.left == null)
         {
             OP = op;
-            left = f1;
+            left = f3;
         }
         else if(this.OP == Operation.None && this.right == null){
             this.OP = op;
-            this.right = f1;
+            this.right = f3;
         }
         else
         {
             ComplexFunction f2 = new ComplexFunction(this.OP,this.left,this.right);
             this.left = f2;
-            this.right = f1;
+            this.right = f3;
             this.OP = op;
         }
     }
@@ -318,6 +320,9 @@ public class ComplexFunction implements complex_function {
         function a = (f.copy());
         System.out.println(q.toString());
         System.out.println(a.toString());
+        function b = (f.copy());
+        a.equals(b);
+        System.out.println(a.equals(b));
         //System.out.println("ggg");
         // r.printInOrder();
         // double x = r.f(1);

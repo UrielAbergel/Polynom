@@ -25,7 +25,7 @@ public class Polynom implements Polynom_able {
 	 * init a Polynom from a String such as:
 	 * {"x", "3+1.4X^3-34x", "(2x^2-4)(-1.2x-7.1)", "(3-3.4x+1)((3.1x-1.2)-(3X^2-3.1))"};
 	 *
-	 * @param s: is a string represents a Polynom
+	 * @param: is a string represents a Polynom
 	 */
 	private String fixThisFileText(String ans) {
 		ans = ans.replaceAll(" ", "");
@@ -231,8 +231,6 @@ public class Polynom implements Polynom_able {
 		return false;
 	}
 
-
-
 	public boolean epualPo(Polynom p1){
 		double EPSILON = 0.0000001;
 		if(this.PolynomList.size() == 0 && p1.PolynomList.size()!=0) return false;
@@ -283,6 +281,10 @@ public class Polynom implements Polynom_able {
 		return flag;
 	}
 
+	/**
+	 * func that check if the polynom is zero
+	 * @return
+	 */
 	@Override
 	public boolean isZero() {
 		int index = 0;

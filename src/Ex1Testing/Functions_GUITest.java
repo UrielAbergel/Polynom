@@ -68,12 +68,12 @@ public class Functions_GUITest {
     }
     @Test
     void testFunctions_GUI() {
+        _data = new Functions_GUI();
         try {
             _data = FunctionsFactory();
         } catch (Exception e) {
             fail("Not yet implemented");
         }
-        _data = new Functions_GUI();
         try {
             _data.drawFunctions("GUI_params.txt");
         } catch (Exception e){
@@ -201,7 +201,7 @@ public class Functions_GUITest {
         for(int i=1;i<s3.length;i++) {
             cf3.mul(new Polynom(s3[i]));
         }
-
+        cf3.mul(cf3);
         ComplexFunction cf = new ComplexFunction(Operation.Plus, p1,p2);
         ComplexFunction cf4 = new ComplexFunction("div", new Polynom("x +1"),cf3);
         cf4.plus(new Monom("2"));
