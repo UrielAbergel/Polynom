@@ -334,11 +334,14 @@ public class ComplexFunction implements complex_function {
     @Override
     public boolean equals(Object cf){
         if(cf instanceof ComplexFunction || cf instanceof function){
-            for (int i = 0 ; i < 500 ; i++) {
+            for (int i = -40 ; i < 40 ; i++) {
                 try {
                     double f1 = this.f(i);
                     double f2 = ((function) cf).f(i);
-                    if(Math.abs(f1-f2)>EPSILON) return false;
+                    if(Math.abs(f1-f2)>EPSILON) {
+                        System.out.println(i);
+                        return false;
+                    }
                 } catch (Exception e) {
                     System.out.println("You cannot divide by 0" + i);
                 }
