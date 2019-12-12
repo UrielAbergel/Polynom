@@ -205,7 +205,7 @@ public class Functions_GUI implements functions {
             Range ry = new Range(parm.Range_Y[0],parm.Range_Y[1]);
             drawFunctions(parm.Width,parm.Height,rx,ry,parm.Resolution);
         }
-        catch(Exception e){
+        catch(FileNotFoundException|IllegalArgumentException |com.google.gson.JsonSyntaxException|com.google.gson.JsonIOException e){
             System.out.println("The Json file is not correct, drawing diff");
             this.drawFunctions();
         }
