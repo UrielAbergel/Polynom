@@ -186,6 +186,7 @@ public class ComplexFunction implements complex_function {
                     sumf = left.f(x) * right.f(x);
                     break;
                 case Divid:
+                    if(right.f(x)==0){throw new RuntimeException("cant divid zero");}
                     sumf = left.f(x) / right.f(x);
                     break;
                 case Plus:
