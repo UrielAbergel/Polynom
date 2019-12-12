@@ -67,13 +67,11 @@ public class ComplexFunction implements complex_function {
     }
 
     public ComplexFunction(function f) {
-        ComplexFunction a = (ComplexFunction)f;
-        this.OP = a.OP;
-        this.head = a.head;
-        this.left = a.left;
-        this.right = a.right;
+        this.left = f;
+        this.right = null;
+        this.OP = Operation.None;
     }
-    //----------------^^ Constarcotrs ^^----------
+
 
     /**
      * set f1 and op in the Complex function
@@ -182,7 +180,7 @@ public class ComplexFunction implements complex_function {
     @Override
     public double f(double x) {
         if (this.OP == Operation.None && this.left == null && this.right == null) return 0;
-        if (OP != Operation.None) {
+
             switch (OP) {
                 case Times:
                     sumf = left.f(x) * right.f(x);
@@ -205,13 +203,13 @@ public class ComplexFunction implements complex_function {
                     double comply = left.f(x);
                     sumf = right.f(comply);
                     break;
+                case None:
+                    sumf = this.left.f(x);
                 default:
                     break;
             }
-        }
-        else{
-            sumf = this.f(x);
-        }
+
+
         return sumf;
 
     }
