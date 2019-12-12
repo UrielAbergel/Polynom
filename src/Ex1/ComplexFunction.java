@@ -327,7 +327,9 @@ public class ComplexFunction implements complex_function {
         return true;
     }
     @Override
-    public String toString(){
+    public String toString()
+    {
+        if(this.OP == Operation.None && this.right == null){return ""+ this.left;}
         return this.OP + "(" + this.left + "," + this.right +")";
     }
 
