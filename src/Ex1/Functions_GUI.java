@@ -342,11 +342,5 @@ public class Functions_GUI implements functions {
         Flist.clear();
     }
 
-    public static void main(String[] args) {
-        Functions_GUI fg = new Functions_GUI();
-        ComplexFunction cf = new ComplexFunction();
-        function f1 = cf.initFromString("5x+444");
-        fg.add(f1);
-        System.out.println(fg.Flist.toString());
-    }
+
 }

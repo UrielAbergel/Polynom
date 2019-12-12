@@ -118,8 +118,7 @@ public class Monom implements function{
 		Monom m = new Monom(this._coefficient,this._power);
 		return m;
 	}
-	// you may (always) add other methods.
-	//****** Private Methods and Data *******
+
 	public void toSetcoefficient(double a){
 		set_coefficient(a);
 	}
@@ -141,16 +140,33 @@ public class Monom implements function{
 
 	/**
 	 *
-	 * @param m
+	 * @param obji
 	 * @return true if this ans m is equals
 	 */
-	public boolean equals(Monom m){
-		boolean flag1 = false;
-		boolean flag2 = false;
-		if((m.get_power()==this.get_power())) flag1 = true;
-		double dis = this.get_coefficient() - m.get_coefficient();
-		if((Math.abs(dis)<EPSILON)) flag2 = true;
-		return (flag2 && flag1);
+	public boolean equals(Object obji){
+		if(obji instanceof Monom) {
+			Monom m = (Monom)obji;
+			boolean flag1 = false;
+			boolean flag2 = false;
+			if ((m.get_power() == this.get_power())) flag1 = true;
+			double dis = this.get_coefficient() - m.get_coefficient();
+			if ((Math.abs(dis) < EPSILON)) flag2 = true;
+			return (flag2 && flag1);
+		}
+		if(obji instanceof function){
+			function f = (function) obji;
+			return f.equals(this);
+		}
+		if(obji instanceof Polynom){
+			Polynom p = (Polynom) obji;
+			if(p.PolynomList.size()>1){return false;}
+			Monom check = p.PolynomList.get(0);
+			Monom check2 = this;
+			if(check.get_coefficient()==check2.get_coefficient() && check.get_power()==check2.get_power()){return true;}
+			else return false;
+		}
+
+		return false;
 	}
 	public String returnMonomToString(){
 		return this.get_coefficient() + "x^" +this.get_power();

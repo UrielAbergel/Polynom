@@ -228,6 +228,18 @@ public class Polynom implements Polynom_able {
 			Polynom p3 = (Polynom)p1;
 			return this.epualPo(p3);
 		}
+		else if(p1 instanceof ComplexFunction){
+			ComplexFunction cf = (ComplexFunction) p1;
+			return cf.equals(this);
+		}
+		else if(p1 instanceof  Monom){
+			if(this.PolynomList.size()>1){return false;}
+			Monom check = (Monom) p1;
+			Monom check2 = this.PolynomList.get(0);
+			if(check.get_coefficient()==check2.get_coefficient() && check.get_power()==check2.get_power()){return true;}
+			else return false;
+		}
+
 		return false;
 	}
 
@@ -457,4 +469,5 @@ public class Polynom implements Polynom_able {
 		}
 		return ans;
 	}
+
 }

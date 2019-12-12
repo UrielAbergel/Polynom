@@ -360,4 +360,5 @@ public class ComplexFunction implements complex_function {
         ans = ans.replaceAll(" ", "");
         return ans;
     }
+
 }
